@@ -11,9 +11,7 @@ namespace PROG6221_POE
         public static void Main(string[] args)
         {
 
-            int ingredientCount, stepCount, index, scale;
-
-            string option, confirm;
+            string option;
 
             Boolean application;
 
@@ -29,7 +27,7 @@ namespace PROG6221_POE
 
             while (application)
             {
-                Console.WriteLine("Please select one of the following options: \n\n1) Add a new recipe \n2) Scale a recipe \n3) Display a recipe \n4) Show all saved recipes \n5) Delete a recipe \n6) Exit");
+                Console.WriteLine("Please select one of the following options: \n\n1) Add a new recipe \n2) Scale a recipe \n3) Reset scale to original \n4) Display a recipe \n5) Delete a recipe \n6) Exit");
                 option = Console.ReadLine();
 
                 switch (option)
@@ -44,14 +42,14 @@ namespace PROG6221_POE
                         recipe.ScaleRecipe();
                         break;
 
-                    case "3": //Display a Recipe
+                    case "3": //Reset recipe scale factor to original
 
-                        recipe.DisplayRecipe();
+                        recipe.ResetScale();
                         break;
 
-                    case "4": //Display all Recipes
+                    case "4": //Display Recipe
 
-                        recipe.DisplayRecipe(); //Pass all recipes in list
+                        recipe.DisplayRecipe();
                         break;
 
                     case "5": //Delete Recipe
@@ -60,6 +58,7 @@ namespace PROG6221_POE
                         break;
 
                     case "6": //Exit Application
+
                         application = false;
                         break;
 
