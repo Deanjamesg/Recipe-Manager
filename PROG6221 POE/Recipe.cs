@@ -16,25 +16,41 @@ namespace PROG6221_POE
         public Recipe() { 
         }
 
-        public Recipe(string _name, string[] _steps, string[,] _ingredients)
+        public Recipe(string recipeName, string[] recipeSteps, string[,] recipeIngredients)
         {
-            name = _name;
-            steps = _steps;
-            ingredients = _ingredients;
+            scaleFactor = 1;
+            name = recipeName;
+            steps = recipeSteps;
+            ingredients = recipeIngredients;
         }
 
-        public string Scale()
+        public void ScaleRecipe()
         {
-            return "";
+
         }
 
-        public string DisplayRecipe()
+        public void ResetScale()
         {
-            return "";
+
+        }
+
+        public void DisplayRecipe()
+        {
+
+        }
+
+        public void DeleteRecipe()
+        {
+
+        }
+
+        public void AddNewRecipe()
+        {
+
         }
 
         public void IngredientPrompt()
-        {
+        { 
 
         }
 

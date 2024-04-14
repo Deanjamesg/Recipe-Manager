@@ -8,8 +8,9 @@ namespace PROG6221_POE
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            
         }
     }
 }
