@@ -12,19 +12,18 @@ namespace PROG6221_POE
         {
 
             string option;
-
             Boolean application;
 
             Recipe recipe = new Recipe
             {
-            name = "Bacon Pasta",
+            recipeName = "Bacon Pasta",
             scaleFactor = 1,
-            ingredients = new string[,]
+            ingredients = new Ingredients[]
             {
-                { "Basil", "1", "cup" },
-                { "Bacon", "200", "grams" },
-                { "Whole peeled tomatoes", "400", "grams" },
-                { "Penne", "250", "grams" }
+                new Ingredients { name = "Basil", quantity = 1, measurement = "cup" },
+                new Ingredients { name = "Bacon", quantity = 200, measurement = "grams" },
+                new Ingredients { name = "Whole peeled tomatoes", quantity = 400, measurement = "grams" },
+                new Ingredients { name = "Penne", quantity = 250, measurement = "grams" }
             },
             steps = new string[]
             {
@@ -83,7 +82,7 @@ namespace PROG6221_POE
                         break;
 
                     default:
-                        Console.WriteLine("Incorrect value was entered.");
+                        Console.WriteLine("Please select one of the available options.");
                         Console.WriteLine("\nPress any key to continue...");
                         Console.ReadKey();
                         Console.Clear();

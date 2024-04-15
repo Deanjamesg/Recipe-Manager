@@ -8,17 +8,17 @@ namespace PROG6221_POE
 {
     class Recipe
     {
-        public int scaleFactor { get; set; }
-        public string name { get; set; }
+        public double scaleFactor { get; set; }
+        public string recipeName { get; set; }
         public string[] steps { get; set; }
-        public string[,] ingredients { get; set; }
+        public Ingredients[] ingredients { get; set; }
 
         public Recipe() { 
         }
 
         public void ScaleRecipe()
         {
-
+ 
         }
 
         public void ResetScale()
@@ -33,13 +33,12 @@ namespace PROG6221_POE
         {
 
             Console.Clear();
-            Console.WriteLine(name);
+            Console.WriteLine(recipeName);
             Console.WriteLine("-----------------------------------\nIngredients: \n-----------------------------------");
 
             for (int i = 0; i < ingredients.GetLength(0); i++)
             {
-                Console.WriteLine(ingredients[i, 1] + " " + ingredients[i, 2] + " of " + ingredients[i, 0]);
-
+                Console.WriteLine(ingredients[i].quantity * scaleFactor + " " + ingredients[i].measurement + " of " + ingredients[i].name);
             }
             Console.WriteLine("-----------------------------------\nSteps: \n-----------------------------------");
 
@@ -65,31 +64,47 @@ namespace PROG6221_POE
             Console.WriteLine("Please enter the following requirements: ");
 
             Console.Write("\nName of the recipe: ");
-            name = Console.ReadLine();
+            recipeName = Console.ReadLine();
 
             Console.Write("\nNumber of ingredients required: ");
-            int ingredientsCount = int.Parse(Console.ReadLine());
+
+            int ingredientsCount, stepsCount;
+
+            while (!int.TryParse(Console.ReadLine(), out ingredientsCount) && ingredientsCount <= 0)
+            {
+                Console.WriteLine("Please enter a number that is greater than 0.");
+            }
 
             Console.Write("\nNumber of steps to be done: ");
-            int stepsCount = int.Parse(Console.ReadLine());
-
-            scaleFactor = 1;
-            ingredients = new string[ingredientsCount, 3];
+            while (!int.TryParse(Console.ReadLine(), out stepsCount) && stepsCount <= 0)
+            {
+                Console.WriteLine("Please enter a number that is greater than 0.");
+            }
             steps = new string[stepsCount];
 
-            string[] Prompt = { "Ingredient: ", "Quantity: ", "Unit of measurement: " };
-
+            scaleFactor = 1;
             Console.WriteLine("\nPlease enter the ingredients used, the quantity and unit of measurement: ");
 
-            for (int i = 0; i < ingredients.GetLength(0); i++)
+            ingredients = new Ingredients[ingredientsCount];
+
+            for (int i = 0; i < ingredients.Length; i++)
             {
                 Console.WriteLine("\nINGREDIENT NUMBER: " + (i + 1));
+                Console.Write("Ingredient: ");
+                string _name = Console.ReadLine();
+                Console.WriteLine("Quantity: ");
+                //Validate this:
+                double _quantity = double.Parse(Console.ReadLine());
+                Console.WriteLine("Unit of measurement: ");
+                string _measurement = Console.ReadLine();
 
-                for (int j = 0; j < ingredients.GetLength(1); j++)
+                ingredients[i] = new Ingredients
                 {
-                    Console.Write(Prompt[j]);
-                    ingredients[i, j] = Console.ReadLine();
-                }
+                    name = _name,
+                    quantity = _quantity,
+                    measurement = _measurement
+                };
+
             }
             Console.WriteLine("\nPlease enter a description for each step: ");
 
