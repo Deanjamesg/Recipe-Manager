@@ -94,7 +94,11 @@ namespace PROG6221_POE
                 string _name = Console.ReadLine();
                 Console.WriteLine("Quantity: ");
                 //Validate this:
-                double _quantity = double.Parse(Console.ReadLine());
+                double _quantity;
+                while (!double.TryParse(Console.ReadLine(), out _quantity))
+                {
+                    Console.WriteLine("Please enter a number for quantity.");
+                }
                 Console.WriteLine("Unit of measurement: ");
                 string _measurement = Console.ReadLine();
 
