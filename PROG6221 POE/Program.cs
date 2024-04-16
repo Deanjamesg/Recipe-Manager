@@ -18,12 +18,13 @@ namespace PROG6221_POE
             {
             recipeName = "Bacon Pasta",
             scaleFactor = 1,
+            exists = true,
             ingredients = new Ingredients[]
             {
-                new Ingredients { name = "Basil", quantity = 2, measurement = "tsp" },
-                new Ingredients { name = "Bacon", quantity = 2, measurement = "tablespoon" },
-                new Ingredients { name = "Whole peeled tomatoes", quantity = 8, measurement = "tblsp" },
-                new Ingredients { name = "Penne", quantity = 0.75, measurement = "cup" }
+                new Ingredients { name = "Basil", quantity = 1, measurement = "cup" },
+                new Ingredients { name = "Bacon", quantity = 200, measurement = "grams" },
+                new Ingredients { name = "Whole peeled tomatoes", quantity = 400, measurement = "grams" },
+                new Ingredients { name = "Penne", quantity = 250, measurement = "grams" }
             },
             steps = new string[]
             {
@@ -59,7 +60,7 @@ namespace PROG6221_POE
                 {
                     case "1": //Create a New Recipe
 
-                        recipe = new Recipe();
+                        //recipe = new Recipe();
                         recipe.CreateNewRecipe();
                         break;
 
@@ -80,7 +81,18 @@ namespace PROG6221_POE
 
                     case "5": //Delete Recipe
 
-                        recipe.DeleteRecipe();
+                        if (recipe.DeleteRecipe())
+                        {
+                            recipe = new Recipe();
+                            Console.WriteLine("You have successfully cleared all the data from this recipe!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cancelled!");
+                        }
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case "6": //Exit Application
