@@ -19,7 +19,42 @@ namespace PROG6221_POE
 
         public void ScaleRecipe()
         {
+            Console.Clear();
+            Console.WriteLine(
+                "How much would you like to scale the recipe by? " +
+                "\nPlease enter one of the following options: (0.5 / 2 / 3) " +
+                "\n\nPlease note: \nIf you have not reset the recipe to its original quantities after scaling it, " +
+                "\nplease do so before scaling it again!" +
+                "\nEnter '1' to cancel the scaling and go reset the recipe to its original quantities.");
+
+            double tempFactor;
+
+            while (!double.TryParse(Console.ReadLine(), out tempFactor) && tempFactor <= 0)
+            {
+                Console.Write("Please enter a number that is greater than 0.");
+            }
+
+            if (tempFactor == 1) { return; }
+
+            scaleFactor = tempFactor;
+
+            foreach (Ingredients item in ingredients)
+            {
+                item.quantity *= scaleFactor;
+                ValidateUnitOfMeasurement(item);
+                NormalizeQuantities(item);
+            }
+
+            DisplayRecipe();
+
  
+        }
+        public void ResetScale()
+        {
+            scaleFactor = 1;
+            Console.Clear();
+            DisplayRecipe();
+
         }
         /*
          * This method uses the object "Ingredient", and re-formats the quantities of their unit of measurement accordingly.
@@ -122,14 +157,6 @@ namespace PROG6221_POE
 
         }
 
-        public void ResetScale()
-        {
-            scaleFactor = 1;
-            Console.Clear();
-            DisplayRecipe();
-
-        }
-
         public void DisplayRecipe()
         {
 
@@ -168,6 +195,9 @@ namespace PROG6221_POE
 
         public void CreateNewRecipe()
         {
+            int ingredientsCount, stepsCount;
+            scaleFactor = 1;
+
             Console.Clear();
             Console.WriteLine("Please enter the following requirements: ");
 
@@ -175,9 +205,6 @@ namespace PROG6221_POE
             recipeName = Console.ReadLine();
 
             Console.Write("\nNumber of ingredients required: ");
-
-            int ingredientsCount, stepsCount;
-            scaleFactor = 1;
 
             while (!int.TryParse(Console.ReadLine(), out ingredientsCount) && ingredientsCount <= 0)
             {
@@ -189,11 +216,11 @@ namespace PROG6221_POE
             {
                 Console.WriteLine("Please enter a number that is greater than 0.");
             }
+
+            ingredients = new Ingredients[ingredientsCount];
             steps = new string[stepsCount];
  
             Console.WriteLine("\nPlease enter the ingredients used, the quantity and unit of measurement: ");
-
-            ingredients = new Ingredients[ingredientsCount];
 
             for (int i = 0; i < ingredients.Length; i++)
             {
@@ -206,8 +233,8 @@ namespace PROG6221_POE
                 while (!double.TryParse(Console.ReadLine(), out _quantity))
                 {
                     Console.Write("Please enter a number for quantity.");
-                }
-                Console.WriteLine("Unit of measurement: ");
+                }   
+                Console.Write("Unit of measurement: ");
                 string _measurement = Console.ReadLine();
 
                 ingredients[i] = new Ingredients

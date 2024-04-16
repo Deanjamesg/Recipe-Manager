@@ -18,14 +18,14 @@ namespace PROG6221_POE
             {
             recipeName = "Bacon Pasta",
             scaleFactor = 1,
-             ingredients = new Ingredients[]
+            ingredients = new Ingredients[]
             {
-                new Ingredients { name = "Basil", quantity = 1, measurement = "cup" },
-                new Ingredients { name = "Bacon", quantity = 200, measurement = "grams" },
-                new Ingredients { name = "Whole peeled tomatoes", quantity = 400, measurement = "grams" },
-                new Ingredients { name = "Penne", quantity = 250, measurement = "grams" }
+                new Ingredients { name = "Basil", quantity = 2, measurement = "tsp" },
+                new Ingredients { name = "Bacon", quantity = 2, measurement = "tablespoon" },
+                new Ingredients { name = "Whole peeled tomatoes", quantity = 8, measurement = "tblsp" },
+                new Ingredients { name = "Penne", quantity = 0.75, measurement = "cup" }
             },
-             steps = new string[]
+            steps = new string[]
             {
                 "Cook the bacon, in a deep seated pan, until crispy (to your preference).",
                 "Add the whole peeled tomatoes to the pan. Add the cup of basil to the tomato sauce.",
