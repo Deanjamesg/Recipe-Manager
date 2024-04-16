@@ -36,6 +36,11 @@ namespace PROG6221_POE
             }
             };
 
+            // Testing ValidateUnitOfMeasurement()'s functionality on the sample recipe, and checking to see if we are achieving the desired outcome.
+            foreach (Ingredients item in recipe.ingredients) {
+                recipe.ValidateUnitOfMeasurement(item);
+            }
+
             application = true;
 
             Console.Title = "RECIPE APPLICATION";

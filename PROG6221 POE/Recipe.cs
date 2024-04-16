@@ -21,6 +21,58 @@ namespace PROG6221_POE
         {
  
         }
+        /*
+         * This method uses the object "Ingredient" after the user has inputed their desired values for the properties of the ingredient, 
+         * and ensures that the unit of measurement that the user has inputed, is an appropriate type of measurement.
+         * Appropriate units of measurements are: Tablespoons (tbsp), Teaspoons (tsp), Cups (c), Grams (g).
+         * If the unit of measurement is NOT one of the appropriate types, the user is prompted to re-enter the unit of measurement, and then the
+         * method calls itself to validate it once again, until the statement is true.
+         * If the unit of measurement IS one of the appropriate types, the unit of measurement is formated into a shorter form.
+         * For example, tablespoons will become tbsp.
+        */
+        public void ValidateUnitOfMeasurement(Ingredients _ingredient)
+        {
+            string unitMeasurement = _ingredient.measurement.ToLower();
+            char[] tablespoon = { 't', 'b', 's', 'p' };
+            char[] teaspoon = { 't', 's', 'p' };
+            char[] cups = { 'c' };
+            char[] grams = { 'g' };
+
+            /*
+             * Order of check list: 
+             * 1) Tablespoons
+             * 2) Teaspoons
+             * 3) Cups
+             * 4) Grams
+             */
+            if (tablespoon.All(c => unitMeasurement.Contains(c)))
+            {
+                _ingredient.measurement = "Tbsp";
+                return;
+            } 
+            else if (teaspoon.All(c => unitMeasurement.Contains(c)))
+            {
+                _ingredient.measurement = "tsp";
+                return;
+            } 
+            else if (cups.All(c => unitMeasurement.Contains(c)))
+            {
+                _ingredient.measurement = "cups";
+                return;
+            } 
+            else if (grams.All(c => unitMeasurement.Contains(c)))
+            {
+                _ingredient.measurement = "g";
+                return;
+            } 
+            else
+            {
+                Console.WriteLine("Please enter one of following units of measurements: tablespoon, teaspoon, cups, or grams.");
+                _ingredient.measurement = Console.ReadLine();
+                ValidateUnitOfMeasurement(_ingredient);
+            }
+
+        }
 
         public void ResetScale()
         {
@@ -39,7 +91,7 @@ namespace PROG6221_POE
 
             for (int i = 0; i < ingredients.GetLength(0); i++)
             {
-                Console.WriteLine(ingredients[i].quantity * scaleFactor + " " + ingredients[i].measurement + " of " + ingredients[i].name);
+                Console.WriteLine(ingredients[i].quantity + " " + ingredients[i].measurement + " of " + ingredients[i].name);
             }
             Console.WriteLine("-----------------------------------\nSteps: \n-----------------------------------");
 
@@ -77,6 +129,7 @@ namespace PROG6221_POE
             Console.Write("\nNumber of ingredients required: ");
 
             int ingredientsCount, stepsCount;
+            scaleFactor = 1;
 
             while (!int.TryParse(Console.ReadLine(), out ingredientsCount) && ingredientsCount <= 0)
             {
@@ -89,8 +142,7 @@ namespace PROG6221_POE
                 Console.WriteLine("Please enter a number that is greater than 0.");
             }
             steps = new string[stepsCount];
-
-            scaleFactor = 1;
+ 
             Console.WriteLine("\nPlease enter the ingredients used, the quantity and unit of measurement: ");
 
             ingredients = new Ingredients[ingredientsCount];
