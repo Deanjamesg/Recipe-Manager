@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,7 +56,14 @@ namespace PROG6221_POE
 
         public void DeleteRecipe()
         {
-
+            scaleFactor = 1;
+            recipeName = "";
+            steps = null;
+            ingredients = null;
+            Console.WriteLine("You have successfully cleared all the data from this recipe!");
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public void CreateNewRecipe()
