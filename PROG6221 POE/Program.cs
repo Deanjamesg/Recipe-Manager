@@ -14,35 +14,7 @@ namespace PROG6221_POE
             string option;
             Boolean application;
 
-            Recipe recipe = new Recipe
-            {
-            recipeName = "Bacon Pasta",
-            scaleFactor = 1,
-            exists = true,
-            ingredients = new Ingredients[]
-            {
-                new Ingredients { name = "Basil", quantity = 1, measurement = "cup" },
-                new Ingredients { name = "Bacon", quantity = 200, measurement = "grams" },
-                new Ingredients { name = "Whole peeled tomatoes", quantity = 400, measurement = "grams" },
-                new Ingredients { name = "Penne", quantity = 250, measurement = "grams" }
-            },
-            steps = new string[]
-            {
-                "Cook the bacon, in a deep seated pan, until crispy (to your preference).",
-                "Add the whole peeled tomatoes to the pan. Add the cup of basil to the tomato sauce.",
-                "Bring to a boil and then let it simmer for 20 - 30 minutes.",
-                "Cook the pasta whilst the dish is simmering.",
-                "Once the sauce has finished cooking, as well as the pasta, put the sauce in the pasta pot and mix it.",
-                "Food is ready to eat, can be served with fresh basil on top."
-            }
-            };
-
-            // Testing ValidateUnitOfMeasurement()'s functionality on the sample recipe, and checking to see if we are achieving the desired outcome.
-            // Testing NormalizeQuantities()'s functionality   ~          ~           ~            ~           ~            ~           ~          ~.
-            foreach (Ingredients item in recipe.ingredients) {
-                recipe.ValidateUnitOfMeasurement(item);
-                recipe.NormalizeQuantities(item);
-            }
+            Recipe recipe = new Recipe();
 
             application = true;
 
