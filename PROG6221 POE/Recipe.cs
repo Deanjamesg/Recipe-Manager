@@ -18,6 +18,11 @@ namespace PROG6221_POE
 
         public Recipe() { 
         }
+
+        /* CreateNewRecipe()
+         * Creates a new recipe by collecting details such as name, number of ingredients, quantity, and unit of measurement for each ingredient, 
+         * as well as a description for each step. Validates user input and ensures that the recipe is unique before creation.
+         */
         public void CreateNewRecipe()
         {
             if (exists)
@@ -33,12 +38,15 @@ namespace PROG6221_POE
             int ingredientsCount, stepsCount;
             scaleFactor = 1;
 
+            // Prompt user to enter recipe details.
             Console.Clear();
             Console.WriteLine("Please enter the following requirements: ");
 
+            // Gather recipe name.
             Console.Write("\nName of the recipe: ");
             recipeName = Console.ReadLine();
 
+            // Gather number of ingredients required.
             Console.Write("\nNumber of ingredients required: ");
 
             while (!int.TryParse(Console.ReadLine(), out ingredientsCount) && ingredientsCount <= 0)
@@ -46,15 +54,18 @@ namespace PROG6221_POE
                 Console.WriteLine("Please enter a number that is greater than 0.");
             }
 
+            // Gather number of steps.
             Console.Write("\nNumber of steps to be done: ");
             while (!int.TryParse(Console.ReadLine(), out stepsCount) && stepsCount <= 0)
             {
                 Console.WriteLine("Please enter a number that is greater than 0.");
             }
 
+            // Initialize arrays for ingredients and steps.
             ingredients = new Ingredients[ingredientsCount];
             steps = new string[stepsCount];
 
+            // Gather ingredient details.
             Console.Clear();
             Console.WriteLine("Please enter the ingredients(" + ingredientsCount + ") used, the quantity and unit of measurement:\nNOTE: Use a ',' not a '.' when entering a decimal value.");
 
@@ -73,6 +84,7 @@ namespace PROG6221_POE
                 Console.Write("Unit of measurement: ");
                 string _measurement = Console.ReadLine();
 
+                // Create new Ingredients objects and validate unit of measurement and normalize their quantities.
                 ingredients[i] = new Ingredients
                 {
                     name = _name,
@@ -84,6 +96,7 @@ namespace PROG6221_POE
                 NormalizeQuantities(ingredients[i]);
 
             }
+            // Gather descriptions for each step and storing it in a string array. 
             Console.Clear();
             Console.WriteLine("Please enter a description for each step: (" + stepsCount + " steps)");
 
@@ -92,15 +105,22 @@ namespace PROG6221_POE
                 Console.WriteLine("\nSTEP NUMBER: " + (i + 1));
                 steps[i] = Console.ReadLine();
             }
+            // Set exists bool to true indicating recipe creation / that a recipe exists.
             exists = true;
             Console.Clear();
 
+            // Calling DisplayRecipe() to display the created recipe.
             DisplayRecipe();
 
         }
 
+        /* ScaleRecipe()
+         * Scales the existing recipe by a specified factor.
+         * Validates user input and ensures that a recipe exists before scaling.
+         */
         public void ScaleRecipe()
         {
+            // Check if a recipe exists.
             if (!exists)
             {
                 Console.WriteLine("There is currently no recipe that exists!");
@@ -109,6 +129,7 @@ namespace PROG6221_POE
                 Console.Clear();
                 return;
             }
+            // Prompt to user to enter scaling factor.
             Console.Clear();
             Console.WriteLine(
                 "Please note: \nIf you have not reset the recipe to its original quantities after scaling it, " +
@@ -119,15 +140,19 @@ namespace PROG6221_POE
 
             double tempFactor;
 
+            // Taking scaling factor from user.
             while (!double.TryParse(Console.ReadLine(), out tempFactor) && tempFactor <= 0)
             {
                 Console.Write("Please enter a number that is greater than 0.");
             }
 
+            // Cancel scaling if user enters '1'.
             if (tempFactor == 1) { return; }
 
+            // Setting scaling factor.
             scaleFactor = tempFactor;
 
+            // Scale each ingredient in the recipe, in the Ingredients array.
             foreach (Ingredients item in ingredients)
             {
                 item.quantity *= scaleFactor;
@@ -135,11 +160,14 @@ namespace PROG6221_POE
                 NormalizeQuantities(item);
             }
 
+            // Display the scaled recipe.
             DisplayRecipe();
-
- 
         }
 
+        /* DisplayRecipe()
+         * Displays the current recipe, including its name, ingredients, and steps.
+         * Validates if a recipe exists before displaying.
+         */
         public void DisplayRecipe()
         {
             if (!exists)
@@ -151,6 +179,7 @@ namespace PROG6221_POE
                 return;
             }
 
+            // Display recipe's details for ingredients.
             Console.Clear();
             Console.WriteLine(recipeName);
             Console.WriteLine("-----------------------------------\nIngredients: \n-----------------------------------");
@@ -159,6 +188,8 @@ namespace PROG6221_POE
             {
                 Console.WriteLine(ingredients[i].quantity + " " + ingredients[i].measurement + " of " + ingredients[i].name);
             }
+
+            // Display recipe's description for each step.
             Console.WriteLine("-----------------------------------\nSteps: \n-----------------------------------");
 
             for (int i = 0; i < steps.Length; i++)
@@ -171,19 +202,20 @@ namespace PROG6221_POE
             Console.Clear();
 
         }
-        /*
-         * This method uses the object "Ingredient", and re-formats the quantities of their unit of measurement accordingly.
-         * For example:
-         * 3 Teaspoons = 1 Tablespoon
-         * 8 Tablespoons = 0.5 Cups
-         * 16 Tablespoons = 1 Cups
+
+        /* NormalizeQuantities()
+         * This method uses the object "Ingredient", and normalizes the quantities of ingredients by converting them to a more appropriate unit of measurement.
+         * An equivalent unit of measurement.
+         * For example, 3 Teaspoons = 1 Tablespoon, 8 Tablespoons = 0.5 Cups, 16 Tablespoons = 1 Cup.
          */
         public void NormalizeQuantities(Ingredients _ingredient)
         {
-
+            // Switch statement to handle different units of measurements.
             switch (_ingredient.measurement)
             {
+                // If the measurement is teaspoons.
                 case "tsp":
+                    // If the quantity is 3 or more teaspoons, convert to tablespoons.
                     if (_ingredient.quantity >= 3)
                     {
                         _ingredient.quantity /= 3;
@@ -191,12 +223,15 @@ namespace PROG6221_POE
                     }
                     break;
 
+                // If the measurement is tablespoons.
                 case "tbsp":
+                    // If the quantity is 4 or more tablespoons, convert to cups.
                     if (_ingredient.quantity >= 4)
                     {
                         _ingredient.quantity /= 16;
                         _ingredient.measurement = "cups";
                     }
+                    // If the quantity is less than 1 tablespoon, convert to teaspoons.
                     else if (_ingredient.quantity < 1)
                     {
                         _ingredient.quantity *= 3;
@@ -204,7 +239,9 @@ namespace PROG6221_POE
                     }
                     break;
 
+                // If the measurement is cups.
                 case "cups":
+                    // If the quantity is less than 0.25 cups, convert to tablespoons.
                     if (_ingredient.quantity < 0.25)
                     {
                         _ingredient.quantity *= 16;
@@ -212,11 +249,13 @@ namespace PROG6221_POE
                     }
                     break;
 
+                // Default case for other measurements.
                 default:
                     break;
             }
         }
-        /*
+
+        /* ValidateUnitOfMeasurement()
          * This method uses the object "Ingredient" after the user has inputed their desired values for the properties of the ingredient, 
          * and ensures that the unit of measurement that the user has inputed, is an appropriate type of measurement.
          * Appropriate units of measurements are: Tablespoons (tbsp), Teaspoons (tsp), Cups (c), Grams (g).
@@ -240,38 +279,50 @@ namespace PROG6221_POE
              * 3) Cups
              * 4) Grams
              */
+
+            // Check if the unit of measurement contains characters representing tablespoons.
             if (tablespoon.All(c => unitMeasurement.Contains(c)))
             {
                 _ingredient.measurement = "tbsp";
                 return;
             }
+            // Check if the unit of measurement contains characters representing teaspoons.
             else if (teaspoon.All(c => unitMeasurement.Contains(c)))
             {
                 _ingredient.measurement = "tsp";
                 return;
             }
+            // Check if the unit of measurement contains characters representing cups.
             else if (cups.All(c => unitMeasurement.Contains(c)))
             {
                 _ingredient.measurement = "cups";
                 return;
             }
+            // Check if the unit of measurement contains characters representing grams.
             else if (grams.All(c => unitMeasurement.Contains(c)))
             {
                 _ingredient.measurement = "g";
                 return;
             }
+            // If none of the predefined units are found, prompt the user to enter a valid unit of measurement.
             else
             {
                 Console.Write("Please enter one of following units of measurements: tablespoon / teaspoon / cups / grams \nfor the ingredient: (" + _ingredient.name + ") ");
                 _ingredient.measurement = Console.ReadLine();
+                // Recursively call the method to validate the entered unit of measurement.
                 ValidateUnitOfMeasurement(_ingredient);
             }
         }
+        /* ResetScale()
+         * Resets the scale of the recipe, reverting ingredient quantities to their original values.
+         */
         public void ResetScale()
-        {  
+        {
+            // Check if a recipe exists.
             Console.Clear();
             if (!exists)
             {
+                // If no recipe exists, inform the user and return.
                 Console.WriteLine("There is currently no recipe that exists!");
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
@@ -279,24 +330,37 @@ namespace PROG6221_POE
                 return;
             }
 
+            // Iterate through each ingredient in the recipe.
             foreach (Ingredients item in ingredients)
             {
+                // Reset the quantity of the ingredient by dividing it by the scale factor.
                 item.quantity /= scaleFactor;
+                // Validate the unit of measurement for the ingredient.
                 ValidateUnitOfMeasurement(item);
+                // Normalize the quantities of the ingredient.
                 NormalizeQuantities(item);
             }
+            // Reset the scale factor to 1
             scaleFactor = 1;
+            // Inform the user that the recipe's quantities have been successfully reset.
             Console.WriteLine("Successfully reset the recipe's quantities to their original values! \nPress any key to continue...");
             Console.ReadKey();
             Console.Clear();
 
         }
+        /* DeleteRecipe()
+         * Deletes the current recipe if it exists.
+         * Returns true if the recipe was successfully deleted, otherwise false.
+         */
         public bool DeleteRecipe()
         {
+            //Initialize a variable to hold the result of the deletion operation.
             bool result;
 
+            // Check if a recipe exists.
             if (!exists)
             {
+                // If no recipe exists, inform the user and return false.
                 Console.WriteLine("There is currently no recipe that exists!");
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
@@ -304,18 +368,23 @@ namespace PROG6221_POE
                 return false;
             }
 
+            // Prompt the user to confirm the deletion.
             Console.WriteLine("Are you sure you want to delete this recipe? Yes / No");
             string confirm = Console.ReadLine().ToUpper();
-            
+
+            // Check if the user confirmed the deletion.
             if (confirm.Equals("YES"))
             {
+                // Set the result to true.
                 result = true;
             }
             else
             {
+                // Set the result to false.
                 result = false;
             }
 
+            // Return the result of the deletion operation.
             return result;
         }
     }

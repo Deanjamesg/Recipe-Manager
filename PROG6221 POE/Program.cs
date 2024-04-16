@@ -30,28 +30,32 @@ namespace PROG6221_POE
 
                 switch (option)
                 {
-                    case "1": //Create a New Recipe
+                    //Create a New Recipe
+                    case "1": 
 
-                        //recipe = new Recipe();
                         recipe.CreateNewRecipe();
                         break;
 
-                    case "2": //Scale a Recipe
+                    //Scale a Recipe.
+                    case "2": 
 
                         recipe.ScaleRecipe();
                         break;
 
-                    case "3": //Reset recipe scale factor to original
+                    //Reset recipe scale factor to original.
+                    case "3": 
 
                         recipe.ResetScale();
                         break;
 
-                    case "4": //Display Recipe
+                    //Display Recipe
+                    case "4": 
 
                         recipe.DisplayRecipe();
                         break;
 
-                    case "5": //Delete Recipe
+                    //Delete Recipe
+                    case "5": 
 
                         if (recipe.DeleteRecipe())
                         {
@@ -67,7 +71,8 @@ namespace PROG6221_POE
                         Console.Clear();
                         break;
 
-                    case "6": //Exit Application
+                    //Exit Application
+                    case "6": 
 
                         application = false;
                         break;
