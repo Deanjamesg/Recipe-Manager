@@ -18,14 +18,14 @@ namespace PROG6221_POE
             {
             recipeName = "Bacon Pasta",
             scaleFactor = 1,
-            ingredients = new Ingredients[]
+             ingredients = new Ingredients[]
             {
                 new Ingredients { name = "Basil", quantity = 1, measurement = "cup" },
                 new Ingredients { name = "Bacon", quantity = 200, measurement = "grams" },
                 new Ingredients { name = "Whole peeled tomatoes", quantity = 400, measurement = "grams" },
                 new Ingredients { name = "Penne", quantity = 250, measurement = "grams" }
             },
-            steps = new string[]
+             steps = new string[]
             {
                 "Cook the bacon, in a deep seated pan, until crispy (to your preference).",
                 "Add the whole peeled tomatoes to the pan. Add the cup of basil to the tomato sauce.",
@@ -37,8 +37,10 @@ namespace PROG6221_POE
             };
 
             // Testing ValidateUnitOfMeasurement()'s functionality on the sample recipe, and checking to see if we are achieving the desired outcome.
+            // Testing NormalizeQuantities()'s functionality   ~          ~           ~            ~           ~            ~           ~          ~.
             foreach (Ingredients item in recipe.ingredients) {
                 recipe.ValidateUnitOfMeasurement(item);
+                recipe.NormalizeQuantities(item);
             }
 
             application = true;

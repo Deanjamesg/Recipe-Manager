@@ -22,6 +22,54 @@ namespace PROG6221_POE
  
         }
         /*
+         * This method uses the object "Ingredient", and re-formats the quantities of their unit of measurement accordingly.
+         * For example:
+         * 3 Teaspoons = 1 Tablespoon
+         * 8 Tablespoons = 0.5 Cups
+         * 16 Tablespoons = 1 Cups
+         */
+        public void NormalizeQuantities(Ingredients _ingredient)
+        {
+
+            switch (_ingredient.measurement)
+            {
+                case "tsp":
+                    if (_ingredient.quantity >= 3)
+                    {
+                        _ingredient.quantity /= 3;
+                        _ingredient.measurement = "tbsp";
+                    }
+                    break;
+
+                case "tbsp":
+                    if (_ingredient.quantity >= 4)
+                    {
+                        _ingredient.quantity /= 16;
+                        _ingredient.measurement = "cups";
+                    } 
+                    else if (_ingredient.quantity < 1)
+                    {
+                        _ingredient.quantity *= 3;
+                        _ingredient.measurement = "tsp";
+                    }
+                    break;
+
+                case "cups":
+                    if (_ingredient.quantity < 0.25)
+                    {
+                        _ingredient.quantity *= 16;
+                        _ingredient.measurement = "tbsp";
+                    }
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
+
+        /*
          * This method uses the object "Ingredient" after the user has inputed their desired values for the properties of the ingredient, 
          * and ensures that the unit of measurement that the user has inputed, is an appropriate type of measurement.
          * Appropriate units of measurements are: Tablespoons (tbsp), Teaspoons (tsp), Cups (c), Grams (g).
@@ -47,7 +95,7 @@ namespace PROG6221_POE
              */
             if (tablespoon.All(c => unitMeasurement.Contains(c)))
             {
-                _ingredient.measurement = "Tbsp";
+                _ingredient.measurement = "tbsp";
                 return;
             } 
             else if (teaspoon.All(c => unitMeasurement.Contains(c)))
@@ -89,7 +137,7 @@ namespace PROG6221_POE
             Console.WriteLine(recipeName);
             Console.WriteLine("-----------------------------------\nIngredients: \n-----------------------------------");
 
-            for (int i = 0; i < ingredients.GetLength(0); i++)
+            for (int i = 0; i < ingredients.Length; i++)
             {
                 Console.WriteLine(ingredients[i].quantity + " " + ingredients[i].measurement + " of " + ingredients[i].name);
             }
@@ -152,12 +200,12 @@ namespace PROG6221_POE
                 Console.WriteLine("\nINGREDIENT NUMBER: " + (i + 1));
                 Console.Write("Ingredient: ");
                 string _name = Console.ReadLine();
-                Console.WriteLine("Quantity: ");
-                //Validate this:
+                Console.Write("Quantity: ");
+
                 double _quantity;
                 while (!double.TryParse(Console.ReadLine(), out _quantity))
                 {
-                    Console.WriteLine("Please enter a number for quantity.");
+                    Console.Write("Please enter a number for quantity.");
                 }
                 Console.WriteLine("Unit of measurement: ");
                 string _measurement = Console.ReadLine();
@@ -168,6 +216,9 @@ namespace PROG6221_POE
                     quantity = _quantity,
                     measurement = _measurement
                 };
+
+                ValidateUnitOfMeasurement(ingredients[i]);
+                NormalizeQuantities(ingredients[i]);
 
             }
             Console.WriteLine("\nPlease enter a description for each step: ");
