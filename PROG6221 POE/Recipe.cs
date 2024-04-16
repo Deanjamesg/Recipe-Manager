@@ -21,11 +21,11 @@ namespace PROG6221_POE
         {
             Console.Clear();
             Console.WriteLine(
-                "How much would you like to scale the recipe by? " +
-                "\nPlease enter one of the following options: (0.5 / 2 / 3) " +
-                "\n\nPlease note: \nIf you have not reset the recipe to its original quantities after scaling it, " +
+                "\nPlease note: \nIf you have not reset the recipe to its original quantities after scaling it, " +
                 "\nplease do so before scaling it again!" +
-                "\nEnter '1' to cancel the scaling and go reset the recipe to its original quantities.");
+                "\n\nHow much would you like to scale the recipe by? " +
+                "\nPlease enter one of the following options: (0.5 / 2 / 3) " +               
+                "\n\nEnter '1' to cancel the scaling and go reset the recipe to its original quantities.");
 
             double tempFactor;
 
@@ -50,10 +50,19 @@ namespace PROG6221_POE
  
         }
         public void ResetScale()
-        {
-            scaleFactor = 1;
+        {  
             Console.Clear();
-            DisplayRecipe();
+
+            foreach (Ingredients item in ingredients)
+            {
+                item.quantity /= scaleFactor;
+                ValidateUnitOfMeasurement(item);
+                NormalizeQuantities(item);
+            }
+            scaleFactor = 1;
+            Console.WriteLine("Successfully reset the recipe's quantities to their original values! \nPress any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
 
         }
         /*
@@ -150,7 +159,7 @@ namespace PROG6221_POE
             } 
             else
             {
-                Console.WriteLine("Please enter one of following units of measurements: tablespoon, teaspoon, cups, or grams.");
+                Console.Write("Please enter one of following units of measurements: tablespoon / teaspoon / cups / grams \n for the ingredient: " + _ingredient.name + " ");
                 _ingredient.measurement = Console.ReadLine();
                 ValidateUnitOfMeasurement(_ingredient);
             }
