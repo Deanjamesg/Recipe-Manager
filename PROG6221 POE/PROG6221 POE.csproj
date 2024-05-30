@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Classes\Models\Ingredient.cs" />
     <Compile Include="Classes\Models\Recipe.cs" />
+    <Compile Include="Classes\Models\Step.cs" />
     <Compile Include="Classes\Utility\RecipeManager.cs" />
     <Compile Include="Classes\Utility\UI.cs" />
     <Compile Include="Program.cs" />

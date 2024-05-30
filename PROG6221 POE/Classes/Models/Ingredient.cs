@@ -1,5 +1,4 @@
-﻿
-namespace PROG6221_POE
+﻿namespace PROG6221_POE
 {
     class Ingredient
     {

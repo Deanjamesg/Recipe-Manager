@@ -7,13 +7,23 @@ namespace PROG6221_POE
 {
     class Program
     {
+        public enum MenuOptions
+        {
+            CreateNewRecipe = 1,
+            ScaleRecipe,
+            ResetRecipeScale,
+            DisplayRecipe,
+            DeleteRecipe,
+            DisplayRecipeList,
+            Exit
+        }
         public static void Main(string[] args)
         {
 
             Boolean isApplicationRunning = true;
             RecipeManager recipeManager = new RecipeManager();
             UI UI = new UI();
-
+            
             int recipeChoice;
 
             UI.WelcomeMessage();
@@ -22,10 +32,10 @@ namespace PROG6221_POE
             {
                 UI.DisplayMenu();
 
-                switch (UI.GetMenuChoice())
+                switch ((MenuOptions)UI.GetMenuChoice())
                 {
                     //Create a New Recipe
-                    case 1:
+                    case MenuOptions.CreateNewRecipe:
 
                         Recipe recipe = UI.CreateNewRecipe();
                         recipeManager.AddNewRecipe(recipe);
@@ -35,7 +45,7 @@ namespace PROG6221_POE
                         break;
 
                     //Scale a Recipe.
-                    case 2:
+                    case MenuOptions.ScaleRecipe:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
                         recipeChoice = UI.GetMenuChoice();
@@ -47,7 +57,7 @@ namespace PROG6221_POE
                         break;
 
                     //Reset recipe scale factor to original.
-                    case 3:
+                    case MenuOptions.ResetRecipeScale:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
                         recipeChoice = UI.GetMenuChoice();
@@ -58,7 +68,7 @@ namespace PROG6221_POE
                         break;
 
                     //Display a Recipe
-                    case 4:
+                    case MenuOptions.DisplayRecipe:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
                         recipeChoice = UI.GetMenuChoice();
@@ -68,7 +78,7 @@ namespace PROG6221_POE
                         break;
 
                     //Delete Recipe
-                    case 5:
+                    case MenuOptions.DeleteRecipe:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
                         recipeChoice = UI.GetMenuChoice();
@@ -79,7 +89,7 @@ namespace PROG6221_POE
                         break;
 
                     //Display Recipe List
-                    case 6: 
+                    case MenuOptions.DisplayRecipeList: 
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
                         UI.NextPrompt();
@@ -87,7 +97,7 @@ namespace PROG6221_POE
                         break;
 
                     //Exit Application
-                    case 7: 
+                    case MenuOptions.Exit: 
 
                         isApplicationRunning = false;
                         UI.GoodbyeMessage();

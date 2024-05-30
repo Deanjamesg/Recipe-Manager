@@ -8,7 +8,7 @@ namespace PROG6221_POE
     {
         public double ScaleFactor { get; set; }
         public string RecipeName { get; set; }
-        public List <string> Steps { get; set; }
+        public List <Step> Steps { get; set; }
         public List <Ingredient> Ingredients { get; set; }
         public double TotalCalories { get; set; }
 
@@ -18,7 +18,7 @@ namespace PROG6221_POE
          */
         public Recipe()
         {
-            Steps = new List<string>();
+            Steps = new List<Step>();
             Ingredients = new List<Ingredient>();
         }
 

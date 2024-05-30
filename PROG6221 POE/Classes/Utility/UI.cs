@@ -23,7 +23,7 @@ namespace PROG6221_POE.Classes
         }
         public void NextPrompt()
         {
-            Console.WriteLine("\nPress any key to continue...");
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             Console.Clear();
         }
@@ -45,7 +45,7 @@ namespace PROG6221_POE.Classes
         {
             Console.Clear();
             Console.WriteLine("Scale a Recipe\n");
-            double scaleFactor = GetPositiveDouble("Please enter a number that you would like to scale the recipe by:");
+            double scaleFactor = GetPositiveDouble("Please enter a number that you would like to scale the recipe by: ");
             return scaleFactor;
         }
         // DisplayRecipe() displays the recipe to the user, in a neat and readable format.
@@ -66,12 +66,12 @@ namespace PROG6221_POE.Classes
             // Display recipe's description for each step.
             Console.WriteLine("-----------------------------------\nSteps: \n-----------------------------------");
             i = 1;
-            foreach (var step in recipe.Steps)
+            foreach (Step step in recipe.Steps)
             {
-                Console.WriteLine(i + ") " + step);
+                Console.WriteLine(i + ") " + step.Description);
                 i++;
             }
-            Console.WriteLine("-----------------------------------\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories");
+            Console.WriteLine("-----------------------------------\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories\n");
         }
     
         // DisplayRecipeList() displays a list of all the recipes to the user in alphabetical order by name.
@@ -152,12 +152,13 @@ namespace PROG6221_POE.Classes
             return ingredient;
         }
 
-        private string GetStepDescription(int stepNumber)
+        private Step GetStepDescription(int stepNumber)
         {
-
+            Step step = new Step();
             Console.WriteLine("Step Number: " + (stepNumber + 1));
+            step.Description = Console.ReadLine();
 
-            return Console.ReadLine();
+            return step;
         }
 
     }
