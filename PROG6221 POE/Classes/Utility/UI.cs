@@ -59,7 +59,7 @@ namespace PROG6221_POE.Classes
             int i = 1;
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                Console.WriteLine(i + ") " + ingredient.Quantity + " " + ingredient.UnitOfMeasurement + " of " + ingredient.Name + " (" + ingredient.FoodGroup + ") " + ingredient.Calories.ToString("0") + " calories");
+                Console.WriteLine(i + ") " + (ingredient.Quantity < 1 ? ingredient.Quantity.ToString("0.00") : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + " of " + ingredient.Name + " (" + ingredient.FoodGroup + ") " + ingredient.Calories.ToString("0") + " calories");
                 i++;
             } 
             
@@ -169,7 +169,7 @@ namespace PROG6221_POE.Classes
             } while (unitChoice < 1 || unitChoice > Enum.GetNames(typeof(UnitOM)).Length);
             ingredient.UnitOfMeasurement = (UnitOM)unitChoice;
 
-            ingredient.Quantity = GetPositiveInteger("\nQuantity: ");
+            ingredient.Quantity = GetPositiveDouble("\nQuantity: ");
 
             // Display available food groups and prompt user to select one
             Console.WriteLine("\nFood Group: \n");
@@ -196,7 +196,7 @@ namespace PROG6221_POE.Classes
         private Step GetStepDescription(int stepNumber)
         {
             Step step = new Step();
-            Console.WriteLine("\nStep Number: " + (stepNumber + 1));
+            Console.WriteLine("Step Number: " + (stepNumber + 1));
             step.Description = Console.ReadLine();
 
             return step;
