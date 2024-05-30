@@ -12,66 +12,11 @@ namespace PROG6221_POE
         public List <Ingredient> Ingredients { get; set; }
         public double TotalCalories { get; set; }
 
-        /* CreateNewRecipe()
-         * Creates a new recipe by collecting details such as name, number of ingredients, quantity, and unit of measurement for each ingredient, 
-         * as well as a description for each step. Validates user input and ensures that the recipe is unique before creation.
-         */
         public Recipe()
         {
             Steps = new List<Step>();
             Ingredients = new List<Ingredient>();
         }
-
-        /* ScaleRecipe()
-         * Scales the existing recipe by a specified factor.
-         * Validates user input and ensures that a recipe exists before scaling.
-         */
-        //public void ScaleRecipe()
-        //{
-        //    // Check if a recipe exists.
-        //    if (!exists)
-        //    {
-        //        Console.WriteLine("There is currently no recipe that exists!");
-        //        Console.WriteLine("\nPress any key to continue...");
-        //        Console.ReadKey();
-        //        Console.Clear();
-        //        return;
-        //    }
-        //    // Prompt to user to enter scaling factor.
-        //    Console.Clear();
-        //    Console.WriteLine(
-        //        "Please note: \nIf you have not reset the recipe to its original quantities after scaling it, " +
-        //        "\nplease do so before scaling it again!" +
-        //        "\n\nHow much would you like to scale the recipe by? " +
-        //        "\nPlease enter one of the following options: (0,5 / 2 / 3) " +               
-        //        "\n\nEnter '1' to cancel the scaling and go reset the recipe to its original quantities.");
-
-        //    double tempFactor;
-
-        //    // Taking scaling factor from user.
-        //    while (!double.TryParse(Console.ReadLine(), out tempFactor) && tempFactor <= 0)
-        //    {
-        //        Console.Write("Please enter a number that is greater than 0.");
-        //    }
-
-        //    // Cancel scaling if user enters '1'.
-        //    if (tempFactor == 1) { return; }
-
-        //    // Setting scaling factor.
-        //    scaleFactor = tempFactor;
-
-        //    // Scale each ingredient in the recipe, in the Ingredients array.
-        //    foreach (Ingredient item in ingredients)
-        //    {
-        //        item.Quantity *= scaleFactor;
-        //        ValidateUnitOfMeasurement(item);
-        //        NormalizeQuantities(item);
-        //    }
-
-        //    // Display the scaled recipe.
-        //    DisplayRecipe();
-        //}
-
 
         ///* NormalizeQuantities()
         // * This method uses the object "Ingredient", and normalizes the quantities of ingredients by converting them to a more appropriate unit of measurement.
@@ -183,79 +128,6 @@ namespace PROG6221_POE
         //        ValidateUnitOfMeasurement(_ingredient);
         //    }
         //}
-        ///* ResetScale()
-        // * Resets the scale of the recipe, reverting ingredient quantities to their original values.
-        // */
-        //public void ResetScale()
-        //{
-        //    // Check if a recipe exists.
-        //    Console.Clear();
-        //    if (!exists)
-        //    {
-        //        // If no recipe exists, inform the user and return.
-        //        Console.WriteLine("There is currently no recipe that exists!");
-        //        Console.WriteLine("\nPress any key to continue...");
-        //        Console.ReadKey();
-        //        Console.Clear();
-        //        return;
-        //    }
 
-        //    // Iterate through each ingredient in the recipe.
-        //    foreach (Ingredient item in ingredients)
-        //    {
-        //        // Reset the quantity of the ingredient by dividing it by the scale factor.
-        //        item.Quantity /= scaleFactor;
-        //        // Validate the unit of measurement for the ingredient.
-        //        ValidateUnitOfMeasurement(item);
-        //        // Normalize the quantities of the ingredient.
-        //        NormalizeQuantities(item);
-        //    }
-        //    // Reset the scale factor to 1
-        //    scaleFactor = 1;
-        //    // Inform the user that the recipe's quantities have been successfully reset.
-        //    Console.WriteLine("Successfully reset the recipe's quantities to their original values! \nPress any key to continue...");
-        //    Console.ReadKey();
-        //    Console.Clear();
-
-        //}
-        ///* DeleteRecipe()
-        // * Deletes the current recipe if it exists.
-        // * Returns true if the recipe was successfully deleted, otherwise false.
-        // */
-        //public bool DeleteRecipe()
-        //{
-        //    //Initialize a variable to hold the result of the deletion operation.
-        //    bool result;
-
-        //    // Check if a recipe exists.
-        //    if (!exists)
-        //    {
-        //        // If no recipe exists, inform the user and return false.
-        //        Console.WriteLine("There is currently no recipe that exists!");
-        //        Console.WriteLine("\nPress any key to continue...");
-        //        Console.ReadKey();
-        //        Console.Clear();
-        //        return false;
-        //    }
-
-        //    // Prompt the user to confirm the deletion.
-        //    Console.WriteLine("Are you sure you want to delete this recipe? Yes / No");
-        //    string confirm = Console.ReadLine().ToUpper();
-
-        //    // Check if the user confirmed the deletion.
-        //    if (confirm.Equals("YES"))
-        //    {
-        //        // Set the result to true.
-        //        result = true;
-        //    }
-        //    else
-        //    {
-        //        // Set the result to false.
-        //        result = false;
-        //    }
-
-        //    // Return the result of the deletion operation.
-        //    return result;
-        //}
     }
 }

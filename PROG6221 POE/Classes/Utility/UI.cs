@@ -12,7 +12,7 @@ namespace PROG6221_POE.Classes
         {
             Console.Title = "Recipe Application";
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Welcome to the Recipe Application!");
+            Console.WriteLine("Welcome to the Recipe Application!\n");
             NextPrompt();
         }
         public void GoodbyeMessage()
@@ -59,7 +59,7 @@ namespace PROG6221_POE.Classes
             int i = 1;
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                Console.WriteLine(i + ") " + ingredient.Quantity + " " + ingredient.UnitOfMeasurement + " of " + ingredient.Name + " (" + ingredient.FoodGroup + ") " + ingredient.Calories + " calories");
+                Console.WriteLine(i + ") " + ingredient.Quantity + " " + ingredient.UnitOfMeasurement + " of " + ingredient.Name + " (" + ingredient.FoodGroup + ") " + ingredient.Calories.ToString("0") + " calories");
                 i++;
             } 
             
@@ -96,22 +96,29 @@ namespace PROG6221_POE.Classes
             Console.WriteLine("Please enter the details for the recipe:");
 
             // Gather recipe name.
-            Console.Write("\nRecipe name: ");
+            Console.Write("\nRecipe Name: ");
             recipe.RecipeName = Console.ReadLine();
 
             // Gather ingredient details.
-            int ingredientsCount = GetPositiveInteger("\nNumber of ingredients required: ");
+            int ingredientsCount = GetPositiveInteger("\nNumber of ingredients: ");
+            Console.Clear();
             for (int i = 0; i < ingredientsCount; i++)
             {
+                Console.Clear();
                 recipe.Ingredients.Add(GetIngredientDetail(i));
             }
 
+            Console.Clear();
+
             // Gather descriptions for each step 
-            int stepsCount = GetPositiveInteger("\nNumber of steps required: ");
+            int stepsCount = GetPositiveInteger("Number of steps: ");
             for (int i = 0; i < stepsCount; i++)
             {
+                Console.Clear();
                 recipe.Steps.Add(GetStepDescription(i));
             }
+
+            recipe.ScaleFactor = 1;
 
             return recipe;
         }
@@ -137,17 +144,51 @@ namespace PROG6221_POE.Classes
 
         private Ingredient GetIngredientDetail(int ingredientNumber)
         {
-
+            // Create a new ingredient object.
             Ingredient ingredient = new Ingredient();
+
             Console.WriteLine("Ingredient Number: " + (ingredientNumber + 1));
-            Console.Write("Ingredient name: ");
+
+            //Set the name of the ingredient
+            Console.Write("\nName: ");
             ingredient.Name = Console.ReadLine();
-            ingredient.Quantity = GetPositiveInteger("Quantity: ");
-            Console.Write("Unit of measurement: ");
-            ingredient.UnitOfMeasurement = Console.ReadLine();
-            Console.Write("Food Group: ");
-            ingredient.FoodGroup = Console.ReadLine();
-            ingredient.Calories = GetPositiveDouble("Calories: ");
+
+            // Display available units of measurement and prompt user to select one
+            Console.WriteLine("\nUnit of Measurement: \n");
+            int i = 1;
+            foreach (var unit in Enum.GetValues(typeof(UnitOM)))
+            {
+                Console.WriteLine(i + ") " + unit);
+                i++;
+            }
+
+            int unitChoice;
+            do
+            {
+                unitChoice = GetPositiveInteger("\nSelect one of the options: ");
+            } while (unitChoice < 1 || unitChoice > Enum.GetNames(typeof(UnitOM)).Length);
+            ingredient.UnitOfMeasurement = (UnitOM)unitChoice;
+
+            ingredient.Quantity = GetPositiveInteger("\nQuantity: ");
+
+            // Display available food groups and prompt user to select one
+            Console.WriteLine("\nFood Group: \n");
+            i = 1;
+            foreach (var group in Enum.GetValues(typeof(FoodGroup)))
+            {
+                Console.WriteLine(i + ") " + group);
+                i++;
+            }
+            int groupChoice;
+            do
+            {
+                groupChoice = GetPositiveInteger("\nSelect one of the options: ");
+            } while (groupChoice < 1 || groupChoice > Enum.GetNames(typeof(FoodGroup)).Length);
+            ingredient.FoodGroup = (FoodGroup)groupChoice;
+
+            ingredient.Calories = GetPositiveDouble("\nCalories: ");
+
+            ingredient.SetOriginalValues();
 
             return ingredient;
         }
@@ -155,7 +196,7 @@ namespace PROG6221_POE.Classes
         private Step GetStepDescription(int stepNumber)
         {
             Step step = new Step();
-            Console.WriteLine("Step Number: " + (stepNumber + 1));
+            Console.WriteLine("\nStep Number: " + (stepNumber + 1));
             step.Description = Console.ReadLine();
 
             return step;
