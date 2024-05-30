@@ -15,18 +15,26 @@ namespace PROG6221_POE.Classes
             Console.WriteLine("Welcome to the Recipe Application!\n");
             NextPrompt();
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         public void GoodbyeMessage()
         {
             Console.Title = "Closing Application";
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Thank you for using the Recipe Application!");
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         public void NextPrompt()
         {
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             Console.Clear();
         }
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         // DisplayMenu() displays a menu to the user, prompting them to select an option.
         public void DisplayMenu()
         {
@@ -34,6 +42,8 @@ namespace PROG6221_POE.Classes
             Console.WriteLine("Application Menu: \n\n1) Create a new recipe \n2) Scale a recipe \n3) Reset the scale of a recipe to its original \n4) Display a recipe \n5) Delete a recipe \n6) View a list of all recipes \n7) Exit \n");
             
         }
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         // GetMenuChoice() gets the user's choice from the menu and returns it as an integer.
         public int GetMenuChoice()
         {
@@ -41,6 +51,9 @@ namespace PROG6221_POE.Classes
             Console.Clear();
             return menuChoice;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         public double GetScaleFactor()
         {
             Console.Clear();
@@ -48,6 +61,9 @@ namespace PROG6221_POE.Classes
             double scaleFactor = GetPositiveDouble("Please enter a number that you would like to scale the recipe by: ");
             return scaleFactor;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         // DisplayRecipe() displays the recipe to the user, in a neat and readable format.
         // This display will include the recipe name, ingredients, and steps.
         public void DisplayRecipe(Recipe recipe)
@@ -73,7 +89,9 @@ namespace PROG6221_POE.Classes
             }
             Console.WriteLine("-----------------------------------\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories\n");
         }
-    
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         // DisplayRecipeList() displays a list of all the recipes to the user in alphabetical order by name.
         public void DisplayRecipeList(List<Recipe> recipeList)
         {
@@ -87,6 +105,10 @@ namespace PROG6221_POE.Classes
             }
             Console.WriteLine();
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // CreateNewRecipe() prompts the user to enter the details for a new recipe.
         public Recipe CreateNewRecipe()
         {
             Recipe recipe = new Recipe();
@@ -122,6 +144,10 @@ namespace PROG6221_POE.Classes
 
             return recipe;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // GetPositiveInteger() prompts the user to enter a positive integer and returns it.
         private int GetPositiveInteger(string prompt)
         {
             //https://www.w3schools.com/cs/cs_while_loop.php
@@ -133,6 +159,9 @@ namespace PROG6221_POE.Classes
             return number;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // GetPositiveDouble() prompts the user to enter a positive double and returns it.
         private double GetPositiveDouble(string prompt)
         {
             double number;
@@ -143,6 +172,9 @@ namespace PROG6221_POE.Classes
             return number;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // GetIngredientDetail() prompts the user to enter the details for an ingredient and returns it.
         private Ingredient GetIngredientDetail(int ingredientNumber)
         {
             // Create a new ingredient object.
@@ -195,6 +227,9 @@ namespace PROG6221_POE.Classes
             return ingredient;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // GetStepDescription() prompts the user to enter the description for a step and returns it.
         private Step GetStepDescription(int stepNumber)
         {
             Step step = new Step();
@@ -203,6 +238,9 @@ namespace PROG6221_POE.Classes
 
             return step;
         }
+
+        //END OF UI CLASS
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
     }
 }

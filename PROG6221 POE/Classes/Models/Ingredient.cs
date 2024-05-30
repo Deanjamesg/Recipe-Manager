@@ -46,11 +46,17 @@
             OriginalCalories = Calories;
             OriginalUnitOfMeasurement = UnitOfMeasurement;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         public void ResetValues()
         {
             Quantity = OriginalQuantity;
             Calories = OriginalCalories;
             UnitOfMeasurement = OriginalUnitOfMeasurement;
         }
+
+        //END OF INGREDIENT CLASS
+        //-------------------------------------------------------------------------------------------------------------------------------------
     }
 }

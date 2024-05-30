@@ -1,5 +1,10 @@
 ﻿using PROG6221_POE.Classes;
 using System;
+
+// Student Name: Dean James Greeff
+// Student Number: ST10378305
+// Date: 30/05/2024
+// Assignment: PROG6221 - POE Part 2
 // Link to GitHub Account
 // https://github.com/Deanjamesg/PROG6221-POE
 
@@ -117,5 +122,8 @@ namespace PROG6221_POE
             }
 
         }
+
+        //END OF PROGRAM CLASS
+        //-------------------------------------------------------------------------------------------------------------------------------------
     }
 }
