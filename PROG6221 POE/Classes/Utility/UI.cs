@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PROG6221_POE.Classes
 {
@@ -45,9 +43,13 @@ namespace PROG6221_POE.Classes
         //-------------------------------------------------------------------------------------------------------------------------------------
 
         // GetMenuChoice() gets the user's choice from the menu and returns it as an integer.
-        public int GetMenuChoice()
+        public int GetMenuChoice(int maxChoice)
         {
-            int menuChoice = GetPositiveInteger("Please select one of the following options: ");
+            int menuChoice;
+            do
+            {
+                Console.Write("Please select one of the following options: ");
+            } while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice < 1 || menuChoice > maxChoice);
             Console.Clear();
             return menuChoice;
         }
@@ -88,6 +90,28 @@ namespace PROG6221_POE.Classes
                 i++;
             }
             Console.WriteLine("-----------------------------------\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories\n");
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        public bool ConfirmDeleteRecipe()
+        {
+
+            bool confirmation = false;
+            Console.Write("Are you sure you want to delete this recipe? (Yes / No): ");
+            string response = Console.ReadLine().ToUpper();
+
+            if (response.Equals("YES"))
+            {
+                confirmation = true;
+                Console.WriteLine("Recipe deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Deletion cancelled.");
+            }
+
+            return confirmation;
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------

@@ -39,7 +39,7 @@ namespace PROG6221_POE
                 UI.DisplayMenu();
 
                 //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
-                switch ((MenuOptions)UI.GetMenuChoice())
+                switch ((MenuOptions)UI.GetMenuChoice(7))
                 {
                     //Create a New Recipe
                     case MenuOptions.CreateNewRecipe:
@@ -55,7 +55,7 @@ namespace PROG6221_POE
                     case MenuOptions.ScaleRecipe:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
-                        recipeChoice = UI.GetMenuChoice();
+                        recipeChoice = UI.GetMenuChoice(recipeManager.GetRecipeList().Count);
                         double scaleFactor = UI.GetScaleFactor();
                         recipeManager.ScaleRecipe(recipeChoice - 1, scaleFactor);
                         UI.DisplayRecipe(recipeManager.GetRecipe(recipeChoice - 1));
@@ -67,7 +67,7 @@ namespace PROG6221_POE
                     case MenuOptions.ResetRecipeScale:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
-                        recipeChoice = UI.GetMenuChoice();
+                        recipeChoice = UI.GetMenuChoice(recipeManager.GetRecipeList().Count);
                         recipeManager.ResetRecipeScale(recipeChoice - 1);
                         UI.DisplayRecipe(recipeManager.GetRecipe(recipeChoice - 1));
                         UI.NextPrompt();
@@ -78,7 +78,7 @@ namespace PROG6221_POE
                     case MenuOptions.DisplayRecipe:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
-                        recipeChoice = UI.GetMenuChoice();
+                        recipeChoice = UI.GetMenuChoice(recipeManager.GetRecipeList().Count);
                         UI.DisplayRecipe(recipeManager.GetRecipe(recipeChoice - 1));
                         UI.NextPrompt();
 
@@ -88,9 +88,14 @@ namespace PROG6221_POE
                     case MenuOptions.DeleteRecipe:
 
                         UI.DisplayRecipeList(recipeManager.GetRecipeList());
-                        recipeChoice = UI.GetMenuChoice();
-                        recipeManager.DeleteRecipe(recipeChoice - 1);
-                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        recipeChoice = UI.GetMenuChoice(recipeManager.GetRecipeList().Count);
+
+                        if (UI.ConfirmDeleteRecipe())
+                        {
+                            recipeManager.DeleteRecipe(recipeChoice - 1);
+                            UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        }
+
                         UI.NextPrompt();
 
                         break;
