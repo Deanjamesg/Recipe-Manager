@@ -29,7 +29,7 @@
         Spice
     }
 
-    class Ingredient
+    public class Ingredient
     {
         public string Name { get; set; }
         public double Quantity { get; set; }

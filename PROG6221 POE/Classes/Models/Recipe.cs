@@ -2,7 +2,7 @@
 
 namespace PROG6221_POE
 {
-    class Recipe
+    public class Recipe
     {
         public double ScaleFactor { get; set; }
         public string RecipeName { get; set; }

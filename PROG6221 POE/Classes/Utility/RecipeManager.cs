@@ -2,7 +2,7 @@
 
 namespace PROG6221_POE.Classes
 {
-    class RecipeManager
+    public class RecipeManager
     {
         public List<Recipe> RecipeList { get; set; }
 
@@ -185,7 +185,7 @@ namespace PROG6221_POE.Classes
         //-------------------------------------------------------------------------------------------------------------------------------------
 
         //Calculate the total calories of a recipe, by summing the calories of each ingredient.
-        private double CalculateTotalCalories(Recipe recipe)
+        public double CalculateTotalCalories(Recipe recipe)
         {
 
             double result = 0;

@@ -1,7 +1,10 @@
 ﻿namespace PROG6221_POE
 {
-    class Step
+    public class Step
     {
         public string Description { get; set; }
     }
+
+    //END OF STEP CLASS
+    //---------------------------------------------------------------------------------------------------------------------
 }
