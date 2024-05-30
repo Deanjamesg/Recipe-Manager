@@ -124,6 +124,7 @@ namespace PROG6221_POE.Classes
         }
         private int GetPositiveInteger(string prompt)
         {
+            //https://www.w3schools.com/cs/cs_while_loop.php
             int number;
             do
             {
@@ -153,6 +154,7 @@ namespace PROG6221_POE.Classes
             Console.Write("\nName: ");
             ingredient.Name = Console.ReadLine();
 
+            //https://learn.microsoft.com/en-us/dotnet/api/system.enum.getvalues?view=net-8.0
             // Display available units of measurement and prompt user to select one
             Console.WriteLine("\nUnit of Measurement: \n");
             int i = 1;

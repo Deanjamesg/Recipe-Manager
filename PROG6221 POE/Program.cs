@@ -7,6 +7,7 @@ namespace PROG6221_POE
 {
     class Program
     {
+        //https://www.w3schools.com/cs/cs_enums.php
         public enum MenuOptions
         {
             CreateNewRecipe = 1,
@@ -32,6 +33,7 @@ namespace PROG6221_POE
             {
                 UI.DisplayMenu();
 
+                //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
                 switch ((MenuOptions)UI.GetMenuChoice())
                 {
                     //Create a New Recipe

@@ -15,6 +15,7 @@ namespace PROG6221_POE.Classes
         {
             RecipeList = new List<Recipe>();
 
+            //Creating sample recipes to make for easier testing
             //Sample Recipe 1
             Recipe recipe1 = new Recipe
             {
@@ -33,6 +34,7 @@ namespace PROG6221_POE.Classes
                 }
 
             };
+            //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/foreach-in
             foreach (Ingredient ingredient in recipe1.Ingredients)
             {
                 ingredient.SetOriginalValues();
@@ -103,6 +105,7 @@ namespace PROG6221_POE.Classes
         //-------------------------------------------------------------------------------------------------------------------------------------
         public void DeleteRecipe(int index)
         {
+            //https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-6.0
             RecipeList.RemoveAt(index);
             SortRecipesAlphabetically();
         }
@@ -167,7 +170,7 @@ namespace PROG6221_POE.Classes
         {
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                // Switch statement to handle different units of measurements.
+                //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
                 switch (ingredient.UnitOfMeasurement)
                 {
                     // If the measurement is teaspoons.

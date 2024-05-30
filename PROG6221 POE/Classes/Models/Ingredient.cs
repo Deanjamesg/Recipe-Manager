@@ -1,5 +1,6 @@
 ﻿namespace PROG6221_POE
 {
+    //https://www.w3schools.com/cs/cs_enums.php
     //Delcaring a enum for the unit of measurement called UnitOM
     public enum UnitOM
     {
