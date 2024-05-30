@@ -43,13 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ingredients.cs" />
-    <Compile Include="Recipe.cs" />
+    <Compile Include="Classes\Models\Ingredient.cs" />
+    <Compile Include="Classes\Models\Recipe.cs" />
+    <Compile Include="Classes\Utility\RecipeManager.cs" />
+    <Compile Include="Classes\Utility\UI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

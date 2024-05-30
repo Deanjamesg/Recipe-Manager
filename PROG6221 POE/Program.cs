@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PROG6221_POE.Classes;
+using System;
+// Link to GitHub Account
+// https://github.com/Deanjamesg/PROG6221-POE
 
 namespace PROG6221_POE
 {
@@ -11,79 +10,98 @@ namespace PROG6221_POE
         public static void Main(string[] args)
         {
 
-            string option;
-            Boolean application;
+            Boolean isApplicationRunning = true;
+            RecipeManager recipeManager = new RecipeManager();
+            UI UI = new UI();
 
-            Recipe recipe = new Recipe();
+            int recipeChoice;
 
-            application = true;
+            UI.WelcomeMessage();
 
-            Console.Title = "RECIPE APPLICATION";
-            Console.ForegroundColor = ConsoleColor.Cyan;
-
-            Console.WriteLine("Welcome to the Recipe Application!\n");
-
-            while (application)
+            while (isApplicationRunning)
             {
-                Console.WriteLine("Please select one of the following options: \n\n1) Create a new recipe \n2) Scale a recipe \n3) Reset scale to original \n4) Display recipe \n5) Delete recipe \n6) Exit");
-                option = Console.ReadLine();
+                UI.DisplayMenu();
 
-                switch (option)
+                switch (UI.GetMenuChoice())
                 {
                     //Create a New Recipe
-                    case "1": 
+                    case 1:
 
-                        recipe.CreateNewRecipe();
+                        Recipe recipe = UI.CreateNewRecipe();
+                        recipeManager.AddNewRecipe(recipe);
+                        UI.DisplayRecipe(recipe);
+                        UI.NextPrompt();
+
                         break;
 
                     //Scale a Recipe.
-                    case "2": 
+                    case 2:
 
-                        recipe.ScaleRecipe();
+                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        recipeChoice = UI.GetMenuChoice();
+                        double scaleFactor = UI.GetScaleFactor();
+                        recipeManager.ScaleRecipe(recipeChoice - 1, scaleFactor);
+                        UI.DisplayRecipe(recipeManager.GetRecipe(recipeChoice - 1));
+                        UI.NextPrompt();
+
                         break;
 
                     //Reset recipe scale factor to original.
-                    case "3": 
+                    case 3:
 
-                        recipe.ResetScale();
+                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        recipeChoice = UI.GetMenuChoice();
+                        recipeManager.ResetRecipeScale(recipeChoice - 1);
+                        UI.DisplayRecipe(recipeManager.GetRecipe(recipeChoice - 1));
+                        UI.NextPrompt();
+
                         break;
 
-                    //Display Recipe
-                    case "4": 
+                    //Display a Recipe
+                    case 4:
 
-                        recipe.DisplayRecipe();
+                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        recipeChoice = UI.GetMenuChoice();
+                        UI.DisplayRecipe(recipeManager.GetRecipe(recipeChoice - 1));
+                        UI.NextPrompt();
+
                         break;
 
                     //Delete Recipe
-                    case "5": 
+                    case 5:
 
-                        if (recipe.DeleteRecipe())
-                        {
-                            recipe = new Recipe();
-                            Console.WriteLine("You have successfully cleared all the data from this recipe!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Cancelled!");
-                        }
-                        Console.WriteLine("\nPress any key to continue...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        recipeChoice = UI.GetMenuChoice();
+                        recipeManager.DeleteRecipe(recipeChoice - 1);
+                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        UI.NextPrompt();
+
+                        break;
+
+                    //Display Recipe List
+                    case 6: 
+
+                        UI.DisplayRecipeList(recipeManager.GetRecipeList());
+                        UI.NextPrompt();
+
                         break;
 
                     //Exit Application
-                    case "6": 
+                    case 7: 
 
-                        application = false;
+                        isApplicationRunning = false;
+                        UI.GoodbyeMessage();
+
                         break;
 
+                    //Default response to any key pressed, that is not a menu option.
                     default:
-                        Console.WriteLine("Please select one of the available options.");
-                        Console.WriteLine("\nPress any key to continue...");
-                        Console.ReadKey();
-                        Console.Clear();
+
+                        UI.DisplayMenu();
+
                         break;
                 }
+                
             }
 
         }
