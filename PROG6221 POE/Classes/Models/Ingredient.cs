@@ -11,9 +11,7 @@
         Kilogram,
         Milliliter,
         Litre,
-        Whole,
-        Clove,
-        Slice
+        Whole
     }
 
     public enum FoodGroup
@@ -26,7 +24,8 @@
         Poultry,
         Dairy,
         Oils,
-        Spice
+        Herbs,
+        Spices
     }
 
     public class Ingredient

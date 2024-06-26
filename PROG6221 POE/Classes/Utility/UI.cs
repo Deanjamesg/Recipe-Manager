@@ -6,6 +6,34 @@ namespace PROG6221_POE.Classes
 {
     class UI
     {
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // Define the method to handle the event
+        private void NotifyCaloriesExceeded(string recipeName, double calories)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Warning: The recipe '{recipeName}' exceeds 300 calories with its total of {calories} calories.\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // Define the delegate
+        public delegate void CaloriesExceededNotification(string recipeName, double calories);
+
+        // Declare an event based on the delegate
+        public event CaloriesExceededNotification OnCaloriesExceeded;
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        public UI()
+        {
+            // Subscribe to the OnCaloriesExceeded event in the UI constructor
+            this.OnCaloriesExceeded += NotifyCaloriesExceeded;
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         public void WelcomeMessage()
         {
             Console.Title = "Recipe Application";
@@ -90,6 +118,14 @@ namespace PROG6221_POE.Classes
                 i++;
             }
             Console.WriteLine("-----------------------------------\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories\n");
+            RecipeCalorieStatus(recipe);
+
+            //Check if the total calories exceed 300 and if the event has subscribers
+            if (recipe.TotalCalories > 300 && OnCaloriesExceeded != null)
+            {
+                OnCaloriesExceeded(recipe.RecipeName, recipe.TotalCalories);
+            }
+
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------
@@ -120,11 +156,21 @@ namespace PROG6221_POE.Classes
         public void DisplayRecipeList(List<Recipe> recipeList)
         {
             Console.Clear();
-            Console.WriteLine("List of Recipes: \n");
+            Console.Write("List of Recipes: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Low / ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Moderate / ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("High");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" (Calories)\n");
+
             int i = 1;
-            foreach (Recipe recipe in recipeList.OrderBy(recipe => recipe.RecipeName))
+            foreach (Recipe recipe in recipeList)
             {
-                Console.WriteLine(i + ") " + recipe.RecipeName);
+                Console.Write(i + ") "); RecipeTitleStatus(recipe);
+                Console.WriteLine();
                 i++;
             }
             Console.WriteLine();
@@ -244,7 +290,7 @@ namespace PROG6221_POE.Classes
             } while (groupChoice < 1 || groupChoice > Enum.GetNames(typeof(FoodGroup)).Length);
             ingredient.FoodGroup = (FoodGroup)groupChoice;
 
-            ingredient.Calories = GetPositiveDouble("\nCalories: ");
+            ingredient.Calories = GetPositiveDouble("\nTotal Number of Calories for this ingredient: ");
 
             ingredient.SetOriginalValues();
 
@@ -261,6 +307,50 @@ namespace PROG6221_POE.Classes
             step.Description = Console.ReadLine();
 
             return step;
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        private void RecipeCalorieStatus(Recipe recipe)
+        {
+            if (recipe.TotalCalories < 200)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("This recipe is low in calories, suitable for a snack.\n");
+            } 
+            else if (recipe.TotalCalories >= 200 && recipe.TotalCalories < 500)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("This recipe is moderate in calories, suitable for a balanced meal.\n");
+            } 
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("This recipe is high in calories, and should be consumed sparingly.\n");
+            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        private void RecipeTitleStatus (Recipe recipe)
+        {
+            if (recipe.TotalCalories < 200)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(recipe.RecipeName);
+            }
+            else if (recipe.TotalCalories >= 200 && recipe.TotalCalories < 500)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(recipe.RecipeName);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(recipe.RecipeName);
+            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
 
         //END OF UI CLASS
