@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PROG6221_POE.Classes
 {
@@ -51,8 +52,8 @@ namespace PROG6221_POE.Classes
                 ScaleFactor = 1,
                 Ingredients = new List<Ingredient>
                 {
-                    new Ingredient { Name = "Egg", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 136 },
-                    new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 102 }
+                    new Ingredient { Name = "Egg", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 100 },
+                    new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 50 }
                 },
                 Steps = new List<Step>
                 {
@@ -77,8 +78,8 @@ namespace PROG6221_POE.Classes
                 ScaleFactor = 1,
                 Ingredients = new List<Ingredient>
                 {
-                    new Ingredient { Name = "Bread", Quantity = 2, UnitOfMeasurement = UnitOM.Slice, FoodGroup = FoodGroup.Starch, Calories = 200 },
-                    new Ingredient { Name = "Cheese", Quantity = 1, UnitOfMeasurement = UnitOM.Slice, FoodGroup = FoodGroup.Dairy, Calories = 113 },
+                    new Ingredient { Name = "Bread Slices", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Starch, Calories = 200 },
+                    new Ingredient { Name = "Cheese Slices", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Dairy, Calories = 113 },
                     new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 102 }
                 },
                 Steps = new List<Step> {
