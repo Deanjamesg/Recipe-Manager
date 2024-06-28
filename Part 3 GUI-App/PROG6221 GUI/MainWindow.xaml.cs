@@ -22,17 +22,19 @@ namespace PROG6221_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RecipeManager recipeManager;
+        public RecipeManager recipeManager;
+
         public MainWindow()
         {
             Console.WriteLine("\nInitializing Recipe Manager\n");
             recipeManager = new RecipeManager();
+            recipeManager.CreateSampleRecipes();
             InitializeComponent();
         }
 
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
         {
-            RecipeView recipeView = new RecipeView();
+            RecipeView recipeView = new RecipeView(recipeManager);
             recipeView.Show();
             this.Close();
 
@@ -40,29 +42,27 @@ namespace PROG6221_GUI
 
         private void btnCreateRecipe_Click(object sender, RoutedEventArgs e)
         {
-            CreateRecipeView createRecipeView = new CreateRecipeView();
+            CreateRecipeView createRecipeView = new CreateRecipeView(recipeManager);
             createRecipeView.Show();
             this.Close();
         }
 
         private void btnEditScale_Click(object sender, RoutedEventArgs e)
         {
-            EditScaleView editScaleView = new EditScaleView();
+            EditScaleView editScaleView = new EditScaleView(recipeManager);
             editScaleView.Show();
             this.Close();
         }
 
         private void btnDeleteRecipe_Click(object sender, RoutedEventArgs e)
         {
-            DeleteRecipeView deleteRecipeView = new DeleteRecipeView();
+            DeleteRecipeView deleteRecipeView = new DeleteRecipeView(recipeManager);
             deleteRecipeView.Show();
             this.Close();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            ExitView exitView = new ExitView();
-            exitView.Show();
             Application.Current.Shutdown();
             this.Close();
         }

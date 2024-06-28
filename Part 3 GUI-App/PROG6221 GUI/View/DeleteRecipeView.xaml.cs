@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROG6221_GUI.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,21 @@ namespace PROG6221_GUI.View
     /// </summary>
     public partial class DeleteRecipeView : Window
     {
-        public DeleteRecipeView()
+        RecipeManager recipeManager;
+        public DeleteRecipeView(RecipeManager _recipeManager)
         {
+            this.recipeManager = _recipeManager;
+            Console.WriteLine("\nDelete Recipe View\n");
+            foreach (Recipe recipe in recipeManager.GetRecipeList())
+            {
+                Console.WriteLine(recipe.RecipeName);
+            }
+
             InitializeComponent();
         }
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
         {
-            RecipeView recipeView = new RecipeView();
+            RecipeView recipeView = new RecipeView(recipeManager);
             recipeView.Show();
             this.Close();
 
@@ -33,29 +42,27 @@ namespace PROG6221_GUI.View
 
         private void btnCreateRecipe_Click(object sender, RoutedEventArgs e)
         {
-            CreateRecipeView createRecipeView = new CreateRecipeView();
+            CreateRecipeView createRecipeView = new CreateRecipeView(recipeManager);
             createRecipeView.Show();
             this.Close();
         }
 
         private void btnEditScale_Click(object sender, RoutedEventArgs e)
         {
-            EditScaleView editScaleView = new EditScaleView();
+            EditScaleView editScaleView = new EditScaleView(recipeManager);
             editScaleView.Show();
             this.Close();
         }
 
         private void btnDeleteRecipe_Click(object sender, RoutedEventArgs e)
         {
-            DeleteRecipeView deleteRecipeView = new DeleteRecipeView();
+            DeleteRecipeView deleteRecipeView = new DeleteRecipeView(recipeManager);
             deleteRecipeView.Show();
             this.Close();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            ExitView exitView = new ExitView();
-            exitView.Show();
             Application.Current.Shutdown();
             this.Close();
         }

@@ -17,6 +17,98 @@ namespace PROG6221_GUI
         {
             RecipeList = new List<Recipe>();
 
+            ////Creating sample recipes to make for easier testing
+            ////Sample Recipe 1
+
+            //Recipe recipe1 = new Recipe
+            //{
+            //    RecipeName = "Pancakes",
+            //    ScaleFactor = 1,
+            //    Ingredients = new List<Ingredient>
+            //    {
+            //        new Ingredient { Name = "Flour", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Grain, Calories = 455 },
+            //        new Ingredient { Name = "Egg", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 68 },
+            //        new Ingredient { Name = "Milk", Quantity = 0.5, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Dairy, Calories = 56 }
+            //    },
+            //    Steps = new List<Step>
+            //    {
+            //        new Step { Description = "Mix all ingredients" },
+            //        new Step { Description = "Cook on a hot griddle" }
+            //    }
+
+            //};
+
+            ////https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/foreach-in
+
+            //foreach (Ingredient ingredient in recipe1.Ingredients)
+            //{
+            //    ingredient.SetOriginalValues();
+            //}
+
+            //recipe1.TotalCalories = CalculateTotalCalories(recipe1);
+            //recipe1 = NormalizeQuantities(recipe1);
+            //RecipeList.Add(recipe1);
+
+            ////Sample Recipe 2
+            //Recipe recipe2 = new Recipe
+            //{
+            //    RecipeName = "Scrambled Eggs",
+            //    ScaleFactor = 1,
+            //    Ingredients = new List<Ingredient>
+            //    {
+            //        new Ingredient { Name = "Egg", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 100 },
+            //        new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 50 }
+            //    },
+            //    Steps = new List<Step>
+            //    {
+            //        new Step { Description = "Beat eggs" },
+            //        new Step { Description = "Cook in butter on low heat" }
+            //    }
+            //};
+
+            //foreach (Ingredient ingredient in recipe2.Ingredients)
+            //{
+            //    ingredient.SetOriginalValues();
+            //}
+
+            //recipe2.TotalCalories = CalculateTotalCalories(recipe2);
+            //recipe2 = NormalizeQuantities(recipe2);
+            //RecipeList.Add(recipe2);
+
+            //// Sample Recipe 3
+            //Recipe recipe3 = new Recipe
+            //{
+            //    RecipeName = "Grilled Cheese",
+            //    ScaleFactor = 1,
+            //    Ingredients = new List<Ingredient>
+            //    {
+            //        new Ingredient { Name = "Bread Slices", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Starch, Calories = 200 },
+            //        new Ingredient { Name = "Cheese Slices", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Dairy, Calories = 113 },
+            //        new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 102 }
+            //    },
+            //    Steps = new List<Step> {
+            //        new Step { Description = "Butter one side of each slice of bread" },
+            //        new Step { Description = "Place cheese between bread slices" },
+            //        new Step { Description = "Cook on a hot griddle until cheese is melted" }
+            //    }
+            //};
+
+            //foreach (Ingredient ingredient in recipe3.Ingredients)
+            //{
+            //    ingredient.SetOriginalValues();
+            //}
+
+            //recipe3.TotalCalories = CalculateTotalCalories(recipe3);
+            //recipe3 = NormalizeQuantities(recipe3);
+            //RecipeList.Add(recipe3);
+
+            //SortRecipesAlphabetically();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        public void CreateSampleRecipes()
+        {
             //Creating sample recipes to make for easier testing
             //Sample Recipe 1
 

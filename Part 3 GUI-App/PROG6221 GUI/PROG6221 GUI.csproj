@@ -68,9 +68,6 @@
     <Compile Include="View\EditScaleView.xaml.cs">
       <DependentUpon>EditScaleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExitView.xaml.cs">
-      <DependentUpon>ExitView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\RecipeView.xaml.cs">
       <DependentUpon>RecipeView.xaml</DependentUpon>
     </Compile>
@@ -95,10 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditScaleView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ExitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

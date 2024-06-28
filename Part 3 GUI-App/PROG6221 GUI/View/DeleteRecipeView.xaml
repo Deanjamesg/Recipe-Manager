@@ -36,7 +36,7 @@
                        HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="22"
-                       Margin="5,0,0,0"/>
+                       Margin="0,0,0,0"/>
 
             <StackPanel Grid.Row="1">
 
@@ -51,7 +51,13 @@
                         Padding="5" 
                         FontSize="14"
                         Click="btnViewRecipe_Click" 
-                        Content="View a Recipe"/>
+                        Content="View a Recipe">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Color="#005B54"/>
+                    </Button.Effect>
+                </Button>
                 <Label></Label>
 
                 <Button x:Name="btnCreateRecipe"
@@ -65,7 +71,13 @@
                         Padding="5" 
                         FontSize="14"
                         Click="btnCreateRecipe_Click" 
-                        Content="Create a Recipe"/>
+                        Content="Create a Recipe">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Color="#005B54"/>
+                    </Button.Effect>
+                </Button>
                 <Label></Label>
 
                 <Button x:Name="btnEditScale"
@@ -79,7 +91,13 @@
                         Padding="5" 
                         FontSize="14"
                         Click="btnEditScale_Click" 
-                        Content="Scale a Recipe"/>
+                        Content="Scale a Recipe">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Color="#005B54"/>
+                    </Button.Effect>
+                </Button>
                 <Label></Label>
 
                 <Button x:Name="btnDeleteRecipe"
@@ -93,7 +111,13 @@
                         Padding="5" 
                         FontSize="14"
                         Click="btnDeleteRecipe_Click" 
-                        Content="Delete a Recipe"/>
+                        Content="Delete a Recipe">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Color="#005B54"/>
+                    </Button.Effect>
+                </Button>
                 <Label></Label>
 
                 <Button x:Name="btnExit"
@@ -107,24 +131,35 @@
                         Padding="5" 
                         FontSize="14"
                         Click="btnExit_Click" 
-                        Content="Exit"/>
+                        Content="Exit">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Color="#005B54"/>
+                    </Button.Effect>
+                </Button>
                 <Label></Label>
 
             </StackPanel>
 
             <TextBlock Text="Delete Recipe"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="28"
-                       Margin="282,0,282,0"
-                       Grid.Column="1" d:LayoutOverrides="Width"/>
+                       Margin="20,0,0,0"
+                       Grid.Column="1"/>
 
             <Grid Grid.Column="1" 
                   Grid.Row="1"
                   Background="#007E74"
                   Margin="10">
-
+                <Grid.Effect>
+                    <DropShadowEffect 
+                        ShadowDepth="0"
+                        BlurRadius="10"
+                        Color="#005B54"/>
+                </Grid.Effect>
             </Grid>
 
 
