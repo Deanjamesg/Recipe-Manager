@@ -10,23 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PROG6221_GUI.Model;
-using PROG6221_GUI.View;
 
-namespace PROG6221_GUI
+namespace PROG6221_GUI.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreateRecipeView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateRecipeView : Window
     {
-        private RecipeManager recipeManager;
-        public MainWindow()
+        public CreateRecipeView()
         {
-            Console.WriteLine("\nInitializing Recipe Manager\n");
-            recipeManager = new RecipeManager();
             InitializeComponent();
         }
 

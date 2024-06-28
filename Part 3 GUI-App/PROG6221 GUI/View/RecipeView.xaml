@@ -1,11 +1,11 @@
-﻿<Window x:Class="PROG6221_GUI.MainWindow"
+﻿<Window x:Class="PROG6221_GUI.View.RecipeView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PROG6221_GUI"
+        xmlns:local="clr-namespace:PROG6221_GUI.View"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="RecipeView"
         Height="500" 
         Width="1000"
         Background="Transparent"
@@ -14,7 +14,7 @@
         ResizeMode="NoResize"
         FontFamily="#Poppins"
         AllowsTransparency="True">
-
+    
     <Border Background="#00A598"
             CornerRadius="30"
             Padding="10">
@@ -112,13 +112,13 @@
 
             </StackPanel>
 
-            <TextBlock Text="ST10378305"
+            <TextBlock Text="View a Recipe"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Center"
                        Foreground="White"
                        FontSize="28"
-                       Margin="20,0,0,0"
-                       Grid.Column="1"/>
+                       Margin="282,0,282,0"
+                       Grid.Column="1" d:LayoutOverrides="Width"/>
 
             <Grid Grid.Column="1" 
                   Grid.Row="1"
@@ -126,7 +126,6 @@
                   Margin="10">
 
             </Grid>
-
 
         </Grid>
     </Border>

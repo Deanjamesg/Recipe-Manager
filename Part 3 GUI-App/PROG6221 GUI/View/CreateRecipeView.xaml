@@ -1,11 +1,11 @@
-﻿<Window x:Class="PROG6221_GUI.MainWindow"
+﻿<Window x:Class="PROG6221_GUI.View.CreateRecipeView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PROG6221_GUI"
+        xmlns:local="clr-namespace:PROG6221_GUI.View"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="CreateRecipeView" 
         Height="500" 
         Width="1000"
         Background="Transparent"
@@ -36,7 +36,7 @@
                        HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="22"
-                       Margin="5,0,0,0"/>
+                       Margin="0,0,0,0"/>
 
             <StackPanel Grid.Row="1">
 
@@ -112,7 +112,7 @@
 
             </StackPanel>
 
-            <TextBlock Text="ST10378305"
+            <TextBlock Text="Create a Recipe"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"

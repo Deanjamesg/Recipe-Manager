@@ -55,6 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Ingredient.cs" />
+    <Compile Include="Model\Recipe.cs" />
+    <Compile Include="Model\Step.cs" />
+    <Compile Include="RecipeManager.cs" />
+    <Compile Include="View\CreateRecipeView.xaml.cs">
+      <DependentUpon>CreateRecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeleteRecipeView.xaml.cs">
+      <DependentUpon>DeleteRecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditScaleView.xaml.cs">
+      <DependentUpon>EditScaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExitView.xaml.cs">
+      <DependentUpon>ExitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RecipeView.xaml.cs">
+      <DependentUpon>RecipeView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +86,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CreateRecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DeleteRecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditScaleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,5 +133,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
