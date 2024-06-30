@@ -16,93 +16,41 @@ namespace PROG6221_GUI
         public RecipeManager()
         {
             RecipeList = new List<Recipe>();
+        }
 
-            ////Creating sample recipes to make for easier testing
-            ////Sample Recipe 1
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
-            //Recipe recipe1 = new Recipe
-            //{
-            //    RecipeName = "Pancakes",
-            //    ScaleFactor = 1,
-            //    Ingredients = new List<Ingredient>
-            //    {
-            //        new Ingredient { Name = "Flour", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Grain, Calories = 455 },
-            //        new Ingredient { Name = "Egg", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 68 },
-            //        new Ingredient { Name = "Milk", Quantity = 0.5, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Dairy, Calories = 56 }
-            //    },
-            //    Steps = new List<Step>
-            //    {
-            //        new Step { Description = "Mix all ingredients" },
-            //        new Step { Description = "Cook on a hot griddle" }
-            //    }
+        public List<Recipe> FilteredRecipeSearch(string _foodGroup, string _ingredientName, double _maxCalories)
+        {
+            List<Recipe> filteredRecipes = new List<Recipe>();
 
-            //};
+            foreach (Recipe recipe in RecipeList)
+            {
+                // Checks to see if there is a max calorie filter, if there is, it will check if the recipe is within the calorie range.
+                if (checkMaxCaloriesFilter(recipe, _maxCalories) && checkFoodGroupFilter(recipe, _foodGroup) && checkIngredientFilter(recipe, _ingredientName)) 
+                {
+                    filteredRecipes.Add(recipe);
+                }
+            }
 
-            ////https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/foreach-in
+            return filteredRecipes;
+        }
 
-            //foreach (Ingredient ingredient in recipe1.Ingredients)
-            //{
-            //    ingredient.SetOriginalValues();
-            //}
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
-            //recipe1.TotalCalories = CalculateTotalCalories(recipe1);
-            //recipe1 = NormalizeQuantities(recipe1);
-            //RecipeList.Add(recipe1);
+        public bool checkMaxCaloriesFilter(Recipe recipe, double _maxCalories)
+        {
+            return (_maxCalories == -1 || recipe.TotalCalories <= _maxCalories);
+        }
 
-            ////Sample Recipe 2
-            //Recipe recipe2 = new Recipe
-            //{
-            //    RecipeName = "Scrambled Eggs",
-            //    ScaleFactor = 1,
-            //    Ingredients = new List<Ingredient>
-            //    {
-            //        new Ingredient { Name = "Egg", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 100 },
-            //        new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 50 }
-            //    },
-            //    Steps = new List<Step>
-            //    {
-            //        new Step { Description = "Beat eggs" },
-            //        new Step { Description = "Cook in butter on low heat" }
-            //    }
-            //};
+        public bool checkFoodGroupFilter(Recipe recipe, string _foodGroup)
+        {
+            return (_foodGroup == "Any" || recipe.Ingredients.Any(ingredient => ingredient.FoodGroup.ToString() == _foodGroup));
+        }
 
-            //foreach (Ingredient ingredient in recipe2.Ingredients)
-            //{
-            //    ingredient.SetOriginalValues();
-            //}
-
-            //recipe2.TotalCalories = CalculateTotalCalories(recipe2);
-            //recipe2 = NormalizeQuantities(recipe2);
-            //RecipeList.Add(recipe2);
-
-            //// Sample Recipe 3
-            //Recipe recipe3 = new Recipe
-            //{
-            //    RecipeName = "Grilled Cheese",
-            //    ScaleFactor = 1,
-            //    Ingredients = new List<Ingredient>
-            //    {
-            //        new Ingredient { Name = "Bread Slices", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Starch, Calories = 200 },
-            //        new Ingredient { Name = "Cheese Slices", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Dairy, Calories = 113 },
-            //        new Ingredient { Name = "Butter", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Dairy, Calories = 102 }
-            //    },
-            //    Steps = new List<Step> {
-            //        new Step { Description = "Butter one side of each slice of bread" },
-            //        new Step { Description = "Place cheese between bread slices" },
-            //        new Step { Description = "Cook on a hot griddle until cheese is melted" }
-            //    }
-            //};
-
-            //foreach (Ingredient ingredient in recipe3.Ingredients)
-            //{
-            //    ingredient.SetOriginalValues();
-            //}
-
-            //recipe3.TotalCalories = CalculateTotalCalories(recipe3);
-            //recipe3 = NormalizeQuantities(recipe3);
-            //RecipeList.Add(recipe3);
-
-            //SortRecipesAlphabetically();
+        public bool checkIngredientFilter(Recipe recipe, string _ingredientName)
+        {
+            return (_ingredientName == "" || recipe.Ingredients.Any(ingredient => ingredient.Name.ToUpper() == _ingredientName.ToUpper()));
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------
@@ -194,6 +142,38 @@ namespace PROG6221_GUI
             recipe3 = NormalizeQuantities(recipe3);
             RecipeList.Add(recipe3);
 
+            // Sample Recipe 4
+            Recipe recipe4 = new Recipe
+            {
+                RecipeName = "Pasta Primavera",
+                ScaleFactor = 1,
+                Ingredients = new List<Ingredient>
+                {
+                    new Ingredient { Name = "Pasta", Quantity = 250, UnitOfMeasurement = UnitOM.Gram, FoodGroup = FoodGroup.Starch, Calories = 300 },
+                    new Ingredient { Name = "Olive Oil", Quantity = 2, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Fats, Calories = 240 },
+                    new Ingredient { Name = "Garlic Cloves", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 8 },
+                    new Ingredient { Name = "Broccoli Florets", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Vegetable, Calories = 55 },
+                    new Ingredient { Name = "Carrot", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 25 },
+                    new Ingredient { Name = "Bell Pepper", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 24 },
+                    new Ingredient { Name = "Peas", Quantity = 0.5, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Vegetable, Calories = 62 },
+                    new Ingredient { Name = "Parmesan Cheese", Quantity = 0.25, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Dairy, Calories = 108 }
+                },
+                Steps = new List<Step> {
+                    new Step { Description = "Cook pasta according to package instructions" },
+                    new Step { Description = "Heat olive oil in a large pan and sauté garlic" },
+                    new Step { Description = "Add broccoli, carrot, and bell pepper to the pan and cook until tender" },
+                    new Step { Description = "Stir in peas and cooked pasta" },
+                    new Step { Description = "Serve with grated Parmesan cheese on top" }
+                }
+            };
+
+            foreach (Ingredient ingredient in recipe4.Ingredients)
+            {
+                ingredient.SetOriginalValues();
+            }
+
+            RecipeList.Add(recipe4);
+
             SortRecipesAlphabetically();
         }
 
@@ -214,6 +194,10 @@ namespace PROG6221_GUI
         {
 
             //https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-6.0
+            if (RecipeList.Count == 0)
+            {
+                return;
+            }
             RecipeList.RemoveAt(index);
             SortRecipesAlphabetically();
         }
@@ -405,6 +389,82 @@ namespace PROG6221_GUI
                 }
             }
             return recipe;
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        public List<string> IngredientCheckBoxFormat(Recipe recipe)
+        {
+            List<string> ingredientList = new List<string>();
+
+            foreach (Ingredient ingredient in recipe.Ingredients)
+            {
+                ingredientList.Add((ingredient.Quantity < 1 ? ingredient.Quantity.ToString("0.00") : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + ", " + ingredient.Name + " (" + ingredient.Calories.ToString("0") + " kcal)");
+            }
+
+            return ingredientList;
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // strRecipeDetails() creates a string of the recipe in a neat and readable format.
+        // This method will return a string that consists of the recipe's name, ingredients, and steps.
+        public string strRecipeDetails(Recipe recipe)
+        {
+            string recipeDetails = "";
+            // String of recipe's details for ingredients.
+            recipeDetails += recipe.RecipeName + "\n";
+            recipeDetails += "\nIngredients: \n";
+            int i = 1;
+            foreach (Ingredient ingredient in recipe.Ingredients)
+            {
+                recipeDetails += i + ") " + (ingredient.Quantity < 1 ? ingredient.Quantity.ToString("0.00") : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + ", " + ingredient.Name + " (" + ingredient.Calories.ToString("0") + " kcal)\n";
+                i++;
+            }
+
+            // String of recipe's description for each step.
+            recipeDetails += "\nSteps: \n";
+            i = 1;
+            foreach (Step step in recipe.Steps)
+            {
+                recipeDetails += i + ") " + step.Description + "\n";
+                i++;
+            }
+            recipeDetails += "\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories\n";
+
+            return recipeDetails;
+
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        // strRecipeDetails() creates a string of the recipe in a neat and readable format.
+        // This method will return a string that consists of the recipe's name, ingredients, and steps.
+        public string strRecipeList(Recipe recipe)
+        {
+            string recipeDetails = "";
+            // String of recipe's details for ingredients.
+            recipeDetails += recipe.RecipeName + "\n";
+            recipeDetails += "\nIngredients: \n";
+            int i = 1;
+            foreach (Ingredient ingredient in recipe.Ingredients)
+            {
+                recipeDetails += i + ") " + (ingredient.Quantity < 1 ? ingredient.Quantity.ToString("0.00") : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + " of " + ingredient.Name + " (" + ingredient.FoodGroup + ") " + ingredient.Calories.ToString("0") + " calories\n";
+                i++;
+            }
+
+            // String of recipe's description for each step.
+            recipeDetails += "\nSteps: \n";
+            i = 1;
+            foreach (Step step in recipe.Steps)
+            {
+                recipeDetails += i + ") " + step.Description + "\n";
+                i++;
+            }
+            recipeDetails += "\nTotal Calories: " + recipe.TotalCalories.ToString("0") + " calories\n";
+
+            return recipeDetails;
+
         }
 
         //END OF RECIPE MANAGER CLASS

@@ -118,6 +118,10 @@ namespace PROG6221_POE.Classes
         {
 
             //https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-6.0
+            if (RecipeList.Count == 0)
+            {
+                return;
+            }
             RecipeList.RemoveAt(index);
             SortRecipesAlphabetically();
         }

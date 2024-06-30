@@ -17,11 +17,14 @@ namespace PROG6221_GUI.Model
         Kilogram,
         Milliliter,
         Litre,
-        Whole
+        Whole,
+        Clove,
+        Sprig
     }
 
     public enum FoodGroup
     {
+        Any = 0,
         Vegetable = 1,
         Starch,
         Fruit,
@@ -30,6 +33,7 @@ namespace PROG6221_GUI.Model
         Poultry,
         Dairy,
         Oils,
+        Fats,
         Herbs,
         Spices
     }

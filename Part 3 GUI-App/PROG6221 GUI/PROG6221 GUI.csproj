@@ -59,6 +59,18 @@
     <Compile Include="Model\Recipe.cs" />
     <Compile Include="Model\Step.cs" />
     <Compile Include="RecipeManager.cs" />
+    <Compile Include="View\AddIngredientView.xaml.cs">
+      <DependentUpon>AddIngredientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddStepView.xaml.cs">
+      <DependentUpon>AddStepView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CancelView.xaml.cs">
+      <DependentUpon>CancelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfirmView.xaml.cs">
+      <DependentUpon>ConfirmView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateRecipeView.xaml.cs">
       <DependentUpon>CreateRecipeView.xaml</DependentUpon>
     </Compile>
@@ -70,6 +82,12 @@
     </Compile>
     <Compile Include="View\RecipeView.xaml.cs">
       <DependentUpon>RecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchRecipeView.xaml.cs">
+      <DependentUpon>SearchRecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SuccessfulView.xaml.cs">
+      <DependentUpon>SuccessfulView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +101,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ScrollBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddIngredientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddStepView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CancelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConfirmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateRecipeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +134,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SearchRecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SuccessfulView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,6 +164,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Font\Poppins-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

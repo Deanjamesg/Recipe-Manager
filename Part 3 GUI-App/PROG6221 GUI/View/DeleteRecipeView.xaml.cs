@@ -24,14 +24,14 @@ namespace PROG6221_GUI.View
         public DeleteRecipeView(RecipeManager _recipeManager)
         {
             this.recipeManager = _recipeManager;
-            Console.WriteLine("\nDelete Recipe View\n");
-            foreach (Recipe recipe in recipeManager.GetRecipeList())
-            {
-                Console.WriteLine(recipe.RecipeName);
-            }
-
             InitializeComponent();
+            cmbSelectRecipe.ItemsSource = recipeManager.GetRecipeList();
+            if (recipeManager.RecipeList.Count == 0)
+            {
+                btnDeleteSelectedRecipe.IsHitTestVisible = false;
+            }
         }
+
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
         {
             RecipeView recipeView = new RecipeView(recipeManager);
@@ -65,6 +65,49 @@ namespace PROG6221_GUI.View
         {
             Application.Current.Shutdown();
             this.Close();
+        }
+
+        private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            SearchRecipeView searchRecipeView = new SearchRecipeView(recipeManager);
+            searchRecipeView.Show();
+            this.Close();
+        }
+
+        private void btnDeleteSelectedRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            int index = cmbSelectRecipe.SelectedIndex;
+            ConfirmView confirmView = new ConfirmView();
+
+            var result = confirmView.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                recipeManager.DeleteRecipe(index);
+                SuccessfulView successfulView = new SuccessfulView();
+                successfulView.ShowDialog();
+            }
+            else
+            {
+                CancelView cancelView = new CancelView();
+                cancelView.ShowDialog();
+            }
+
+            DeleteRecipeView deleteRecipeView = new DeleteRecipeView(recipeManager);
+            deleteRecipeView.Show();
+            this.Close();
+        }
+
+        private void cmbRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Recipe selectedRecipe = (Recipe)cmbSelectRecipe.SelectedItem;
+            if (selectedRecipe != null)
+            {
+                txtRecipeName.Text = selectedRecipe.RecipeName;
+                lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(selectedRecipe);
+                lstSteps.ItemsSource = selectedRecipe.Steps;
+                lblTotalCalories.Content = "Total Calories: " + recipeManager.CalculateTotalCalories(selectedRecipe).ToString();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROG6221_GUI.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,22 +12,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PROG6221_GUI.Model;
 
 namespace PROG6221_GUI.View
 {
     /// <summary>
-    /// Interaction logic for RecipeView.xaml
+    /// Interaction logic for SearchRecipeView.xaml
     /// </summary>
-    public partial class RecipeView : Window
+    public partial class SearchRecipeView : Window
     {
         public RecipeManager recipeManager;
-
-        public RecipeView(RecipeManager _recipeManager)
+        public SearchRecipeView(RecipeManager _recipeManager)
         {
             this.recipeManager = _recipeManager;
+            string[] calorieOptions = { "", "100", "200", "300", "400", "500", "750", "1000", "1250", "1500", "1750", "2000" };
             InitializeComponent();
-            cmbSelectRecipe.ItemsSource = recipeManager.GetRecipeList();
+            cmbSelectFoodGroup.ItemsSource = Enum.GetValues(typeof(FoodGroup));
+            cmbSelectCalories.ItemsSource = calorieOptions;
+            cmbSelectCalories.SelectedIndex = 0;
+
         }
 
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
@@ -64,17 +67,44 @@ namespace PROG6221_GUI.View
             this.Close();
         }
 
-        private void cmbRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnSubmitSearch_Click(object sender, RoutedEventArgs e)
         {
-            Recipe selectedRecipe = (Recipe)cmbSelectRecipe.SelectedItem;
-            if (selectedRecipe != null)
+            string foodGroup = cmbSelectFoodGroup.SelectedValue.ToString();
+            string ingredient = txtSearchIngredient.Text;
+            double maxCalories = -1;
+
+            if (!cmbSelectCalories.SelectedValue.Equals(""))
             {
-                txtRecipeName.Text = selectedRecipe.RecipeName;
-                lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(selectedRecipe);
-                lstSteps.ItemsSource = selectedRecipe.Steps;
-                lblTotalCalories.Content = "Total Calories: " + recipeManager.CalculateTotalCalories(selectedRecipe).ToString();
+                maxCalories = double.Parse(cmbSelectCalories.SelectedValue.ToString());
             }
 
+            List<Recipe> filteredRecipes = recipeManager.FilteredRecipeSearch(foodGroup, ingredient, maxCalories);
+
+            if (filteredRecipes == null)
+            {
+                CancelView cancelView = new CancelView();
+                cancelView.ShowDialog();
+            }
+            else
+            {
+                lstFilteredRecipes.ItemsSource = filteredRecipes;
+            }
+        }
+
+        private void btnShowRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                Recipe recipe = button.DataContext as Recipe;
+                if (recipe != null)
+                {
+                    RecipeView recipeView = new RecipeView(recipeManager);
+                    recipeView.cmbSelectRecipe.SelectedItem = recipe;
+                    recipeView.Show();
+                    this.Close();
+                }
+            }
         }
 
         private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)

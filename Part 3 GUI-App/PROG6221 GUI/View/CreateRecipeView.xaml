@@ -12,7 +12,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        FontFamily="#Poppins"
+        FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
 
     <Border Background="#00A598"
@@ -38,7 +38,8 @@
                        FontSize="22"
                        Margin="0,0,0,0"/>
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="1"
+                        Margin="0,10,0,0">
 
                 <Button x:Name="btnViewRecipe"
                         Height="35" 
@@ -52,6 +53,26 @@
                         FontSize="14"
                         Click="btnViewRecipe_Click" 
                         Content="View a Recipe">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Color="#005B54"/>
+                    </Button.Effect>
+                </Button>
+                <Label></Label>
+
+                <Button x:Name="btnSearchRecipe"
+                        Height="35" 
+                        VerticalAlignment="Center"
+                        Margin="0,0,0,0" 
+                        Background="#007E74" 
+                        BorderBrush="#00707070" 
+                        Foreground="White" 
+                        HorizontalContentAlignment="Left" 
+                        Padding="5" 
+                        FontSize="14"
+                        Click="btnSearchRecipe_Click" 
+                        Content="Search for a Recipe">
                     <Button.Effect>
                         <DropShadowEffect ShadowDepth="0"
                                           BlurRadius="10"
@@ -153,13 +174,187 @@
             <Grid Grid.Column="1" 
                   Grid.Row="1"
                   Background="#007E74"
-                  Margin="10">
+                  Width="750"
+                  Height="385">
                 <Grid.Effect>
                     <DropShadowEffect 
                         ShadowDepth="0"
                         BlurRadius="10"
                         Color="#005B54"/>
                 </Grid.Effect>
+
+
+                <StackPanel HorizontalAlignment="Left"
+                            Height="385"
+                            Width="250">
+
+                    <Label Content="Please Enter"
+                           HorizontalAlignment="Center" 
+                           FontSize="22" 
+                           Foreground="White"
+                           Margin="0,20,0,0"/>
+                    
+                    <Label Content="the recipe name"
+                           HorizontalAlignment="Center" 
+                           FontSize="16" 
+                           Foreground="White"
+                           Margin="0,-10,0,0"/>
+
+                    <TextBox x:Name="txtRecipeNameField" 
+                             HorizontalAlignment="Center"  
+                             VerticalAlignment="Top" 
+                             Background="#E8E8E8"
+                             Width="210"
+                             Height="27"
+                             FontSize="14"
+                             Margin="0,0,0,10"
+                             Foreground="Black"/>
+
+                    <Label Content="Select the number of" 
+                           HorizontalAlignment="Center" 
+                           Foreground="White" 
+                           FontSize="20"
+                           Margin="0,5,0,10"/>
+
+                    <Label Content="Ingredients"
+                           HorizontalAlignment="Center" 
+                           FontSize="16" 
+                           Foreground="White"
+                           Margin="0,-15,0,0"/>
+
+                    <ComboBox x:Name="cmbNumberOfIngredients" 
+                              HorizontalAlignment="Center"  
+                              VerticalAlignment="Top" 
+                              SelectedIndex="0"
+                              Width="210"
+                              FontSize="13"
+                              Foreground="Black"/>
+
+                    <Label Content="Steps"
+                           HorizontalAlignment="Center" 
+                           FontSize="16" 
+                           Foreground="White"
+                           Margin="0,10,0,0"/>
+
+                    <ComboBox x:Name="cmbNumberOfSteps" 
+                              HorizontalAlignment="Center"  
+                              VerticalAlignment="Top" 
+                              SelectedIndex="0"
+                              Width="210"
+                              FontSize="13" 
+                              Foreground="Black"/>
+
+
+                    <Button Content="Next" 
+                            HorizontalAlignment="Center"  
+                            Width="100" 
+                            Height="45" 
+                            Margin="120,20,0,0"
+                            Background="#00675F"
+                            BorderBrush="Transparent"
+                            Foreground="White" 
+                            FontSize="14" 
+                            Click="btnNext_Click"/>
+                    
+                    <Button Content="Cancel" 
+                            HorizontalAlignment="Center"  
+                            Width="100" 
+                            Height="45" 
+                            Margin="-120,-45,0,0"
+                            Background="#00675F"
+                            BorderBrush="Transparent"
+                            Foreground="White" 
+                            FontSize="14" 
+                            Click="btnCancel_Click"/>
+
+                </StackPanel>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              HorizontalAlignment="Right"
+                              Width="490"
+                              Margin="0,0,5,0"
+                              Height="365"
+                              Background="Transparent">
+                    <ScrollViewer.Resources>
+                        <Style TargetType="ScrollBar" 
+                               BasedOn="{StaticResource CustomScrollBarStyle}" />
+                    </ScrollViewer.Resources>
+                    <StackPanel HorizontalAlignment="Left"
+                                Width="470"
+                                Background="Transparent">
+
+                        <TextBlock x:Name="txtRecipeName" 
+                                   Foreground="White"
+                                   Text="Recipe Name"
+                                   FontSize="18" 
+                                   Margin="10,10,10,10"/>
+
+                        <Label Content="Ingredients" 
+                               FontSize="18"
+                               Margin="10,10,10,10"
+                               Foreground="White"/>
+
+                        <ListBox x:Name="lstIngredients"
+                                 Background="Transparent" 
+                                 BorderBrush="Transparent"
+                                 Width="440"
+                                 HorizontalAlignment="Left"
+                                 Margin="10,0,0,0"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 d:ItemsSource="{d:SampleData ItemCount=1}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Foreground="White"
+                                              Background="Transparent"
+                                              BorderThickness="2"
+                                              BorderBrush="White"
+                                              IsChecked="False"
+                                              FontFamily="Poppins" 
+                                              FontSize="14">
+                                        <TextBlock Text="{Binding}" 
+                                                   TextWrapping="Wrap"/>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Label Content="Steps"
+                               FontSize="18"
+                               Margin="10,10,10,10"
+                               Foreground="White"/>
+
+                        <ListBox x:Name="lstSteps"
+                                 Background="Transparent"
+                                 BorderBrush="Transparent"
+                                 Width="400"
+                                 HorizontalAlignment="Left"
+                                 Margin="10,0,0,0"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Foreground="White"
+                                              Background="Transparent"
+                                              BorderThickness="2"
+                                              BorderBrush="White"
+                                              IsChecked="False"
+                                              FontFamily="Poppins" 
+                                              FontSize="14">
+                                        <TextBlock Text="{Binding Description}" 
+                                                   TextWrapping="Wrap"/>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Label x:Name="lblTotalCalories"                               
+                               FontSize="18"
+                               Margin="10,10,10,10"
+                               Foreground="White"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+
             </Grid>
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,10 +27,10 @@ namespace PROG6221_GUI
 
         public MainWindow()
         {
-            Console.WriteLine("\nInitializing Recipe Manager\n");
             recipeManager = new RecipeManager();
             recipeManager.CreateSampleRecipes();
             InitializeComponent();
+
         }
 
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
@@ -64,6 +65,13 @@ namespace PROG6221_GUI
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+            this.Close();
+        }
+
+        private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            SearchRecipeView searchRecipeView = new SearchRecipeView(recipeManager);
+            searchRecipeView.Show();
             this.Close();
         }
     }
