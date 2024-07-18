@@ -171,6 +171,7 @@ namespace PROG6221_GUI
             {
                 ingredient.SetOriginalValues();
             }
+            recipe4.TotalCalories = CalculateTotalCalories(recipe4);
 
             RecipeList.Add(recipe4);
 

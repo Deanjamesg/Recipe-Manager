@@ -187,13 +187,18 @@
                 <StackPanel HorizontalAlignment="Left"
                             Height="385"
                             Width="250">
+                    <StackPanel.Effect>
+                        <DropShadowEffect
+                            ShadowDepth="2"
+                            BlurRadius="15"/>
+                    </StackPanel.Effect>
 
                     <Label Content="Select a Recipe" 
                            HorizontalAlignment="Center" 
                            FontSize="24" 
                            Foreground="White"
                            Margin="0,20,0,10"/>
-                    
+
                     <Label Content="Recipes" 
                            HorizontalAlignment="Center" 
                            Foreground="White" 
@@ -205,20 +210,20 @@
                               VerticalAlignment="Top" 
                               SelectedIndex="0"
                               Width="210"
-                              FontSize="13"
+                              FontSize="14"
                               SelectionChanged="cmbRecipe_SelectionChanged" 
                               Foreground="Black">
                         <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0} ({1} kcal)">
-                                        <Binding Path="RecipeName" />
-                                        <Binding Path="TotalCalories" />
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                        </DataTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} ({1} kcal)">
+                                            <Binding Path="RecipeName" />
+                                            <Binding Path="TotalCalories" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
@@ -253,18 +258,18 @@
                         <TextBlock x:Name="txtRecipeName" 
                                    Foreground="White"
                                    Text="Recipe Name"
-                                   FontSize="18" 
+                                   FontSize="24" 
                                    Margin="10,10,10,10"/>
 
-                        <Label Content="Ingredients" 
-                               FontSize="18"
-                               Margin="10,10,10,10"
-                               Foreground="White"/>
+                        <TextBlock Text="Ingredients" 
+                                   FontSize="18"
+                                   Margin="10,10,10,10"
+                                   Foreground="White"/>
 
                         <ListBox x:Name="lstIngredients"
                                  Background="Transparent" 
                                  BorderBrush="Transparent"
-                                 Width="440"
+                                 Width="350"
                                  HorizontalAlignment="Left"
                                  Margin="10,0,0,0"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -276,7 +281,7 @@
                                               BorderThickness="2"
                                               BorderBrush="White"
                                               IsChecked="False"
-                                              FontFamily="Poppins" 
+                                              FontFamily="Poppins"
                                               FontSize="14">
                                         <TextBlock Text="{Binding}" 
                                                    TextWrapping="Wrap"/>
@@ -285,15 +290,15 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <Label Content="Steps"
-                               FontSize="18"
-                               Margin="10,10,10,10"
-                               Foreground="White"/>
+                        <TextBlock Text="Steps" 
+                                   FontSize="18"
+                                   Margin="10,10,10,10"
+                                   Foreground="White"/>
 
                         <ListBox x:Name="lstSteps"
                                  Background="Transparent"
                                  BorderBrush="Transparent"
-                                 Width="400"
+                                 Width="350"
                                  HorizontalAlignment="Left"
                                  Margin="10,0,0,0"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -313,6 +318,7 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
+                        
                         <Label x:Name="lblTotalCalories"                               
                                FontSize="18"
                                Margin="10,10,10,10"

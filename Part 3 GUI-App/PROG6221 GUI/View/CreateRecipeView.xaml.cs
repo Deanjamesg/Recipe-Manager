@@ -78,13 +78,21 @@ namespace PROG6221_GUI.View
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            recipe.RecipeName = txtRecipeNameField.Text;
-            int numberOfIngredients = int.Parse(cmbNumberOfIngredients.SelectedValue.ToString());
-            int numberOfSteps = int.Parse(cmbNumberOfSteps.SelectedValue.ToString());
+            //recipe.RecipeName = txtRecipeNameField.Text;
+            //int numberOfIngredients = int.Parse(cmbNumberOfIngredients.SelectedValue.ToString());
+            //int numberOfSteps = int.Parse(cmbNumberOfSteps.SelectedValue.ToString());
 
-            AddIngredientView addIngredientView = new AddIngredientView(recipeManager, recipe, numberOfIngredients, numberOfSteps);
-            addIngredientView.Show();
-            this.Close();
+            //AddIngredientView addIngredientView = new AddIngredientView(recipeManager, recipe, numberOfIngredients, numberOfSteps);
+            //addIngredientView.Show();
+            //this.Close();
+
+            Recipe selectedRecipe = recipeManager.GetRecipe(1);
+            
+            txtRecipeName.Text = selectedRecipe.RecipeName;
+            lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(selectedRecipe);
+            lstSteps.ItemsSource = selectedRecipe.Steps;
+
+            cmbNumberOfIngredients.Visibility = Visibility.Collapsed;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -98,5 +106,6 @@ namespace PROG6221_GUI.View
             this.Close();
 
         }
+
     }
 }

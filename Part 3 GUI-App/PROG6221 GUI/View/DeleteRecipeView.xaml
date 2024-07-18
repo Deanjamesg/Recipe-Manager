@@ -260,18 +260,18 @@
                         <TextBlock x:Name="txtRecipeName" 
                                    Foreground="White"
                                    Text="Recipe Name"
-                                   FontSize="18" 
+                                   FontSize="24" 
                                    Margin="10,10,10,10"/>
 
-                        <Label Content="Ingredients" 
-                               FontSize="18"
-                               Margin="10,10,10,10"
-                               Foreground="White"/>
+                        <TextBlock Text="Ingredients" 
+                                   FontSize="18"
+                                   Margin="10,10,10,10"
+                                   Foreground="White"/>
 
                         <ListBox x:Name="lstIngredients"
                                  Background="Transparent" 
                                  BorderBrush="Transparent"
-                                 Width="440"
+                                 Width="350"
                                  HorizontalAlignment="Left"
                                  Margin="10,0,0,0"
                                  IsHitTestVisible="False"
@@ -293,15 +293,15 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <Label Content="Steps"
-                               FontSize="18"
-                               Margin="10,10,10,10"
-                               Foreground="White"/>
+                        <TextBlock Text="Steps" 
+                                   FontSize="18"
+                                   Margin="10,10,10,10"
+                                   Foreground="White"/>
 
                         <ListBox x:Name="lstSteps"
                                  Background="Transparent"
                                  BorderBrush="Transparent"
-                                 Width="400"
+                                 Width="350"
                                  HorizontalAlignment="Left"
                                  Margin="10,0,0,0"
                                  IsHitTestVisible="False"

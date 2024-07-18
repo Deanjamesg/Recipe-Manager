@@ -32,6 +32,7 @@ namespace PROG6221_GUI.View
             cmbFoodGroup.SelectedIndex = 0;
             cmbUnitOM.ItemsSource = Enum.GetValues(typeof(UnitOM));
             cmbUnitOM.SelectedIndex = 0;
+            recipe.Ingredients = new List<Ingredient>(numberOfIngredients);
         }
 
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
