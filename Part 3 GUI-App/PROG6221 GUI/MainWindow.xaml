@@ -39,127 +39,126 @@
                        Margin="0,0,0,0"/>
 
             <StackPanel Grid.Row="1"
-                        Margin="0,10,0,0">
+                        Margin="5,10,10,10">
+                <StackPanel.Effect>
+                    <DropShadowEffect
+                            ShadowDepth="1"
+                            BlurRadius="15"/>
+                </StackPanel.Effect>
 
                 <Button x:Name="btnViewRecipe"
                         Height="35" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0" 
+                        Margin="0,0,0,15" 
                         Background="#007E74" 
                         BorderBrush="#00707070" 
                         Foreground="White" 
-                        HorizontalContentAlignment="Left" 
-                        Padding="5" 
-                        FontSize="14"
+                        HorizontalContentAlignment="Center" 
+                        Padding="5"
+                        FontSize="16"
                         Click="btnViewRecipe_Click" 
-                        Content="View a Recipe">
+                        Content="View Recipe">
                     <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
+                        <DropShadowEffect ShadowDepth="1"
+                                          Opacity="0.5"
+                                          BlurRadius="5"
                                           Color="#005B54"/>
                     </Button.Effect>
                 </Button>
-                <Label></Label>
 
                 <Button x:Name="btnSearchRecipe"
                         Height="35" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0" 
+                        Margin="0,0,0,15" 
                         Background="#007E74" 
                         BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Left" 
+                        Foreground="White"
+                        HorizontalContentAlignment="Center" 
                         Padding="5" 
-                        FontSize="14"
+                        FontSize="16"
                         Click="btnSearchRecipe_Click" 
-                        Content="Search for a Recipe">
+                        Content="Search for Recipe">
                     <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
+                        <DropShadowEffect ShadowDepth="1"
+                                          Opacity="0.5"
+                                          BlurRadius="5"
                                           Color="#005B54"/>
                     </Button.Effect>
                 </Button>
-                <Label></Label>
 
                 <Button x:Name="btnCreateRecipe"
                         Height="35" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0" 
+                        Margin="0,0,0,15" 
                         Background="#007E74" 
                         BorderBrush="#00707070" 
                         Foreground="White" 
-                        HorizontalContentAlignment="Left" 
+                        HorizontalContentAlignment="Center" 
                         Padding="5" 
-                        FontSize="14"
+                        FontSize="16"
                         Click="btnCreateRecipe_Click" 
-                        Content="Create a Recipe">
+                        Content="Create Recipe">
                     <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
+                        <DropShadowEffect ShadowDepth="1"
+                                          Opacity="0.5"
+                                          BlurRadius="5"
                                           Color="#005B54"/>
                     </Button.Effect>
                 </Button>
-                <Label></Label>
 
                 <Button x:Name="btnEditScale"
                         Height="35" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0" 
+                        Margin="0,0,0,15" 
                         Background="#007E74" 
                         BorderBrush="#00707070" 
                         Foreground="White" 
-                        HorizontalContentAlignment="Left" 
+                        HorizontalContentAlignment="Center" 
                         Padding="5" 
-                        FontSize="14"
+                        FontSize="16"
                         Click="btnEditScale_Click" 
-                        Content="Scale a Recipe">
+                        Content="Scale Recipe">
                     <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
+                        <DropShadowEffect ShadowDepth="1"
+                                          Opacity="0.5"
+                                          BlurRadius="5"
                                           Color="#005B54"/>
                     </Button.Effect>
                 </Button>
-                <Label></Label>
 
                 <Button x:Name="btnDeleteRecipe"
                         Height="35" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0" 
+                        Margin="0,0,0,15" 
                         Background="#007E74" 
                         BorderBrush="#00707070" 
                         Foreground="White" 
-                        HorizontalContentAlignment="Left" 
+                        HorizontalContentAlignment="Center" 
                         Padding="5" 
-                        FontSize="14"
+                        FontSize="16"
                         Click="btnDeleteRecipe_Click" 
                         Content="Delete a Recipe">
                     <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
+                        <DropShadowEffect ShadowDepth="1"
+                                          Opacity="0.5"
+                                          BlurRadius="5"
                                           Color="#005B54"/>
                     </Button.Effect>
                 </Button>
-                <Label></Label>
 
                 <Button x:Name="btnExit"
                         Height="35" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0" 
+                        Margin="0,100,0,0" 
                         Background="#007E74" 
                         BorderBrush="#00707070" 
                         Foreground="White" 
-                        HorizontalContentAlignment="Left" 
+                        HorizontalContentAlignment="Center" 
                         Padding="5" 
-                        FontSize="14"
+                        FontSize="16"
                         Click="btnExit_Click" 
                         Content="Exit">
                     <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
+                        <DropShadowEffect ShadowDepth="1"
+                                          Opacity="0.5"
+                                          BlurRadius="5"
                                           Color="#005B54"/>
                     </Button.Effect>
                 </Button>
-                <Label></Label>
 
             </StackPanel>
 

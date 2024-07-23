@@ -28,7 +28,8 @@ namespace PROG6221_GUI
         public MainWindow()
         {
             recipeManager = new RecipeManager();
-            recipeManager.CreateSampleRecipes();
+            recipeManager.StartRecipeProgram();
+
             InitializeComponent();
 
         }

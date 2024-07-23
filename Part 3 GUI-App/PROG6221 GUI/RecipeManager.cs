@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using PROG6221_GUI.Model;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace PROG6221_GUI
 {
@@ -16,6 +16,36 @@ namespace PROG6221_GUI
         public RecipeManager()
         {
             RecipeList = new List<Recipe>();
+        }
+
+        public void StartRecipeProgram()
+        {
+            CreateSampleRecipes();
+
+            // Create a prompt that allows the user to choose between loading recipes from a file or only store recipes while app is running.
+
+            //recipeManager.SaveRecipesToFile();
+            //recipeManager.LoadRecipesFromFile();
+        }
+
+        public void SaveRecipesToFile()
+        {
+            string json = JsonConvert.SerializeObject(RecipeList, Formatting.Indented);
+
+            File.WriteAllText("Recipes\\SavedRecipes", json);
+        }
+
+        public void LoadRecipesFromFile()
+        {
+            if (File.Exists("Recipes\\SavedRecipes"))
+            {
+                string json = File.ReadAllText("Recipes\\SavedRecipes");
+                RecipeList = JsonConvert.DeserializeObject<List<Recipe>>(json);
+                if (RecipeList == null)
+                {
+                    RecipeList = new List<Recipe>();
+                }
+            }
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------

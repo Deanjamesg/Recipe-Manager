@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,12 +62,6 @@
     <Compile Include="Model\Recipe.cs" />
     <Compile Include="Model\Step.cs" />
     <Compile Include="RecipeManager.cs" />
-    <Compile Include="View\AddIngredientView.xaml.cs">
-      <DependentUpon>AddIngredientView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\AddStepView.xaml.cs">
-      <DependentUpon>AddStepView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\CancelView.xaml.cs">
       <DependentUpon>CancelView.xaml</DependentUpon>
     </Compile>
@@ -102,14 +99,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ScrollBarStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\AddIngredientView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\AddStepView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +154,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="Font\Poppins-Regular.ttf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -173,6 +163,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

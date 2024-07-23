@@ -22,17 +22,27 @@ namespace PROG6221_GUI.View
     public partial class CreateRecipeView : Window
     {
         RecipeManager recipeManager;
-        public Recipe recipe { get; set; }
+
+        Recipe newRecipe = new Recipe();
 
         public CreateRecipeView(RecipeManager _recipeManager)
         {
             this.recipeManager = _recipeManager;
             InitializeComponent();
+
             string[] ingredientOptions = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
             string[] stepOptions = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
+
             cmbNumberOfIngredients.ItemsSource = ingredientOptions;
             cmbNumberOfSteps.ItemsSource = stepOptions;
-            recipe = new Recipe();
+
+            cmbFoodGroup.ItemsSource = Enum.GetValues(typeof(FoodGroup)).Cast<FoodGroup>().Skip(1).ToArray();
+            cmbFoodGroup.SelectedIndex = 0;
+
+            cmbUnitOM.ItemsSource = Enum.GetValues(typeof(UnitOM));
+            cmbUnitOM.SelectedIndex = 0;
+
+            newRecipe = new Recipe();
         }
 
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
@@ -76,36 +86,86 @@ namespace PROG6221_GUI.View
             this.Close();
         }
 
-        private void btnNext_Click(object sender, RoutedEventArgs e)
+        private void btnGoIngredientsPrompt_Click(object sender, RoutedEventArgs e)
         {
-            //recipe.RecipeName = txtRecipeNameField.Text;
-            //int numberOfIngredients = int.Parse(cmbNumberOfIngredients.SelectedValue.ToString());
-            //int numberOfSteps = int.Parse(cmbNumberOfSteps.SelectedValue.ToString());
-
-            //AddIngredientView addIngredientView = new AddIngredientView(recipeManager, recipe, numberOfIngredients, numberOfSteps);
-            //addIngredientView.Show();
-            //this.Close();
-
-            Recipe selectedRecipe = recipeManager.GetRecipe(1);
+            newRecipe.RecipeName = txtRecipeNameField.Text;
             
-            txtRecipeName.Text = selectedRecipe.RecipeName;
-            lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(selectedRecipe);
-            lstSteps.ItemsSource = selectedRecipe.Steps;
+            txtRecipeName.Text = newRecipe.RecipeName;
 
-            cmbNumberOfIngredients.Visibility = Visibility.Collapsed;
+            panelRecipeDetails.Visibility = Visibility.Hidden;
+            panelIngredientDetails.Visibility = Visibility.Visible;
+            txtRecipeName.Visibility = Visibility.Visible;
+            txtIngredients.Visibility = Visibility.Visible;
+        }
+
+        private void btnAddIngredient_Click(object sender, RoutedEventArgs e)
+        {
+            Ingredient newIngredient = new Ingredient();
+            newIngredient.FoodGroup = (FoodGroup)cmbFoodGroup.SelectedValue;
+            newIngredient.Name = txtIngredientName.Text;
+            newIngredient.Quantity = double.Parse(txtQuantity.Text);
+            newIngredient.UnitOfMeasurement = (UnitOM)cmbUnitOM.SelectedValue;
+            newIngredient.Calories = double.Parse(txtCalories.Text);
+
+            newRecipe.Ingredients.Add(newIngredient);
+            lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(newRecipe);
+            ClearUIFields();
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             CancelView cancelView = new CancelView();
             cancelView.ShowDialog();
-            recipe = new Recipe();
 
             RecipeView recipeView = new RecipeView(recipeManager);
             recipeView.Show();
             this.Close();
 
         }
+
+        private void btnGoStepsPrompt_Click(object sender, RoutedEventArgs e)
+        {
+            txtSteps.Visibility = Visibility.Visible;
+            panelIngredientDetails.Visibility = Visibility.Hidden;
+            panelStepDetails.Visibility = Visibility.Visible;
+        }
+
+        private void btnAddStep_Click(object sender, RoutedEventArgs e)
+        {
+            Step newStep = new Step();
+            newStep.Description = txtStepDescription.Text;
+            newRecipe.Steps.Add(newStep);
+            lstSteps.ItemsSource = null;
+            lstSteps.ItemsSource = newRecipe.Steps;
+            txtStepDescription.Clear();
+
+        }
+
+        private void btnDone_Click(object sender, RoutedEventArgs e)
+        {
+            recipeManager.AddNewRecipe(newRecipe);
+            recipeManager.SaveRecipesToFile();
+
+            SuccessfulView successfulView = new SuccessfulView();
+            successfulView.ShowDialog();
+
+            RecipeView recipeView = new RecipeView(recipeManager);
+            recipeView.cmbSelectRecipe.SelectedItem = newRecipe;
+            recipeView.Show();
+            this.Close();
+        }
+
+        private void ClearUIFields()
+        {
+            txtIngredientName.Clear();
+            txtQuantity.Clear();
+            cmbFoodGroup.SelectedIndex = 0;
+            cmbUnitOM.SelectedIndex = 0;
+            txtCalories.Clear();
+            
+        }
+
 
     }
 }
