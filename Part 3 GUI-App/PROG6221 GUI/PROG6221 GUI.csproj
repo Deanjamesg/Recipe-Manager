@@ -62,12 +62,6 @@
     <Compile Include="Model\Recipe.cs" />
     <Compile Include="Model\Step.cs" />
     <Compile Include="RecipeManager.cs" />
-    <Compile Include="View\CancelView.xaml.cs">
-      <DependentUpon>CancelView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ConfirmView.xaml.cs">
-      <DependentUpon>ConfirmView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\CreateRecipeView.xaml.cs">
       <DependentUpon>CreateRecipeView.xaml</DependentUpon>
     </Compile>
@@ -77,14 +71,17 @@
     <Compile Include="View\EditScaleView.xaml.cs">
       <DependentUpon>EditScaleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\OptionPopUpBox.xaml.cs">
+      <DependentUpon>OptionPopUpBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PopUpBox.xaml.cs">
+      <DependentUpon>PopUpBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RecipeView.xaml.cs">
       <DependentUpon>RecipeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SearchRecipeView.xaml.cs">
       <DependentUpon>SearchRecipeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SuccessfulView.xaml.cs">
-      <DependentUpon>SuccessfulView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -102,14 +99,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CancelView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ConfirmView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\CreateRecipeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,15 +111,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\OptionPopUpBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopUpBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RecipeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SearchRecipeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SuccessfulView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

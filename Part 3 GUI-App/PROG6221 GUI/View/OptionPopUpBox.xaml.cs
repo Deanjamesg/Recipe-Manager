@@ -15,17 +15,24 @@ using System.Windows.Shapes;
 namespace PROG6221_GUI.View
 {
     /// <summary>
-    /// Interaction logic for SuccessfulView.xaml
+    /// Interaction logic for OptionPopUpBox.xaml
     /// </summary>
-    public partial class SuccessfulView : Window
+    public partial class OptionPopUpBox : Window
     {
-        public SuccessfulView()
+        public OptionPopUpBox(string _Task)
         {
             InitializeComponent();
+            OptionDialog.Text = "Are you sure you want to " + @_Task;
+        }
+        private void btnYes_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void btnNo_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
     }

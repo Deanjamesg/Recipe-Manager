@@ -115,8 +115,8 @@ namespace PROG6221_GUI.View
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            CancelView cancelView = new CancelView();
-            cancelView.ShowDialog();
+            PopUpBox popUpBox = new PopUpBox("Cancelled!");
+            popUpBox.ShowDialog();
 
             RecipeView recipeView = new RecipeView(recipeManager);
             recipeView.Show();
@@ -147,8 +147,8 @@ namespace PROG6221_GUI.View
             recipeManager.AddNewRecipe(newRecipe);
             recipeManager.SaveRecipesToFile();
 
-            SuccessfulView successfulView = new SuccessfulView();
-            successfulView.ShowDialog();
+            PopUpBox popUpBox = new PopUpBox("Successful!");
+            popUpBox.ShowDialog();
 
             RecipeView recipeView = new RecipeView(recipeManager);
             recipeView.cmbSelectRecipe.SelectedItem = newRecipe;

@@ -82,8 +82,8 @@ namespace PROG6221_GUI.View
 
             if (filteredRecipes == null)
             {
-                CancelView cancelView = new CancelView();
-                cancelView.ShowDialog();
+                PopUpBox popUpBox = new PopUpBox("Cancelled!");
+                popUpBox.ShowDialog();
             }
             else
             {

@@ -197,7 +197,13 @@
                            HorizontalAlignment="Center" 
                            FontSize="24" 
                            Foreground="White"
-                           Margin="0,20,0,10"/>
+                           Margin="0,20,0,0"/>
+                    
+                    <Label Content="to view" 
+                           HorizontalAlignment="Center" 
+                           FontSize="16" 
+                           Foreground="White"
+                           Margin="0,-15,0,0"/>
 
                     <Label Content="Recipes" 
                            HorizontalAlignment="Center" 
@@ -227,15 +233,15 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <Button Content="Search for a Recipe" 
+                    <Button Content="Search for Recipe" 
                             HorizontalAlignment="Center"  
-                            Width="160" 
+                            Width="180" 
                             Height="45" 
-                            Margin="0,130,0,0"
-                            Background="#00675F"
+                            Margin="0,110,0,0"
+                            Background="#005D55"
                             BorderBrush="Transparent"
                             Foreground="White" 
-                            FontSize="14" 
+                            FontSize="18" 
                             Click="btnSearchRecipe_Click"/>
 
                 </StackPanel>
@@ -251,12 +257,13 @@
                         <Style TargetType="ScrollBar" 
                                BasedOn="{StaticResource CustomScrollBarStyle}" />
                     </ScrollViewer.Resources>
+
                     <StackPanel HorizontalAlignment="Left"
                                 Width="470"
-                                Background="Transparent">
+                                Background="#C4F9E6">
 
                         <TextBlock x:Name="txtRecipeName" 
-                                   Foreground="White"
+                                   Foreground="Black"
                                    Text="Recipe Name"
                                    FontSize="24" 
                                    Margin="10,10,10,10"/>
@@ -264,7 +271,7 @@
                         <TextBlock Text="Ingredients" 
                                    FontSize="18"
                                    Margin="10,10,10,10"
-                                   Foreground="White"/>
+                                   Foreground="Black"/>
 
                         <ListBox x:Name="lstIngredients"
                                  Background="Transparent" 
@@ -276,10 +283,10 @@
                                  d:ItemsSource="{d:SampleData ItemCount=1}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <CheckBox Foreground="White"
+                                    <CheckBox Foreground="Black"
                                               Background="Transparent"
                                               BorderThickness="2"
-                                              BorderBrush="White"
+                                              BorderBrush="Black"
                                               IsChecked="False"
                                               FontFamily="Poppins"
                                               FontSize="14">
@@ -293,7 +300,7 @@
                         <TextBlock Text="Steps" 
                                    FontSize="18"
                                    Margin="10,10,10,10"
-                                   Foreground="White"/>
+                                   Foreground="Black"/>
 
                         <ListBox x:Name="lstSteps"
                                  Background="Transparent"
@@ -305,10 +312,10 @@
                                  d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <CheckBox Foreground="White"
+                                    <CheckBox Foreground="Black"
                                               Background="Transparent"
                                               BorderThickness="2"
-                                              BorderBrush="White"
+                                              BorderBrush="Black"
                                               IsChecked="False"
                                               FontFamily="Poppins" 
                                               FontSize="14">
@@ -319,10 +326,11 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                         
-                        <Label x:Name="lblTotalCalories"                               
+                        <Label x:Name="lblTotalCalories" 
+                               Content="Total Calories:"
                                FontSize="18"
                                Margin="10,10,10,10"
-                               Foreground="White"/>
+                               Foreground="Black"/>
 
                     </StackPanel>
                 </ScrollViewer>

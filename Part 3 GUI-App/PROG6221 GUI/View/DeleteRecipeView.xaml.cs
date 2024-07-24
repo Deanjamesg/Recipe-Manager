@@ -77,20 +77,21 @@ namespace PROG6221_GUI.View
         private void btnDeleteSelectedRecipe_Click(object sender, RoutedEventArgs e)
         {
             int index = cmbSelectRecipe.SelectedIndex;
-            ConfirmView confirmView = new ConfirmView();
 
-            var result = confirmView.ShowDialog();
+            OptionPopUpBox optionPopUpBox = new OptionPopUpBox("delete this recipe?");
+
+            var result = optionPopUpBox.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
                 recipeManager.DeleteRecipe(index);
-                SuccessfulView successfulView = new SuccessfulView();
-                successfulView.ShowDialog();
+                PopUpBox popUpBox = new PopUpBox("Deleted!");
+                popUpBox.ShowDialog();
             }
             else
             {
-                CancelView cancelView = new CancelView();
-                cancelView.ShowDialog();
+                PopUpBox popUpBox = new PopUpBox("Cancelled!");
+                popUpBox.ShowDialog();
             }
 
             DeleteRecipeView deleteRecipeView = new DeleteRecipeView(recipeManager);

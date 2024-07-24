@@ -15,24 +15,18 @@ using System.Windows.Shapes;
 namespace PROG6221_GUI.View
 {
     /// <summary>
-    /// Interaction logic for ConfirmView.xaml
+    /// Interaction logic for PopUpBox.xaml
     /// </summary>
-    public partial class ConfirmView : Window
+    public partial class PopUpBox : Window
     {
-        public ConfirmView()
+        public PopUpBox(string _Message)
         {
             InitializeComponent();
+            AlertString.Text = _Message;
         }
 
-        private void btnYes_Click(object sender, RoutedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            this.Close();
-        }
-
-        private void btnNo_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
             this.Close();
         }
     }

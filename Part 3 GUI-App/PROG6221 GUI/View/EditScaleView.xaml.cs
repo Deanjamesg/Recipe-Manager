@@ -84,8 +84,8 @@ namespace PROG6221_GUI.View
             {
                 scale = double.Parse(cmbSelectScale.SelectedValue.ToString());
                 recipeManager.ScaleRecipe(index, scale);
-                SuccessfulView successfulView = new SuccessfulView();
-                successfulView.ShowDialog();
+                PopUpBox popUpBox = new PopUpBox("Recipe Scaled!");
+                popUpBox.ShowDialog();
             }
 
             EditScaleView editScaleView = new EditScaleView(recipeManager);
@@ -100,8 +100,8 @@ namespace PROG6221_GUI.View
             int index = cmbSelectRecipe.SelectedIndex;
             recipeManager.ResetRecipeScale(index);
 
-            SuccessfulView successfulView = new SuccessfulView();
-            successfulView.ShowDialog();
+            PopUpBox popUpBox = new PopUpBox("Recipe Reset!");
+            popUpBox.ShowDialog();
 
             EditScaleView editScaleView = new EditScaleView(recipeManager);
             editScaleView.cmbSelectRecipe.SelectedIndex = index;
