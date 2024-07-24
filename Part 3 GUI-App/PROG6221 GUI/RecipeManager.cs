@@ -205,6 +205,134 @@ namespace PROG6221_GUI
 
             RecipeList.Add(recipe4);
 
+            // Sample Recipe 5
+            Recipe recipe5 = new Recipe
+            {
+                RecipeName = "Chicken Salad",
+                ScaleFactor = 1,
+                Ingredients = new List<Ingredient>
+                {
+                    new Ingredient { Name = "Chicken Breast", Quantity = 200, UnitOfMeasurement = UnitOM.Gram, FoodGroup = FoodGroup.Poultry, Calories = 330 },
+                    new Ingredient { Name = "Lettuce", Quantity = 2, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Vegetable, Calories = 10 },
+                    new Ingredient { Name = "Tomato", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 22 },
+                    new Ingredient { Name = "Cucumber", Quantity = 0.5, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 8 },
+                    new Ingredient { Name = "Olive Oil", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Fats, Calories = 120 }
+                },
+                Steps = new List<Step>
+                {
+                    new Step { Description = "Grill the chicken breast and slice it." },
+                    new Step { Description = "Chop the lettuce, tomato, and cucumber." },
+                    new Step { Description = "Mix all ingredients in a bowl and drizzle with olive oil." }
+                }
+            };
+
+            foreach (Ingredient ingredient in recipe5.Ingredients)
+            {
+                ingredient.SetOriginalValues();
+            }
+            recipe5.TotalCalories = CalculateTotalCalories(recipe5);
+
+            recipe5 = NormalizeQuantities(recipe5);
+
+            RecipeList.Add(recipe5);
+
+            // Sample Recipe 6
+            Recipe recipe6 = new Recipe
+            {
+                RecipeName = "Fruit Smoothie",
+                ScaleFactor = 1,
+                Ingredients = new List<Ingredient>
+                {
+                    new Ingredient { Name = "Banana", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Fruit, Calories = 105 },
+                    new Ingredient { Name = "Strawberries", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Fruit, Calories = 50 },
+                    new Ingredient { Name = "Greek Yogurt", Quantity = 0.5, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Dairy, Calories = 100 },
+                    new Ingredient { Name = "Honey", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Sugar, Calories = 64 },
+                    new Ingredient { Name = "Milk", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Dairy, Calories = 103 }
+                },
+                Steps = new List<Step>
+                {
+                    new Step { Description = "Combine all ingredients in a blender." },
+                    new Step { Description = "Blend until smooth." },
+                    new Step { Description = "Serve immediately." }
+                }
+            };
+
+            foreach (Ingredient ingredient in recipe6.Ingredients)
+            {
+                ingredient.SetOriginalValues();
+            }
+            recipe6.TotalCalories = CalculateTotalCalories(recipe6);
+
+            recipe6 = NormalizeQuantities(recipe6);
+
+            RecipeList.Add(recipe6);
+
+            // Sample Recipe 7
+            Recipe recipe7 = new Recipe
+            {
+                RecipeName = "Beef Stir Fry",
+                ScaleFactor = 1,
+                Ingredients = new List<Ingredient>
+                {
+
+                    new Ingredient { Name = "Beef Strips", Quantity = 200, UnitOfMeasurement = UnitOM.Gram, FoodGroup = FoodGroup.Meat, Calories = 250 },
+                    new Ingredient { Name = "Bell Pepper", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 24 },
+                    new Ingredient { Name = "Broccoli Florets", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Vegetable, Calories = 55 },
+                    new Ingredient { Name = "Soy Sauce", Quantity = 2, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Condiment, Calories = 20 },
+                    new Ingredient { Name = "Olive Oil", Quantity = 1, UnitOfMeasurement = UnitOM.Tablespoon, FoodGroup = FoodGroup.Oils, Calories = 120 }
+                },
+                Steps = new List<Step>
+                {
+                    new Step { Description = "Heat olive oil in a pan." },
+                    new Step { Description = "Add beef strips and cook until browned." },
+                    new Step { Description = "Add bell pepper and broccoli, and stir fry until tender." },
+                    new Step { Description = "Add soy sauce and mix well." },
+                    new Step { Description = "Serve hot." }
+                }
+            };
+
+            foreach (Ingredient ingredient in recipe7.Ingredients)
+            {
+                ingredient.SetOriginalValues();
+            }
+            recipe7.TotalCalories = CalculateTotalCalories(recipe7);
+
+            recipe7 = NormalizeQuantities(recipe7);
+
+            RecipeList.Add(recipe7);
+
+            // Sample Recipe 8
+            Recipe recipe8 = new Recipe
+            {
+                RecipeName = "Vegetable Soup",
+                ScaleFactor = 1,
+                Ingredients = new List<Ingredient>
+                {
+                    new Ingredient { Name = "Carrot", Quantity = 2, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 50 },
+                    new Ingredient { Name = "Potato", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Starch, Calories = 110 },
+                    new Ingredient { Name = "Onion", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Vegetable, Calories = 44 },
+                    new Ingredient { Name = "Celery", Quantity = 2, UnitOfMeasurement = UnitOM.Stalk, FoodGroup = FoodGroup.Vegetable, Calories = 10 },
+                    new Ingredient { Name = "Vegetable Broth", Quantity = 4, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Liquid, Calories = 40 }
+                },
+                Steps = new List<Step>
+                {
+                    new Step { Description = "Chop all vegetables." },
+                    new Step { Description = "Heat vegetable broth in a pot." },
+                    new Step { Description = "Add all vegetables to the pot and cook until tender." },
+                    new Step { Description = "Serve hot." }
+                }
+            };
+
+            foreach (Ingredient ingredient in recipe8.Ingredients)
+            {
+                ingredient.SetOriginalValues();
+            }
+            recipe8.TotalCalories = CalculateTotalCalories(recipe8);
+
+            recipe8 = NormalizeQuantities(recipe8);
+
+            RecipeList.Add(recipe8);
+
             SortRecipesAlphabetically();
         }
 

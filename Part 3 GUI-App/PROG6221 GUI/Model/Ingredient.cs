@@ -19,7 +19,8 @@ namespace PROG6221_GUI.Model
         Litre,
         Whole,
         Clove,
-        Sprig
+        Sprig,
+        Stalk
     }
 
     public enum FoodGroup
@@ -34,8 +35,12 @@ namespace PROG6221_GUI.Model
         Dairy,
         Oils,
         Fats,
+        Sugar,
         Herbs,
-        Spices
+        Spices,
+        Liquid,
+        Water,
+        Condiment
     }
 
     public class Ingredient

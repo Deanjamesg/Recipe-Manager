@@ -20,7 +20,6 @@
             Padding="10">
 
         <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="210"/>
                 <ColumnDefinition />
@@ -162,7 +161,7 @@
 
             </StackPanel>
 
-            <TextBlock Text="View a Recipe - ST10378305"
+            <TextBlock Text="View a Recipe"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"
@@ -246,34 +245,46 @@
 
                 </StackPanel>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                <Border CornerRadius="10"
+                        Width="490"
+                        Height="365"
+                        Margin="0,0,10,0"
+                        Background="#C4F9E6"
+                        HorizontalAlignment="Right">
+                    <Border.Effect>
+                        <DropShadowEffect 
+                            ShadowDepth="1"
+                            BlurRadius="20"
+                            Color="Black"/>
+                    </Border.Effect>
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled"
                               HorizontalAlignment="Right"
-                              Width="490"
-                              Margin="0,0,5,0"
-                              Height="365"
+                              Width="480"
+                              Margin="0,5,5,5"
+                              Height="355"
                               Background="Transparent">
-                    <ScrollViewer.Resources>
-                        <Style TargetType="ScrollBar" 
+                        <ScrollViewer.Resources>
+                            <Style TargetType="ScrollBar" 
                                BasedOn="{StaticResource CustomScrollBarStyle}" />
-                    </ScrollViewer.Resources>
+                        </ScrollViewer.Resources>
 
-                    <StackPanel HorizontalAlignment="Left"
-                                Width="470"
-                                Background="#C4F9E6">
+                        <StackPanel HorizontalAlignment="Left"
+                                Width="470" >
 
-                        <TextBlock x:Name="txtRecipeName" 
+                            <TextBlock x:Name="txtRecipeName" 
                                    Foreground="Black"
                                    Text="Recipe Name"
                                    FontSize="24" 
                                    Margin="10,10,10,10"/>
 
-                        <TextBlock Text="Ingredients" 
+                            <TextBlock Text="Ingredients" 
                                    FontSize="18"
                                    Margin="10,10,10,10"
                                    Foreground="Black"/>
 
-                        <ListBox x:Name="lstIngredients"
+                            <ListBox x:Name="lstIngredients"
                                  Background="Transparent" 
                                  BorderBrush="Transparent"
                                  Width="350"
@@ -281,28 +292,28 @@
                                  Margin="10,0,0,0"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  d:ItemsSource="{d:SampleData ItemCount=1}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Foreground="Black"
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Foreground="Black"
                                               Background="Transparent"
                                               BorderThickness="2"
                                               BorderBrush="Black"
                                               IsChecked="False"
                                               FontFamily="Poppins"
                                               FontSize="14">
-                                        <TextBlock Text="{Binding}" 
+                                            <TextBlock Text="{Binding}" 
                                                    TextWrapping="Wrap"/>
-                                    </CheckBox>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
 
-                        <TextBlock Text="Steps" 
+                            <TextBlock Text="Steps" 
                                    FontSize="18"
                                    Margin="10,10,10,10"
                                    Foreground="Black"/>
 
-                        <ListBox x:Name="lstSteps"
+                            <ListBox x:Name="lstSteps"
                                  Background="Transparent"
                                  BorderBrush="Transparent"
                                  Width="350"
@@ -310,30 +321,34 @@
                                  Margin="10,0,0,0"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  d:ItemsSource="{d:SampleData ItemCount=5}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Foreground="Black"
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Foreground="Black"
                                               Background="Transparent"
                                               BorderThickness="2"
                                               BorderBrush="Black"
                                               IsChecked="False"
                                               FontFamily="Poppins" 
                                               FontSize="14">
-                                        <TextBlock Text="{Binding Description}" 
+                                            <TextBlock Text="{Binding Description}" 
                                                    TextWrapping="Wrap"/>
-                                    </CheckBox>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        
-                        <Label x:Name="lblTotalCalories" 
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                            <Label x:Name="lblTotalCalories" 
                                Content="Total Calories:"
                                FontSize="18"
                                Margin="10,10,10,10"
                                Foreground="Black"/>
 
-                    </StackPanel>
-                </ScrollViewer>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                </Border>
+
+
 
             </Grid>
 
