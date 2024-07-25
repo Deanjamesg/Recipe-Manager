@@ -197,7 +197,7 @@
                            FontSize="24" 
                            Foreground="White"
                            Margin="0,20,0,0"/>
-                    
+
                     <Label Content="to view" 
                            HorizontalAlignment="Center" 
                            FontSize="16" 
@@ -274,84 +274,80 @@
                                 Width="470" >
 
                             <TextBlock x:Name="txtRecipeName" 
-                                   Foreground="Black"
-                                   Text="Recipe Name"
-                                   FontSize="24" 
-                                   Margin="10,10,10,10"/>
+                                       Foreground="Black"
+                                       Text="Recipe Name"
+                                       FontSize="24" 
+                                       Margin="10,10,10,10"
+                                       TextWrapping="Wrap"/>
 
                             <TextBlock Text="Ingredients" 
-                                   FontSize="18"
-                                   Margin="10,10,10,10"
-                                   Foreground="Black"/>
+                                       FontSize="18"
+                                       Margin="10,10,10,10"
+                                       Foreground="Black"/>
 
                             <ListBox x:Name="lstIngredients"
-                                 Background="Transparent" 
-                                 BorderBrush="Transparent"
-                                 Width="350"
-                                 HorizontalAlignment="Left"
-                                 Margin="10,0,0,0"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 d:ItemsSource="{d:SampleData ItemCount=1}">
+                                     Background="Transparent" 
+                                     BorderBrush="Transparent"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     Margin="10,0,0,0"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                     d:ItemsSource="{d:SampleData ItemCount=1}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <CheckBox Foreground="Black"
-                                              Background="Transparent"
-                                              BorderThickness="2"
-                                              BorderBrush="Black"
-                                              IsChecked="False"
-                                              FontFamily="Poppins"
-                                              FontSize="14">
+                                                  Background="Transparent"
+                                                  BorderThickness="2"
+                                                  BorderBrush="Black"
+                                                  IsChecked="False"
+                                                  FontFamily="Poppins"
+                                                  FontSize="14">
                                             <TextBlock Text="{Binding}" 
-                                                   TextWrapping="Wrap"/>
+                                                       TextWrapping="Wrap"/>
                                         </CheckBox>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
 
                             <TextBlock Text="Steps" 
-                                   FontSize="18"
-                                   Margin="10,10,10,10"
-                                   Foreground="Black"/>
+                                       FontSize="18"
+                                       Margin="10,10,10,10"
+                                       Foreground="Black"/>
 
                             <ListBox x:Name="lstSteps"
-                                 Background="Transparent"
-                                 BorderBrush="Transparent"
-                                 Width="350"
-                                 HorizontalAlignment="Left"
-                                 Margin="10,0,0,0"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 d:ItemsSource="{d:SampleData ItemCount=5}">
+                                     Background="Transparent"
+                                     BorderBrush="Transparent"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     Margin="10,0,0,0"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                     d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <CheckBox Foreground="Black"
-                                              Background="Transparent"
-                                              BorderThickness="2"
-                                              BorderBrush="Black"
-                                              IsChecked="False"
-                                              FontFamily="Poppins" 
-                                              FontSize="14">
+                                                  Background="Transparent"
+                                                  BorderThickness="2"
+                                                  BorderBrush="Black"
+                                                  IsChecked="False"
+                                                  FontFamily="Poppins" 
+                                                  FontSize="14">
                                             <TextBlock Text="{Binding Description}" 
-                                                   TextWrapping="Wrap"/>
+                                                       TextWrapping="Wrap"/>
                                         </CheckBox>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
 
                             <Label x:Name="lblTotalCalories" 
-                               Content="Total Calories:"
-                               FontSize="18"
-                               Margin="10,10,10,10"
-                               Foreground="Black"/>
-
+                                   Content="Total Calories:"
+                                   FontSize="18"
+                                   Margin="10,10,10,10"
+                                   Foreground="Black"/>
                         </StackPanel>
                     </ScrollViewer>
-
                 </Border>
-
-
-
+                
             </Grid>
-
         </Grid>
     </Border>
 </Window>
