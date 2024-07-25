@@ -145,7 +145,6 @@ namespace PROG6221_GUI.View
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
             recipeManager.AddNewRecipe(newRecipe);
-            recipeManager.SaveRecipesToFile();
 
             PopUpBox popUpBox = new PopUpBox("Successful!");
             popUpBox.ShowDialog();

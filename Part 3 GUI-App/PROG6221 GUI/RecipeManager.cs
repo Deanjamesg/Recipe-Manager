@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using PROG6221_GUI.Model;
-using Newtonsoft.Json;
 using System.IO;
 
 namespace PROG6221_GUI
@@ -28,25 +27,25 @@ namespace PROG6221_GUI
             //recipeManager.LoadRecipesFromFile();
         }
 
-        public void SaveRecipesToFile()
-        {
-            string json = JsonConvert.SerializeObject(RecipeList, Formatting.Indented);
+        //public void SaveRecipesToFile()
+        //{
+        //    string json = JsonConvert.SerializeObject(RecipeList, Formatting.Indented);
 
-            File.WriteAllText("Recipes\\SavedRecipes", json);
-        }
+        //    File.WriteAllText("Recipes\\SavedRecipes", json);
+        //}
 
-        public void LoadRecipesFromFile()
-        {
-            if (File.Exists("Recipes\\SavedRecipes"))
-            {
-                string json = File.ReadAllText("Recipes\\SavedRecipes");
-                RecipeList = JsonConvert.DeserializeObject<List<Recipe>>(json);
-                if (RecipeList == null)
-                {
-                    RecipeList = new List<Recipe>();
-                }
-            }
-        }
+        //public void LoadRecipesFromFile()
+        //{
+        //    if (File.Exists("Recipes\\SavedRecipes"))
+        //    {
+        //        string json = File.ReadAllText("Recipes\\SavedRecipes");
+        //        RecipeList = JsonConvert.DeserializeObject<List<Recipe>>(json);
+        //        if (RecipeList == null)
+        //        {
+        //            RecipeList = new List<Recipe>();
+        //        }
+        //    }
+        //}
 
         //-------------------------------------------------------------------------------------------------------------------------------------
 
