@@ -80,9 +80,9 @@ namespace PROG6221_GUI.View
 
             List<Recipe> filteredRecipes = recipeManager.FilteredRecipeSearch(foodGroup, ingredient, maxCalories);
 
-            if (filteredRecipes == null)
+            if (filteredRecipes == null || filteredRecipes.Count() == 0)
             {
-                PopUpBox popUpBox = new PopUpBox("Cancelled!");
+                PopUpBox popUpBox = new PopUpBox("No Recipes Found!");
                 popUpBox.ShowDialog();
             }
             else

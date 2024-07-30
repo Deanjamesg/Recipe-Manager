@@ -220,7 +220,7 @@
                                Foreground="Black"
                                Margin="20,10,0,0"/>
 
-                            <ListBox x:Name="lstFilteredRecipes"
+                            <ItemsControl x:Name="lstFilteredRecipes"
                                  Background="Transparent"
                                  BorderBrush="Transparent"
                                  Width="310"
@@ -228,7 +228,7 @@
                                  Margin="20,0,0,0"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  d:ItemsSource="{d:SampleData ItemCount=5}">
-                                <ListBox.ItemTemplate>
+                                <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Button x:Name="btnShowRecipe" 
                                                 Margin="0,5,0,5" 
@@ -237,8 +237,8 @@
                                                 Click="btnShowRecipe_Click"
                                                 Content="{Binding RecipeName}"/>
                                     </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
 
                         </StackPanel>
 
