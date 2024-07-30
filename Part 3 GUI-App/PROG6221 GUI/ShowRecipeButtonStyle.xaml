@@ -1,27 +1,51 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="CustomButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#50B498"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="BorderBrush" Value="#00707070"/>
-        <Setter Property="BorderThickness" Value="2"/>
+    <Style x:Key="ShowRecipeButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#A8CD9F"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Width" Value="290"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Effect">
+        <Setter Property="Template">
             <Setter.Value>
-                <DropShadowEffect ShadowDepth="1" 
-                                  Opacity="0.5" 
-                                  BlurRadius="5"
-                                  Color="#005B54"/>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" 
+                          Height="{TemplateBinding Height}" 
+                          ClipToBounds="True">
+                        <Rectangle Stroke="{TemplateBinding Background}" 
+                                   RadiusX="5" 
+                                   RadiusY="5" 
+                                   StrokeThickness="3"
+                                   Fill="{TemplateBinding Background}"/>
+                        <DockPanel >
+                            <ContentPresenter Content="{TemplateBinding  Content}" 
+                                              TextBlock.Foreground="Black"
+                                              Margin="15,5,15,5"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"/>
+                        </DockPanel>
+                    </Grid>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#005D55"/>
-                <Setter Property="BorderBrush" Value="#004C4C"/>
+                <Setter Property="Background" Value="#496989"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" 
+                                          Opacity="0.75" 
+                                          BlurRadius="10"
+                                          Color="Black"/>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>

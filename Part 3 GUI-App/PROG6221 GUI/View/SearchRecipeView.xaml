@@ -15,12 +15,11 @@
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
 
-    <Border Background="#00A598"
+    <Border Background="#496989"
             CornerRadius="30"
             Padding="10">
 
         <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="210"/>
                 <ColumnDefinition />
@@ -38,8 +37,7 @@
                        FontSize="22"
                        Margin="0,0,0,0"/>
 
-            <StackPanel Grid.Row="1"
-                        Margin="5,10,10,10">
+            <StackPanel Grid.Row="1">
                 <StackPanel.Effect>
                     <DropShadowEffect
                             ShadowDepth="1"
@@ -47,118 +45,46 @@
                 </StackPanel.Effect>
 
                 <Button x:Name="btnViewRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5"
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnViewRecipe_Click" 
-                        Content="View Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="View"/>
 
                 <Button x:Name="btnSearchRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White"
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnSearchRecipe_Click" 
-                        Content="Search for Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Search"/>
 
                 <Button x:Name="btnCreateRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnCreateRecipe_Click" 
-                        Content="Create Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Create New"/>
 
                 <Button x:Name="btnEditScale"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnEditScale_Click" 
-                        Content="Scale Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Scale"/>
 
                 <Button x:Name="btnDeleteRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnDeleteRecipe_Click" 
-                        Content="Delete a Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Delete a Recipe"/>
 
                 <Button x:Name="btnExit"
-                        Height="35" 
-                        Margin="0,100,0,0" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,105,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnExit_Click" 
-                        Content="Exit">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Exit"/>
 
             </StackPanel>
 
@@ -172,14 +98,14 @@
 
             <Grid Grid.Column="1" 
                   Grid.Row="1"
-                  Background="#007E74"
+                  Background="#58A399"
                   Width="750"
                   Height="385">
                 <Grid.Effect>
                     <DropShadowEffect 
                         ShadowDepth="1"
                         BlurRadius="20"
-                        Color="#005B54"/>
+                        Color="Black"/>
                 </Grid.Effect>
 
 
@@ -250,16 +176,14 @@
                               Foreground="Black">
                     </ComboBox>
 
-                    <Button x:Name="btnSubmitSearch"
-                            Content="Submit Search" 
+                    <Button Content="Submit Search" 
                             HorizontalAlignment="Center"  
-                            Width="160" 
+                            Width="180" 
                             Height="45" 
                             Margin="0,20,0,0"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16" 
+                            Background="#A8CD9F"
+                            Style="{StaticResource MenuButtonStyle}"
+                            FontSize="18" 
                             Click="btnSubmitSearch_Click"/>
 
                 </StackPanel>
@@ -268,7 +192,7 @@
                         Width="490"
                         Height="365"
                         Margin="0,0,10,0"
-                        Background="#C4F9E6"
+                        Background="#E2F4C5"
                         HorizontalAlignment="Right">
                     <Border.Effect>
                         <DropShadowEffect 
@@ -276,14 +200,14 @@
                             BlurRadius="20"
                             Color="Black"/>
                     </Border.Effect>
-                    
+
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  HorizontalAlignment="Right"
-                                  Width="480"
-                                  Margin="0,5,5,5"
-                                  Height="355"
-                                  Background="Transparent">
+                              HorizontalScrollBarVisibility="Disabled"
+                              HorizontalAlignment="Right"
+                              Width="480"
+                              Margin="0,5,5,5"
+                              Height="355"
+                              Background="Transparent">
                         <ScrollViewer.Resources>
                             <Style TargetType="ScrollBar" 
                                BasedOn="{StaticResource CustomScrollBarStyle}" />
@@ -307,21 +231,11 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Button x:Name="btnShowRecipe" 
-                                                VerticalAlignment="Top"
                                                 Margin="0,5,0,5" 
                                                 Width="290"
-                                                Foreground="Black" 
-                                                HorizontalContentAlignment="Left" 
-                                                Style="{StaticResource CustomButtonStyle}"
-                                                FontSize="16"
+                                                Style="{StaticResource ShowRecipeButtonStyle}"
                                                 Click="btnShowRecipe_Click"
-                                                Padding="5">
-                                            <TextBlock Text="{Binding RecipeName}"
-                                                       Width="270"
-                                                       Margin="5,0,5,0"
-                                                       TextWrapping="Wrap"/>
-                                        </Button>
-
+                                                Content="{Binding RecipeName}"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
