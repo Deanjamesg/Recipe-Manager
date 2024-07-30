@@ -6,21 +6,28 @@
         xmlns:local="clr-namespace:PROG6221_GUI.View"
         mc:Ignorable="d"
         Title="CreateRecipeView" 
-        Height="500" 
-        Width="1000"
+        Height="700" 
+        Width="1300"
         Background="Transparent"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
+    
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0"
+                          BlurRadius="50"
+                          Color="Black"/>
+    </Window.Effect>
 
-    <Border Background="#00A598"
+    <Border Background="#496989"
             CornerRadius="30"
-            Padding="10">
+            Padding="10"
+            Width="1000"
+            Height="500">
 
         <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="210"/>
                 <ColumnDefinition />
@@ -38,8 +45,7 @@
                        FontSize="22"
                        Margin="0,0,0,0"/>
 
-            <StackPanel Grid.Row="1"
-                        Margin="5,10,10,10">
+            <StackPanel Grid.Row="1">
                 <StackPanel.Effect>
                     <DropShadowEffect
                             ShadowDepth="1"
@@ -47,122 +53,50 @@
                 </StackPanel.Effect>
 
                 <Button x:Name="btnViewRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5"
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnViewRecipe_Click" 
-                        Content="View Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="View"/>
 
                 <Button x:Name="btnSearchRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White"
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnSearchRecipe_Click" 
-                        Content="Search for Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Search"/>
 
                 <Button x:Name="btnCreateRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnCreateRecipe_Click" 
-                        Content="Create Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Create New"/>
 
                 <Button x:Name="btnEditScale"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnEditScale_Click" 
-                        Content="Scale Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Scale"/>
 
                 <Button x:Name="btnDeleteRecipe"
-                        Height="35" 
-                        Margin="0,0,0,15" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnDeleteRecipe_Click" 
-                        Content="Delete a Recipe">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Delete a Recipe"/>
 
                 <Button x:Name="btnExit"
-                        Height="35" 
-                        Margin="0,100,0,0" 
-                        Background="#007E74" 
-                        BorderBrush="#00707070" 
-                        Foreground="White" 
-                        HorizontalContentAlignment="Center" 
-                        Padding="5" 
-                        FontSize="16"
+                        Height="40" 
+                        Margin="0,105,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
                         Click="btnExit_Click" 
-                        Content="Exit">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="1"
-                                          Opacity="0.5"
-                                          BlurRadius="5"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Content="Exit"/>
 
             </StackPanel>
 
-            <TextBlock Text="Create a Recipe"
+            <TextBlock Text="Create a New Recipe"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"
@@ -172,16 +106,15 @@
 
             <Grid Grid.Column="1" 
                   Grid.Row="1"
-                  Background="#007E74"
+                  Background="#58A399"
                   Width="750"
                   Height="385">
                 <Grid.Effect>
                     <DropShadowEffect 
                         ShadowDepth="1"
                         BlurRadius="20"
-                        Color="#005B54"/>
+                        Color="Black"/>
                 </Grid.Effect>
-
 
                 <StackPanel HorizontalAlignment="Left"
                             x:Name="panelRecipeDetails"
@@ -256,23 +189,15 @@
                     <Button Content="Next" 
                             HorizontalAlignment="Center"  
                             Width="100" 
-                            Height="45" 
                             Margin="120,20,0,0"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16" 
+                            Style="{StaticResource SubmitButtonStyle}"
                             Click="btnGoIngredientsPrompt_Click"/>
 
                     <Button Content="Cancel" 
                             HorizontalAlignment="Center"  
                             Width="100" 
-                            Height="45" 
                             Margin="-120,-45,0,0"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16" 
+                            Style="{StaticResource SubmitButtonStyle}"
                             Click="btnCancel_Click"/>
 
                 </StackPanel>
@@ -544,7 +469,7 @@
                               Width="480"
                               Margin="10,0,5,0"
                               Height="365"
-                              Background="Transparent">
+                              Background="#E2F4C5">
                     <ScrollViewer.Resources>
                         <Style TargetType="ScrollBar" 
                                BasedOn="{StaticResource CustomScrollBarStyle}" />

@@ -6,18 +6,25 @@
         xmlns:local="clr-namespace:PROG6221_GUI.View"
         mc:Ignorable="d"
         Title="DeleteRecipeView" 
-        Height="500" 
-        Width="1000"
+        Height="700" 
+        Width="1300"
         Background="Transparent"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0"
+                          BlurRadius="50"
+                          Color="Black"/>
+    </Window.Effect>
 
     <Border Background="#496989"
             CornerRadius="30"
-            Padding="10">
+            Padding="10"
+            Width="1000"
+            Height="500">
 
         <Grid>
             <Grid.ColumnDefinitions>

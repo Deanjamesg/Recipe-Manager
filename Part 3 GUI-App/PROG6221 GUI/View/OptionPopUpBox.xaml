@@ -14,13 +14,18 @@
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0"
+                          BlurRadius="20"
+                          Color="Black"/>
+    </Window.Effect>
 
-    <Border Background="#00A598"
+    <Border Background="#496989"
             CornerRadius="20"
             Height="200" 
             Width="400"
-            BorderBrush="#005D55"
-            BorderThickness="2">
+            BorderBrush="#344C64"
+            BorderThickness="1">
 
         <Border.Effect>
             <DropShadowEffect ShadowDepth="0"
@@ -63,36 +68,19 @@
                         Width="100" 
                         Height="50"
                         Margin="50,0,0,0"
-                        Background="#005D55"
-                        BorderBrush="Transparent"
-                        Foreground="White" 
                         FontSize="18" 
-                        Click="btnYes_Click">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Style="{StaticResource SubmitButtonStyle}"
+                        Click="btnYes_Click"/>
 
                 <Button Content="No" 
                         Width="100" 
                         Height="50"
                         Margin="50,0,50,0"
-                        Background="#005D55"
-                        BorderBrush="Transparent"
-                        Foreground="White" 
                         FontSize="18" 
-                        Click="btnNo_Click">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0"
-                                          BlurRadius="10"
-                                          Color="#005B54"/>
-                    </Button.Effect>
-                </Button>
+                        Style="{StaticResource SubmitButtonStyle}"
+                        Click="btnNo_Click"/>
 
             </StackPanel>
-
 
         </Grid>
 

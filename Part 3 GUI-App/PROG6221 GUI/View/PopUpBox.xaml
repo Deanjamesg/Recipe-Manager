@@ -14,11 +14,17 @@
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
+    
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0"
+                          BlurRadius="20"
+                          Color="Black"/>
+    </Window.Effect>
 
     <Border Background="#496989"
             CornerRadius="20"
             BorderBrush="#344C64"
-            BorderThickness="2"
+            BorderThickness="1"
             Width="220"
             Height="120">
         <Border.Effect>
@@ -46,8 +52,8 @@
                        TextAlignment="Center"
                        VerticalAlignment="Center"
                        TextWrapping="Wrap" 
-                       Margin="10"
-                       FontSize="16"/>
+                       Margin="5"
+                       FontSize="18"/>
 
             <Button Click="btnClose_Click"
                     Width="100"
@@ -60,6 +66,7 @@
                     Grid.Row="1"/>
 
         </Grid>
+        
     </Border>
 
 </Window>
