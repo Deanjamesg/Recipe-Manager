@@ -19,10 +19,10 @@ namespace PROG6221_GUI.View
     /// </summary>
     public partial class PopUpBox : Window
     {
-        public PopUpBox(string _Message)
+        public PopUpBox(string message)
         {
             InitializeComponent();
-            AlertString.Text = _Message;
+            AlertString.Text = message;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

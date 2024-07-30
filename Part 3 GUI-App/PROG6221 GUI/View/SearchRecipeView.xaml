@@ -181,8 +181,7 @@
                             Width="180" 
                             Height="45" 
                             Margin="0,20,0,0"
-                            Background="#A8CD9F"
-                            Style="{StaticResource MenuButtonStyle}"
+                            Style="{StaticResource SubmitButtonStyle}"
                             FontSize="18" 
                             Click="btnSubmitSearch_Click"/>
 

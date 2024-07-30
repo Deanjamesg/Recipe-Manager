@@ -1,14 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="ShowRecipeButtonStyle" TargetType="Button">
+    <Style x:Key="SubmitButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="#A8CD9F"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Width" Value="290"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="45" />
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -24,15 +25,15 @@
                                    Fill="{TemplateBinding Background}"/>
                         <DockPanel >
                             <ContentPresenter Content="{TemplateBinding  Content}" 
-                                              TextBlock.Foreground="Black"
-                                              Margin="15,5,15,5"
-                                              HorizontalAlignment="Left"
+                                              TextBlock.Foreground="White"
+                                              Margin="5,5,5,5"
+                                              HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
                         </DockPanel>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
+        </Setter>   
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -49,5 +50,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

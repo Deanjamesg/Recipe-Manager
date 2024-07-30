@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="ScrollBarStyle.xaml"/>
                 <ResourceDictionary Source="ShowRecipeButtonStyle.xaml"/>
                 <ResourceDictionary Source="MenuButtonStyle.xaml"/>
+                <ResourceDictionary Source="SubmitButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

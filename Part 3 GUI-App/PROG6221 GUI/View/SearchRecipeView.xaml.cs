@@ -82,7 +82,7 @@ namespace PROG6221_GUI.View
 
             if (filteredRecipes == null || filteredRecipes.Count() == 0)
             {
-                PopUpBox popUpBox = new PopUpBox("No Recipes Found!");
+                PopUpBox popUpBox = new PopUpBox("No recipes could be found!");
                 popUpBox.ShowDialog();
             }
             else

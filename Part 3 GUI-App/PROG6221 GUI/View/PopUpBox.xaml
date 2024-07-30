@@ -15,9 +15,9 @@
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
 
-    <Border Background="#00A598"
+    <Border Background="#496989"
             CornerRadius="20"
-            BorderBrush="#005D55"
+            BorderBrush="#344C64"
             BorderThickness="2"
             Width="220"
             Height="120">
@@ -28,44 +28,36 @@
         </Border.Effect>
 
         <Grid>
-
             <Grid.Effect>
                 <DropShadowEffect 
                         ShadowDepth="1"
                         BlurRadius="20"
-                        Color="#005B54"/>
+                        Color="Black"/>
             </Grid.Effect>
 
-            <TextBlock Text="Message!"
-                       Foreground="White" 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Content to be displayed!"
                        x:Name="AlertString" 
+                       Foreground="White"
                        TextAlignment="Center"
                        VerticalAlignment="Center"
-                       FontSize="22"
-                       Margin="0,20,0,40"
-                       TextWrapping="Wrap"
-                       Height="60"
-                       Width="175">
+                       TextWrapping="Wrap" 
+                       Margin="10"
+                       FontSize="16"/>
 
-            </TextBlock>
-
-            <Button HorizontalAlignment="Center"
-                    Width="80" 
-                    Height="30"
-                    Background="#005D55"
-                    BorderBrush="Transparent"
-                    Foreground="White" 
-                    FontSize="16" 
-                    Margin="0,0,0,20"
-                    Click="btnClose_Click"
+            <Button Click="btnClose_Click"
+                    Width="100"
+                    Height="35"
                     Content="Ok" 
-                    VerticalAlignment="Bottom">
-                <Button.Effect>
-                    <DropShadowEffect ShadowDepth="0"
-                                  BlurRadius="10"
-                                  Color="#005B54"/>
-                </Button.Effect>
-            </Button>
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource SubmitButtonStyle}"
+                    Grid.Row="1"/>
 
         </Grid>
     </Border>

@@ -85,7 +85,7 @@ namespace PROG6221_GUI.View
             if (result.HasValue && result.Value)
             {
                 recipeManager.DeleteRecipe(index);
-                PopUpBox popUpBox = new PopUpBox("Deleted!");
+                PopUpBox popUpBox = new PopUpBox("Recipe deleted!");
                 popUpBox.ShowDialog();
             }
             else

@@ -160,14 +160,8 @@
                     </ComboBox>
 
                     <Button Content="Search for Recipe" 
-                            HorizontalAlignment="Center"  
-                            Width="180" 
-                            Background="#A8CD9F"
-                            Foreground="Black"
-                            Height="45" 
                             Margin="0,110,0,0"
-                            Style="{StaticResource MenuButtonStyle}"
-                            FontSize="18" 
+                            Style="{StaticResource SubmitButtonStyle}"
                             Click="btnSearchRecipe_Click"/>
 
                 </StackPanel>
