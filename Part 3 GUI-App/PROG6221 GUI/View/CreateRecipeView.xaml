@@ -14,7 +14,7 @@
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
         AllowsTransparency="True">
-    
+
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0"
                           BlurRadius="50"
@@ -226,20 +226,19 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
 
 
-                    <TextBlock Text="Ingredient"
+                    <TextBlock Text="Add Ingredient"
                                TextWrapping="Wrap"
                                Grid.Column="1"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                TextAlignment="Center"
-                               FontSize="24"
+                               FontSize="22"
                                Foreground="White"
-                               Margin="-60,0,0,0"/>
+                               Margin="-80,0,0,0"/>
 
                     <TextBlock Text="Name"
                                TextWrapping="Wrap"
@@ -255,13 +254,13 @@
                     <TextBox x:Name="txtIngredientName" 
                              Grid.Column="1"
                              Grid.Row="1"
-                             HorizontalAlignment="Right"  
+                             HorizontalAlignment="Center"  
                              VerticalAlignment="Center" 
                              Background="#E8E8E8"
-                             Width="120"
+                             Width="110"
                              Height="27"
                              FontSize="14"
-                             Margin="0,0,0,0"
+                             Margin="0,0,5,0"
                              Foreground="Black"/>
 
                     <TextBlock Text="Measurement"
@@ -278,11 +277,12 @@
                     <ComboBox x:Name="cmbUnitOM"                             
                               Grid.Column="1"
                               Grid.Row="2" 
-                              HorizontalAlignment="Right"  
+                              HorizontalAlignment="Center"  
                               VerticalAlignment="Center" 
                               SelectedIndex="0"
-                              Width="120"
+                              Width="110"
                               FontSize="14"
+                              Margin="0,0,5,0"
                               Foreground="Black"/>
 
                     <TextBlock Text="Quantity"
@@ -299,13 +299,13 @@
                     <TextBox x:Name="txtQuantity"
                              Grid.Column="10"
                              Grid.Row="3"
-                             HorizontalAlignment="Right"  
+                             HorizontalAlignment="Center"  
                              VerticalAlignment="Center" 
                              Background="#E8E8E8"
-                             Width="120"
+                             Width="110"
                              Height="25"
                              FontSize="14"
-                             Margin="0,0,0,0"
+                             Margin="0,0,5,0"
                              Foreground="Black"/>
 
 
@@ -323,12 +323,13 @@
                     <ComboBox x:Name="cmbFoodGroup"
                               Grid.Column="1"
                               Grid.Row="4"
-                              HorizontalAlignment="Right"  
+                              HorizontalAlignment="Center"  
                               VerticalAlignment="Center" 
                               SelectedIndex="0"
-                              Width="120"
+                              Width="110"
                               FontSize="14" 
-                              Foreground="Black"/>
+                              Foreground="Black"
+                              Margin="0,0,5,0"/>
 
                     <TextBlock Text="Calories"
                                TextWrapping="Wrap"
@@ -344,55 +345,46 @@
                     <TextBox x:Name="txtCalories"
                              Grid.Column="1"
                              Grid.Row="5"
-                             HorizontalAlignment="Right"  
+                             HorizontalAlignment="Center"  
                              VerticalAlignment="Center" 
                              Background="#E8E8E8"
-                             Width="120"
+                             Width="110"
                              Height="25"
                              FontSize="14"
-                             Margin="0,0,0,0"
+                             Margin="0,0,5,0"
                              Foreground="Black"/>
 
                     <Button Content="Add Ingredient"
                             Grid.Row="6"
-                            Grid.Column="1"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Width="150"
-                            Height="35"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16"
-                            Margin="-75,0,0,0"
-                            Click="btnAddIngredient_Click"/>
+                            Height="40"
+                            Margin="35,0,0,0"
+                            Style="{StaticResource SubmitButtonStyle}"
+                            Click="btnAddIngredient_Click" Grid.ColumnSpan="2"/>
 
                     <Button Content="Cancel"
                             Grid.Column="0"
-                            Grid.Row="7"
+                            Grid.Row="6"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Width="100" 
-                            Height="35" 
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
+                            Height="40" 
                             FontSize="16"
-                            Margin="0,0,0,10"
+                            Margin="0,40,0,0"
+                            Style="{StaticResource SubmitButtonStyle}"
                             Click="btnCancel_Click"/>
 
                     <Button Content="Next"
                             Grid.Column="1"
-                            Grid.Row="7"
+                            Grid.Row="6"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Width="100" 
-                            Height="35" 
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
+                            Height="40"
                             FontSize="16"
-                            Margin="0,0,0,10"
+                            Margin="0,40,0,0"
+                            Style="{StaticResource SubmitButtonStyle}"
                             Click="btnGoStepsPrompt_Click"/>
                 </Grid>
 
@@ -408,165 +400,162 @@
                             BlurRadius="15"/>
                     </StackPanel.Effect>
 
-                    <TextBlock Text="Steps"
+                    <TextBlock Text="Add Steps"
                                TextWrapping="Wrap"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                FontSize="24"
                                Foreground="White"
-                               Margin="0,0,0,0"/>
+                               Margin="0,10,0,0"/>
 
                     <TextBox x:Name="txtStepDescription"
                              HorizontalAlignment="Center"  
                              VerticalAlignment="Center" 
-                             Background="#E8E8E8"
+                             Background="#E2F4C5"
                              Width="210"
                              Height="150"
                              FontSize="14"
+                             TextWrapping="Wrap"
                              Margin="20,20,20,40"
                              Foreground="Black"/>
 
                     <Button Content="Add Step"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Width="125"
-                            Height="45"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16"
                             Margin="0,0,0,0"
-                            Click="btnAddStep_Click" />
+                            Click="btnAddStep_Click" 
+                            Style="{StaticResource SubmitButtonStyle}"/>
 
                     <Button Content="Done" 
-                            HorizontalAlignment="Center"  
                             Width="100" 
-                            Height="45" 
                             Margin="120,20,0,0"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16" 
-                            Click="btnDone_Click"/>
+                            Click="btnDone_Click"
+                            Style="{StaticResource SubmitButtonStyle}"/>
 
                     <Button Content="Cancel" 
-                            HorizontalAlignment="Center"  
                             Width="100" 
-                            Height="45" 
                             Margin="-120,-45,0,0"
-                            Background="#005D55"
-                            BorderBrush="Transparent"
-                            Foreground="White" 
-                            FontSize="16" 
-                            Click="btnCancel_Click"/>
+                            Click="btnCancel_Click"
+                            Style="{StaticResource SubmitButtonStyle}"/>
 
                 </StackPanel>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Disabled"
-                              HorizontalAlignment="Right"
-                              Width="480"
-                              Margin="10,0,5,0"
-                              Height="365"
-                              Background="#E2F4C5">
-                    <ScrollViewer.Resources>
-                        <Style TargetType="ScrollBar" 
-                               BasedOn="{StaticResource CustomScrollBarStyle}" />
-                    </ScrollViewer.Resources>
+                <Border CornerRadius="10"
+                        Width="490"
+                        Height="365"
+                        Margin="0,0,10,0"
+                        Background="#E2F4C5"
+                        HorizontalAlignment="Right">
+                    <Border.Effect>
+                        <DropShadowEffect 
+                            ShadowDepth="1"
+                            BlurRadius="20"
+                            Color="Black"/>
+                    </Border.Effect>
 
-                    <StackPanel HorizontalAlignment="Left"
-                                Width="470"
-                                Background="Transparent">
-                        <StackPanel.Effect>
-                            <DropShadowEffect
-                                ShadowDepth="2"
-                                Opacity="0.75"
-                                BlurRadius="15"/>
-                        </StackPanel.Effect>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  HorizontalAlignment="Right"
+                                  Width="480"
+                                  Margin="0,5,5,5"
+                                  Height="355"
+                                  Background="Transparent">
+                        <ScrollViewer.Resources>
+                            <Style TargetType="ScrollBar" 
+                                   BasedOn="{StaticResource CustomScrollBarStyle}" />
+                        </ScrollViewer.Resources>
 
-                        <TextBlock x:Name="txtRecipeName" 
-                                   Foreground="White"
-                                   Text="Recipe Name"
-                                   FontSize="24"
-                                   Visibility="Hidden"
-                                   Margin="10,10,10,10"/>
+                        <StackPanel HorizontalAlignment="Left"
+                                    Width="470" >
 
-                        <TextBlock Text="Ingredients"
-                                   x:Name="txtIngredients"
-                                   Visibility="Hidden"
+                            <TextBlock x:Name="txtRecipeName" 
+                                       Foreground="Black"
+                                       Text="Recipe Name"
+                                       FontSize="24" 
+                                       Margin="10,10,10,10"
+                                       TextWrapping="Wrap"
+                                       Visibility="Hidden"/>
+
+                            <TextBlock Text="Ingredients" 
+                                       x:Name="txtIngredients"
+                                       FontSize="18"
+                                       Margin="10,10,10,10"
+                                       Foreground="Black"
+                                       Visibility="Hidden"/>
+
+                            <ItemsControl x:Name="lstIngredients"
+                                          Background="Transparent" 
+                                          BorderBrush="Transparent"
+                                          Width="350"
+                                          HorizontalAlignment="Left"
+                                          Margin="10,0,0,0"
+                                          Padding="5"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                          d:ItemsSource="{d:SampleData ItemCount=3}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Foreground="Black"
+                                                  Background="Transparent"
+                                                  BorderThickness="2"
+                                                  BorderBrush="Black"
+                                                  Margin="0,5,0,0"
+                                                  IsChecked="False"
+                                                  FontFamily="Poppins"
+                                                  FontSize="14">
+                                            <TextBlock Text="{Binding}" 
+                                                       TextWrapping="Wrap"/>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <TextBlock Text="Steps" 
+                                       x:Name="txtSteps"
+                                       FontSize="18"
+                                       Margin="10,10,10,10"
+                                       Foreground="Black"
+                                       Visibility="Hidden"/>
+
+                            <ItemsControl x:Name="lstSteps"
+                                          Background="Transparent"
+                                          BorderBrush="Transparent"
+                                          Width="350"
+                                          HorizontalAlignment="Left"
+                                          Margin="10,0,0,0"
+                                          Padding="5"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                          d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Foreground="Black"
+                                                  Background="Transparent"
+                                                  BorderThickness="2"
+                                                  BorderBrush="Black"
+                                                  Margin="0,5,0,0"
+                                                  IsChecked="False"
+                                                  FontFamily="Poppins" 
+                                                  FontSize="14">
+                                            <TextBlock Text="{Binding Description}" 
+                                                       TextWrapping="Wrap"/>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Label x:Name="lblTotalCalories" 
                                    FontSize="18"
                                    Margin="10,10,10,10"
-                                   Foreground="White"/>
+                                   Foreground="Black"/>
+                        </StackPanel>
 
-                        <ListBox x:Name="lstIngredients"
-                                 Background="Transparent" 
-                                 BorderBrush="Transparent"
-                                 Width="350"
-                                 HorizontalAlignment="Left"
-                                 Margin="10,0,0,0"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 d:ItemsSource="{d:SampleData ItemCount=1}" 
-                                 IsHitTestVisible="False">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Foreground="White"
-                                              Background="Transparent"
-                                              BorderThickness="2"
-                                              BorderBrush="White"
-                                              IsChecked="False"
-                                              FontFamily="Poppins"
-                                              FontSize="14">
-                                        <TextBlock Text="{Binding}" 
-                                                   TextWrapping="Wrap"/>
-                                    </CheckBox>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                    </ScrollViewer>
 
-                        <TextBlock Text="Steps"
-                                   x:Name="txtSteps"
-                                   Visibility="Hidden"
-                                   FontSize="18"
-                                   Margin="10,10,10,10"
-                                   Foreground="White"/>
-
-                        <ListBox x:Name="lstSteps"
-                                 Background="Transparent"
-                                 BorderBrush="Transparent"
-                                 Width="350"
-                                 HorizontalAlignment="Left"
-                                 Margin="10,0,0,0"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 d:ItemsSource="{d:SampleData ItemCount=5}"
-                                 IsHitTestVisible="False">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Foreground="White"
-                                              Background="Transparent"
-                                              BorderThickness="2"
-                                              BorderBrush="White"
-                                              IsChecked="False"
-                                              FontFamily="Poppins" 
-                                              FontSize="14">
-                                        <TextBlock Text="{Binding Description}" 
-                                                   TextWrapping="Wrap"/>
-                                    </CheckBox>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-
-                        <Label x:Name="lblTotalCalories"                               
-                               FontSize="18"
-                               Margin="10,10,10,10"
-                               Foreground="White"/>
-
-                    </StackPanel>
-                </ScrollViewer>
+                </Border>
 
             </Grid>
 
-
         </Grid>
+
     </Border>
+
 </Window>
