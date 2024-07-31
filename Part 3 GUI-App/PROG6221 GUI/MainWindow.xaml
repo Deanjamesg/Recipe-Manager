@@ -13,7 +13,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0"
                           BlurRadius="50"
@@ -104,17 +105,19 @@
                        Margin="20,0,0,0"
                        Grid.Column="1"/>
 
-            <Grid Grid.Column="1" 
-                  Grid.Row="1"
-                  Background="#58A399"
-                  Margin="10">
-                <Grid.Effect>
+            <Frame x:Name="MainFrame" 
+                   NavigationUIVisibility="Hidden" 
+                   Grid.Column="1" 
+                   Grid.Row="1"
+                   Width="750"
+                   Height="385">
+                <Frame.Effect>
                     <DropShadowEffect 
-                        ShadowDepth="1"
-                        BlurRadius="20"
-                        Color="Black"/>
-                </Grid.Effect>
-            </Grid>
+                            ShadowDepth="1"
+                            BlurRadius="20"
+                            Color="Black"/>
+                </Frame.Effect>
+            </Frame>
 
 
         </Grid>

@@ -1,4 +1,5 @@
 ﻿using PROG6221_GUI.Model;
+using PROG6221_GUI.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +12,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Reflection;
 
-namespace PROG6221_GUI.View
+namespace PROG6221_GUI.Pages
 {
     /// <summary>
-    /// Interaction logic for CreateRecipeView.xaml
+    /// Interaction logic for CreateRecipePage.xaml
     /// </summary>
-    public partial class CreateRecipeView : Window
+    public partial class CreateRecipePage : Page
     {
         public RecipeManager recipeManager;
 
         private Recipe newRecipe = new Recipe();
 
-        public CreateRecipeView(RecipeManager _recipeManager)
+        public CreateRecipePage(RecipeManager _recipeManager)
         {
-            this.recipeManager = _recipeManager;
             InitializeComponent();
+
+            recipeManager = _recipeManager;
 
             string[] ingredientOptions = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
             string[] stepOptions = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
@@ -45,51 +47,10 @@ namespace PROG6221_GUI.View
             newRecipe = new Recipe();
         }
 
-        private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
-        {
-            RecipeView recipeView = new RecipeView(recipeManager);
-            recipeView.Show();
-            this.Close();
-        }
-
-        private void btnCreateRecipe_Click(object sender, RoutedEventArgs e)
-        {
-            CreateRecipeView createRecipeView = new CreateRecipeView(recipeManager);
-            createRecipeView.Show();
-            this.Close();
-        }
-
-        private void btnEditScale_Click(object sender, RoutedEventArgs e)
-        {
-            EditScaleView editScaleView = new EditScaleView(recipeManager);
-            editScaleView.Show();
-            this.Close();
-        }
-
-        private void btnDeleteRecipe_Click(object sender, RoutedEventArgs e)
-        {
-            DeleteRecipeView deleteRecipeView = new DeleteRecipeView(recipeManager);
-            deleteRecipeView.Show();
-            this.Close();
-        }
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-            this.Close();
-        }
-
-        private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)
-        {
-            SearchRecipeView searchRecipeView = new SearchRecipeView(recipeManager);
-            searchRecipeView.Show();
-            this.Close();
-        }
-
         private void btnGoIngredientsPrompt_Click(object sender, RoutedEventArgs e)
         {
             newRecipe.RecipeName = txtRecipeNameField.Text;
-            
+
             txtRecipeName.Text = newRecipe.RecipeName;
 
             panelRecipeDetails.Visibility = Visibility.Hidden;
@@ -136,9 +97,9 @@ namespace PROG6221_GUI.View
             {
                 PopUpBox popUpBox = new PopUpBox("You have stopped creating this recipe!");
                 popUpBox.ShowDialog();
-                RecipeView recipeView = new RecipeView(recipeManager);
-                recipeView.Show();
-                this.Close();
+
+                ViewRecipePage viewRecipePage = new ViewRecipePage(recipeManager);
+                NavigationService.Navigate(viewRecipePage);
             }
             else
             {
@@ -173,10 +134,10 @@ namespace PROG6221_GUI.View
             PopUpBox popUpBox = new PopUpBox("You have successfully created a new recipe!");
             popUpBox.ShowDialog();
 
-            RecipeView recipeView = new RecipeView(recipeManager);
-            recipeView.cmbSelectRecipe.SelectedItem = newRecipe;
-            recipeView.Show();
-            this.Close();
+            ViewRecipePage viewRecipePage = new ViewRecipePage(recipeManager);
+            NavigationService.Navigate(viewRecipePage);
+            viewRecipePage.cmbSelectRecipe.SelectedItem = newRecipe;
+
         }
 
         private void ClearUIFields()
@@ -186,7 +147,7 @@ namespace PROG6221_GUI.View
             cmbFoodGroup.SelectedIndex = 0;
             cmbUnitOM.SelectedIndex = 0;
             txtCalories.Clear();
-            
+
         }
 
         private bool CheckEmptyFields()
@@ -221,7 +182,5 @@ namespace PROG6221_GUI.View
             }
             return true;
         }
-
-
     }
 }

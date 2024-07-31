@@ -21,7 +21,7 @@ namespace PROG6221_GUI.View
     public partial class EditScaleView : Window
     {
 
-        RecipeManager recipeManager;
+        public RecipeManager recipeManager;
 
         public EditScaleView(RecipeManager _recipeManager)
         {
