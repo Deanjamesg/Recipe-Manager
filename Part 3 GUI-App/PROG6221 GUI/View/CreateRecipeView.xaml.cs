@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PROG6221_GUI.Model;
+using System.Reflection;
 
 namespace PROG6221_GUI.View
 {
@@ -100,6 +101,18 @@ namespace PROG6221_GUI.View
 
         private void btnAddIngredient_Click(object sender, RoutedEventArgs e)
         {
+            // Check if all fields are filled
+
+            if (!CheckEmptyFields()) return;
+
+            // Check if a number was entered in the quantity field
+
+            if (!CheckQuantityField()) return;
+
+            // Check if a number was entered in the calories field
+
+            if (!CheckCalorieField()) return;
+
             Ingredient newIngredient = new Ingredient();
             newIngredient.FoodGroup = (FoodGroup)cmbFoodGroup.SelectedValue;
             newIngredient.Name = txtIngredientName.Text;
@@ -115,12 +128,24 @@ namespace PROG6221_GUI.View
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            PopUpBox popUpBox = new PopUpBox("Cancelled!");
-            popUpBox.ShowDialog();
 
-            RecipeView recipeView = new RecipeView(recipeManager);
-            recipeView.Show();
-            this.Close();
+            OptionPopUpBox optionPopUpBox = new OptionPopUpBox("STOP creating this recipe?");
+
+            var result = optionPopUpBox.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                PopUpBox popUpBox = new PopUpBox("You have stopped creating this recipe!");
+                popUpBox.ShowDialog();
+                RecipeView recipeView = new RecipeView(recipeManager);
+                recipeView.Show();
+                this.Close();
+            }
+            else
+            {
+                PopUpBox popUpBox = new PopUpBox("You may continue creating this recipe!");
+                popUpBox.ShowDialog();
+            }
 
         }
 
@@ -146,7 +171,7 @@ namespace PROG6221_GUI.View
         {
             recipeManager.AddNewRecipe(newRecipe);
 
-            PopUpBox popUpBox = new PopUpBox("Successful!");
+            PopUpBox popUpBox = new PopUpBox("You have successfully created a new recipe!");
             popUpBox.ShowDialog();
 
             RecipeView recipeView = new RecipeView(recipeManager);
@@ -163,6 +188,39 @@ namespace PROG6221_GUI.View
             cmbUnitOM.SelectedIndex = 0;
             txtCalories.Clear();
             
+        }
+
+        private bool CheckEmptyFields()
+        {
+            if (txtIngredientName.Text == "" || txtQuantity.Text == "" || txtCalories.Text == "")
+            {
+                PopUpBox popUpBox = new PopUpBox("Please fill in all fields!");
+                popUpBox.ShowDialog();
+                return false;
+            }
+            return true;
+        }
+
+        private bool CheckQuantityField()
+        {
+            if (!double.TryParse(txtQuantity.Text, out double quantity))
+            {
+                PopUpBox popUpBox = new PopUpBox("Please enter a number in the quantity field!");
+                popUpBox.ShowDialog();
+                return false;
+            }
+            return true;
+        }
+
+        private bool CheckCalorieField()
+        {
+            if (!double.TryParse(txtCalories.Text, out double calories))
+            {
+                PopUpBox popUpBox = new PopUpBox("Please enter a number in the calories field!");
+                popUpBox.ShowDialog();
+                return false;
+            }
+            return true;
         }
 
 

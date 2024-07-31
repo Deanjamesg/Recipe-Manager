@@ -19,10 +19,10 @@ namespace PROG6221_GUI.View
     /// </summary>
     public partial class OptionPopUpBox : Window
     {
-        public OptionPopUpBox(string _Task)
+        public OptionPopUpBox(string message)
         {
             InitializeComponent();
-            OptionDialog.Text = "Are you sure you want to " + @_Task;
+            OptionDialog.Text = "Are you sure you want to " + message;
         }
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {

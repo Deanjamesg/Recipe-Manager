@@ -412,13 +412,13 @@
                     <TextBox x:Name="txtStepDescription"
                              HorizontalAlignment="Center"  
                              VerticalAlignment="Center" 
-                             Background="#E2F4C5"
+                             Background="#344C64"
                              Width="210"
                              Height="150"
                              FontSize="14"
                              TextWrapping="Wrap"
                              Margin="20,20,20,40"
-                             Foreground="Black"/>
+                             Foreground="White"/>
 
                     <Button Content="Add Step"
                             Width="125"

@@ -26,7 +26,7 @@ namespace PROG6221_GUI.View
         public EditScaleView(RecipeManager _recipeManager)
         {
             this.recipeManager = _recipeManager;
-            string[] scaleOptions = { "", "0.5", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+            string[] scaleOptions = { "", "0,5", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
             InitializeComponent();
             cmbSelectScale.ItemsSource = scaleOptions;
             cmbSelectScale.SelectedIndex = 0;
@@ -84,7 +84,7 @@ namespace PROG6221_GUI.View
             {
                 scale = double.Parse(cmbSelectScale.SelectedValue.ToString());
                 recipeManager.ScaleRecipe(index, scale);
-                PopUpBox popUpBox = new PopUpBox("Recipe Scaled!");
+                PopUpBox popUpBox = new PopUpBox("Recipe was successfully scaled!");
                 popUpBox.ShowDialog();
             }
 
@@ -100,7 +100,7 @@ namespace PROG6221_GUI.View
             int index = cmbSelectRecipe.SelectedIndex;
             recipeManager.ResetRecipeScale(index);
 
-            PopUpBox popUpBox = new PopUpBox("Recipe Reset!");
+            PopUpBox popUpBox = new PopUpBox("Recipe was reset to its original quantities!");
             popUpBox.ShowDialog();
 
             EditScaleView editScaleView = new EditScaleView(recipeManager);
