@@ -21,11 +21,6 @@ namespace PROG6221_GUI
         public void StartRecipeProgram()
         {
             CreateSampleRecipes();
-
-            // Create a prompt that allows the user to choose between loading recipes from a file or only store recipes while app is running.
-
-            //recipeManager.SaveRecipesToFile();
-            //recipeManager.LoadRecipesFromFile();
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------
@@ -475,7 +470,6 @@ namespace PROG6221_GUI
 
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                Console.WriteLine(ingredient.Name + " " + ingredient.Quantity);
                 ingredientList.Add((ingredient.Quantity % 1 != 0 ? ingredient.Quantity.ToString("0.00") : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + ", " + ingredient.Name + " (" + ingredient.Calories.ToString("0") + " kcal)");
             }
 

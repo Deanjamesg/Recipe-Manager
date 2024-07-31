@@ -8,10 +8,10 @@
         
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ScrollBarStyle.xaml"/>
-                <ResourceDictionary Source="ShowRecipeButtonStyle.xaml"/>
-                <ResourceDictionary Source="MenuButtonStyle.xaml"/>
-                <ResourceDictionary Source="SubmitButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/ScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="Style/ShowRecipeButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/SubmitButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/MenuButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

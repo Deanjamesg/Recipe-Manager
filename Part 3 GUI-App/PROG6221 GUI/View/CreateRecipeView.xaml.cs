@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PROG6221_GUI.Model;
 using System.Reflection;
 
 namespace PROG6221_GUI.View
