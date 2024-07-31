@@ -29,6 +29,7 @@ namespace PROG6221_GUI
         {
             List<Recipe> filteredRecipes = new List<Recipe>();
 
+            //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/foreach-in
             foreach (Recipe recipe in RecipeList)
             {
                 // Checks to see if there is a max calorie filter, if there is, it will check if the recipe is within the calorie range.
@@ -60,11 +61,10 @@ namespace PROG6221_GUI
 
         //-------------------------------------------------------------------------------------------------------------------------------------
 
+        //Creating sample recipes to make for easier testing
         public void CreateSampleRecipes()
         {
-            //Creating sample recipes to make for easier testing
             //Sample Recipe 1
-
             Recipe recipe1 = new Recipe
             {
                 RecipeName = "Pancakes",
@@ -249,12 +249,12 @@ namespace PROG6221_GUI
             recipe.ScaleFactor = 1;
 
             // Normalizing all the quantities of the ingredients in the recipe, to simplify the recipe.
-            recipe = NormalizeQuantities(recipe);
+            //recipe = NormalizeQuantities(recipe);
+            NormalizeQuantities(recipe);
 
             // Setting the total calories of the recipe to the returned value of the method CalculateTotalCalories().
             recipe.TotalCalories = CalculateTotalCalories(recipe);
 
-            //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/foreach-in
             // Foreach loop to set the original values of each ingredient in the recipe.
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
@@ -293,7 +293,8 @@ namespace PROG6221_GUI
                 ingredient.Calories *= scaleFactor;
             }
 
-            recipe = NormalizeQuantities(recipe);
+            //recipe = NormalizeQuantities(recipe);
+            NormalizeQuantities(recipe);
             recipe.TotalCalories = CalculateTotalCalories(recipe);
         }
 
@@ -354,7 +355,7 @@ namespace PROG6221_GUI
 
         //Normalize the quantities of ingredients in a recipe, by passing each ingredient through a switch statements.
         //The switch statements convert the quantities of ingredients to a more appropriate unit of measurement.
-        private Recipe NormalizeQuantities(Recipe recipe)
+        private void NormalizeQuantities(Recipe recipe)
         {
 
             foreach (Ingredient ingredient in recipe.Ingredients)
@@ -459,7 +460,6 @@ namespace PROG6221_GUI
 
                 }
             }
-            return recipe;
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------
