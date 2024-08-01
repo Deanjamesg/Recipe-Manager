@@ -15,8 +15,8 @@
           Background="#58A399">
 
         <StackPanel HorizontalAlignment="Left"
-                            Height="385"
-                            Width="250">
+                    Height="385"
+                    Width="250">
             <StackPanel.Effect>
                 <DropShadowEffect
                             ShadowDepth="2"
@@ -24,32 +24,32 @@
                             BlurRadius="15"/>
             </StackPanel.Effect>
 
-            <Label Content="Select a Recipe" 
-                           HorizontalAlignment="Center" 
-                           FontSize="24" 
-                           Foreground="White"
-                           Margin="0,20,0,0"/>
+            <Label Content="View a Recipe" 
+                   HorizontalAlignment="Center" 
+                   FontSize="24" 
+                   Foreground="White"
+                   Margin="0,20,0,0"/>
 
-            <Label Content="to view" 
-                           HorizontalAlignment="Center" 
-                           FontSize="16" 
-                           Foreground="White"
-                           Margin="0,-15,0,0"/>
+            <Label Content="select one" 
+                   HorizontalAlignment="Center" 
+                   FontSize="16" 
+                   Foreground="White"
+                   Margin="0,-15,0,0"/>
 
             <Label Content="Recipes" 
-                           HorizontalAlignment="Center" 
-                           Foreground="White" 
-                           FontSize="20"
-                           Margin="0,20,0,10"/>
+                   HorizontalAlignment="Center" 
+                   Foreground="White" 
+                   FontSize="20"
+                   Margin="0,20,0,10"/>
 
             <ComboBox x:Name="cmbSelectRecipe" 
-                              HorizontalAlignment="Center"  
-                              VerticalAlignment="Top" 
-                              SelectedIndex="0"
-                              Width="210"
-                              FontSize="14"
-                              SelectionChanged="cmbRecipe_SelectionChanged" 
-                              Foreground="Black">
+                      HorizontalAlignment="Center"  
+                      VerticalAlignment="Top" 
+                      SelectedIndex="0"
+                      Width="210"
+                      FontSize="14"
+                      SelectionChanged="cmbRecipe_SelectionChanged" 
+                      Foreground="Black">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -65,18 +65,18 @@
             </ComboBox>
 
             <Button Content="Search for Recipe" 
-                            Margin="0,110,0,0"
-                            Style="{StaticResource SubmitButtonStyle}"
-                            Click="btnSearchRecipe_Click"/>
+                    Margin="0,110,0,0"
+                    Style="{StaticResource SubmitButtonStyle}"
+                    Click="btnSearchRecipe_Click"/>
 
         </StackPanel>
 
         <Border CornerRadius="10"
-                        Width="490"
-                        Height="365"
-                        Margin="0,0,10,0"
-                        Background="#E2F4C5"
-                        HorizontalAlignment="Right">
+                Width="490"
+                Height="365"
+                Margin="0,0,10,0"
+                Background="#E2F4C5"
+                HorizontalAlignment="Right">
             <Border.Effect>
                 <DropShadowEffect 
                             ShadowDepth="1"
@@ -85,94 +85,98 @@
             </Border.Effect>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  HorizontalAlignment="Right"
-                                  Width="480"
-                                  Margin="0,5,5,5"
-                                  Height="355"
-                                  Background="Transparent">
+                          HorizontalScrollBarVisibility="Disabled"
+                          HorizontalAlignment="Right"
+                          Width="480"
+                          Margin="0,5,5,5"
+                          Height="355"
+                          Background="Transparent">
                 <ScrollViewer.Resources>
                     <Style TargetType="ScrollBar" 
-                                   BasedOn="{StaticResource CustomScrollBarStyle}" />
+                           BasedOn="{StaticResource CustomScrollBarStyle}" />
                 </ScrollViewer.Resources>
 
                 <StackPanel HorizontalAlignment="Left"
-                                    Width="470" >
+                            Width="470" >
 
                     <TextBlock x:Name="txtRecipeName" 
-                                       Foreground="Black"
-                                       Text="Recipe Name"
-                                       FontSize="24" 
-                                       Margin="10,10,10,10"
-                                       TextWrapping="Wrap"/>
+                               Foreground="Black"
+                               Text="Recipe Name"
+                               FontSize="24" 
+                               Margin="10,10,10,10"
+                               TextWrapping="Wrap"/>
 
                     <TextBlock Text="Ingredients" 
-                                       FontSize="18"
-                                       Margin="10,10,10,10"
-                                       Foreground="Black"/>
+                               FontSize="18"
+                               Margin="10,10,10,10"
+                               Foreground="Black"/>
 
                     <ItemsControl x:Name="lstIngredients"
-                                          Background="Transparent" 
-                                          BorderBrush="Transparent"
-                                          Width="350"
-                                          HorizontalAlignment="Left"
-                                          Margin="10,0,0,0"
-                                          Padding="5"
-                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                          d:ItemsSource="{d:SampleData ItemCount=3}">
+                                  Background="Transparent" 
+                                  BorderBrush="Transparent"
+                                  Width="350"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,0,0,0"
+                                  Padding="5"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"                                       
+                                  d:ItemsSource="{d:SampleData ItemCount=3}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Foreground="Black"
-                                                  Background="Transparent"
-                                                  BorderThickness="2"
-                                                  BorderBrush="Black"
-                                                  Margin="0,5,0,0"
-                                                  IsChecked="False"
-                                                  FontFamily="Poppins"
-                                                  FontSize="14">
+                                          Background="Transparent"
+                                          BorderThickness="2"
+                                          BorderBrush="Black"
+                                          Margin="0,5,0,0"
+                                          IsChecked="False"
+                                          FontFamily="Poppins"
+                                          FontSize="14"
+                                          Checked="CheckBox_Checked"
+                                          Unchecked="CheckBox_Unchecked">
                                     <TextBlock Text="{Binding}" 
-                                                       TextWrapping="Wrap"/>
+                                               TextWrapping="Wrap"/>
                                 </CheckBox>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
                     <TextBlock Text="Steps" 
-                                       FontSize="18"
-                                       Margin="10,10,10,10"
-                                       Foreground="Black"/>
+                               FontSize="18"
+                               Margin="10,10,10,10"
+                               Foreground="Black"/>
 
                     <ItemsControl x:Name="lstSteps"
-                                          Background="Transparent"
-                                          BorderBrush="Transparent"
-                                          Width="350"
-                                          HorizontalAlignment="Left"
-                                          Margin="10,0,0,0"
-                                          Padding="5"
-                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                          d:ItemsSource="{d:SampleData ItemCount=5}">
+                                  Background="Transparent"
+                                  BorderBrush="Transparent"
+                                  Width="350"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,0,0,0"
+                                  Padding="5"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Foreground="Black"
-                                                  Background="Transparent"
-                                                  BorderThickness="2"
-                                                  BorderBrush="Black"
-                                                  Margin="0,5,0,0"
-                                                  IsChecked="False"
-                                                  FontFamily="Poppins" 
-                                                  FontSize="14">
+                                          Background="Transparent"
+                                          BorderThickness="2"
+                                          BorderBrush="Black"
+                                          Margin="0,5,0,0"
+                                          IsChecked="False"
+                                          FontFamily="Poppins" 
+                                          FontSize="14"
+                                          Checked="CheckBox_Checked"
+                                          Unchecked="CheckBox_Unchecked">
                                     <TextBlock Text="{Binding Description}" 
-                                                       TextWrapping="Wrap"/>
+                                               TextWrapping="Wrap"/>
                                 </CheckBox>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
                     <Label x:Name="lblTotalCalories" 
-                                   Content="Total Calories:"
-                                   FontSize="18"
-                                   Margin="10,10,10,10"
-                                   Foreground="Black"/>
+                           Content="Total Calories:"
+                           FontSize="18"
+                           Margin="10,10,10,10"
+                           Foreground="Black"/>
                 </StackPanel>
             </ScrollViewer>
         </Border>

@@ -56,7 +56,7 @@ namespace PROG6221_GUI
 
         private bool checkIngredientFilter(Recipe recipe, string _ingredientName)
         {
-            return (_ingredientName == "" || recipe.Ingredients.Any(ingredient => ingredient.Name.ToUpper() == _ingredientName.ToUpper()));
+            return (_ingredientName == "" || recipe.Ingredients.Any(ingredient => ingredient.Name.ToUpper().Contains(_ingredientName.ToUpper())));
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------
@@ -249,7 +249,6 @@ namespace PROG6221_GUI
             recipe.ScaleFactor = 1;
 
             // Normalizing all the quantities of the ingredients in the recipe, to simplify the recipe.
-            //recipe = NormalizeQuantities(recipe);
             NormalizeQuantities(recipe);
 
             // Setting the total calories of the recipe to the returned value of the method CalculateTotalCalories().
@@ -262,6 +261,7 @@ namespace PROG6221_GUI
             }
 
             RecipeList.Add(recipe);
+
             SortRecipesAlphabetically();
         }
 
@@ -269,13 +269,13 @@ namespace PROG6221_GUI
 
         public void DeleteRecipe(int index)
         {
-
             //https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-6.0
             if (RecipeList.Count == 0)
             {
                 return;
             }
             RecipeList.RemoveAt(index);
+
             SortRecipesAlphabetically();
         }
 
@@ -283,8 +283,8 @@ namespace PROG6221_GUI
 
         public void ScaleRecipe(int index, double scaleFactor)
         {
-
             Recipe recipe = GetRecipe(index);
+
             recipe.ScaleFactor = recipe.ScaleFactor * scaleFactor;
 
             foreach (Ingredient ingredient in recipe.Ingredients)
@@ -293,8 +293,8 @@ namespace PROG6221_GUI
                 ingredient.Calories *= scaleFactor;
             }
 
-            //recipe = NormalizeQuantities(recipe);
             NormalizeQuantities(recipe);
+
             recipe.TotalCalories = CalculateTotalCalories(recipe);
         }
 
@@ -302,8 +302,8 @@ namespace PROG6221_GUI
 
         public void ResetRecipeScale(int index)
         {
-
             Recipe recipe = GetRecipe(index);
+
             recipe.ScaleFactor = 1;
 
             foreach (Ingredient ingredient in recipe.Ingredients)
@@ -318,7 +318,6 @@ namespace PROG6221_GUI
 
         private void SortRecipesAlphabetically()
         {
-
             //https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=net-8.0
             RecipeList.Sort((recipe1, recipe2) => recipe1.RecipeName.CompareTo(recipe2.RecipeName));
         }
@@ -357,10 +356,8 @@ namespace PROG6221_GUI
         //The switch statements convert the quantities of ingredients to a more appropriate unit of measurement.
         private void NormalizeQuantities(Recipe recipe)
         {
-
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
-
                 //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
                 switch (ingredient.UnitOfMeasurement)
                 {

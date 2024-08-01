@@ -22,7 +22,7 @@ namespace PROG6221_GUI.View
         public OptionPopUpBox(string message)
         {
             InitializeComponent();
-            OptionDialog.Text = "Are you sure you want to " + message;
+            OptionDialog.Text = message;
         }
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {

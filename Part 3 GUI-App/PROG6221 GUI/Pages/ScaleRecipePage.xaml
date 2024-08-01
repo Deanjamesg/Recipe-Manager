@@ -22,17 +22,17 @@
                             BlurRadius="15"/>
                 </StackPanel.Effect>
 
-                <Label Content="Select a Recipe" 
+                <Label Content="Scale a Recipe" 
                            HorizontalAlignment="Center" 
                            FontSize="24" 
                            Foreground="White"
-                           Margin="0,20,0,10"/>
+                           Margin="0,20,0,0"/>
 
-                <Label Content="to edit" 
+                <Label Content="select one" 
                            HorizontalAlignment="Center" 
                            FontSize="16" 
                            Foreground="White"
-                           Margin="0,-20,0,0"/>
+                           Margin="0,-15,0,0"/>
 
                 <Label Content="Recipes" 
                            HorizontalAlignment="Center" 
@@ -84,7 +84,7 @@
                 </ComboBox>
 
                 <Button Content="Scale Recipe" 
-                            Margin="0,20,0,0"
+                            Margin="0,15,0,0"
                             Style="{StaticResource SubmitButtonStyle}"
                             Click="btnSubmitScale_Click"/>
 

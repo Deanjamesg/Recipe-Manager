@@ -13,34 +13,32 @@
     <Grid Background="#58A399">
 
         <StackPanel HorizontalAlignment="Left"
-                            Height="385"
-                            Width="250">
+                    Height="385"
+                    Width="250">
             <StackPanel.Effect>
-                <DropShadowEffect
-                            ShadowDepth="2"
-                            Opacity="0.75"
-                            BlurRadius="15"/>
+                <DropShadowEffect ShadowDepth="2"
+                                  Opacity="0.75"
+                                  BlurRadius="15"/>
             </StackPanel.Effect>
 
             <Label Content="Home Page" 
-                           HorizontalAlignment="Center" 
-                           FontSize="24" 
-                           Foreground="White"
-                           Margin="0,20,0,0"/>
+                   HorizontalAlignment="Center" 
+                   FontSize="24" 
+                   Foreground="White"
+                   Margin="0,20,0,0"/>
 
         </StackPanel>
 
         <Border CornerRadius="10"
-                        Width="490"
-                        Height="365"
-                        Margin="0,0,10,0"
-                        Background="#E2F4C5"
-                        HorizontalAlignment="Right">
+                Width="490"
+                Height="365"
+                Margin="0,0,10,0"
+                Background="#E2F4C5"
+                HorizontalAlignment="Right">
             <Border.Effect>
-                <DropShadowEffect 
-                            ShadowDepth="1"
-                            BlurRadius="20"
-                            Color="Black"/>
+                <DropShadowEffect  ShadowDepth="1"
+                                   BlurRadius="20"
+                                   Color="Black"/>
             </Border.Effect>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto"
@@ -70,9 +68,11 @@
                                Foreground="Black"/>
 
                 </StackPanel>
-            </ScrollViewer>
-        </Border>
 
+            </ScrollViewer>
+
+        </Border>
+        
     </Grid>
     
 </Page>

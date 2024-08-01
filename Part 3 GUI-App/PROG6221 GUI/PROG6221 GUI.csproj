@@ -77,26 +77,11 @@
       <DependentUpon>ViewRecipePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecipeManager.cs" />
-    <Compile Include="View\CreateRecipeView.xaml.cs">
-      <DependentUpon>CreateRecipeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DeleteRecipeView.xaml.cs">
-      <DependentUpon>DeleteRecipeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\EditScaleView.xaml.cs">
-      <DependentUpon>EditScaleView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\OptionPopUpBox.xaml.cs">
+    <Compile Include="WindowDialog\OptionPopUpBox.xaml.cs">
       <DependentUpon>OptionPopUpBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PopUpBox.xaml.cs">
+    <Compile Include="WindowDialog\PopUpBox.xaml.cs">
       <DependentUpon>PopUpBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\RecipeView.xaml.cs">
-      <DependentUpon>RecipeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SearchRecipeView.xaml.cs">
-      <DependentUpon>SearchRecipeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -150,31 +135,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CreateRecipeView.xaml">
+    <Page Include="WindowDialog\OptionPopUpBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DeleteRecipeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\EditScaleView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\OptionPopUpBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PopUpBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\RecipeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SearchRecipeView.xaml">
+    <Page Include="WindowDialog\PopUpBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +171,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\FoodIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

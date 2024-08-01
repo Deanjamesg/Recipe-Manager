@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6221_GUI.View"
         mc:Ignorable="d"
-        Title="PopUpBox"        
+        Title="Notification"        
         Height="300" 
         Width="400"
         Background="Transparent"

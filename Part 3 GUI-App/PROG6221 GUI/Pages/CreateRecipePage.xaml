@@ -296,6 +296,15 @@
                             BlurRadius="15"/>
             </StackPanel.Effect>
 
+            <Button Content="Back to ingredients"
+                    HorizontalAlignment="Left"
+                    Width="130"
+                    Height="30"
+                    FontSize="12"
+                    Margin="10,10,0,10"
+                    Click="btnBackToIngredientsPrompt_Click" 
+                    Style="{StaticResource SubmitButtonStyle}"/>
+
             <TextBlock Text="Add Steps"
                                TextWrapping="Wrap"
                                HorizontalAlignment="Center"
@@ -303,7 +312,7 @@
                                TextAlignment="Center"
                                FontSize="24"
                                Foreground="White"
-                               Margin="0,10,0,0"/>
+                               Margin="0,0,0,0"/>
 
             <TextBox x:Name="txtStepDescription"
                              HorizontalAlignment="Center"  
@@ -313,7 +322,7 @@
                              Height="150"
                              FontSize="14"
                              TextWrapping="Wrap"
-                             Margin="20,20,20,40"
+                             Margin="20,10,20,20"
                              Foreground="White"/>
 
             <Button Content="Add Step"
@@ -324,7 +333,7 @@
 
             <Button Content="Done" 
                             Width="100" 
-                            Margin="120,20,0,0"
+                            Margin="120,15,0,0"
                             Click="btnDone_Click"
                             Style="{StaticResource SubmitButtonStyle}"/>
 

@@ -27,15 +27,22 @@ namespace PROG6221_GUI
     {
         public RecipeManager recipeManager;
 
+        public bool UnsavedData { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
 
             recipeManager = new RecipeManager();
 
+            UnsavedData = new bool();
+
+            UnsavedData = false;
+
             recipeManager.StartRecipeProgram();
 
             HomePage homePage = new HomePage(recipeManager);
+
             MainFrame.Content = homePage;
         }
 
@@ -44,57 +51,97 @@ namespace PROG6221_GUI
             DragMove();
         }
 
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            if (ExecuteMenuButton())
+            {
+                HomePage homePage = new HomePage(recipeManager);
+
+                MainFrame.Content = homePage;
+            }
+        }
+
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
         {
-            //RecipeView recipeView = new RecipeView(recipeManager);
-            //recipeView.Show();
-            //this.Close();
+            if (ExecuteMenuButton())
+            {
+                ViewRecipePage viewRecipePage = new ViewRecipePage(recipeManager);
 
-            ViewRecipePage viewRecipePage = new ViewRecipePage(recipeManager);
-            MainFrame.Content = viewRecipePage;
-
+                MainFrame.Content = viewRecipePage;
+            }
         }
 
         private void btnCreateRecipe_Click(object sender, RoutedEventArgs e)
         {
-            //CreateRecipeView createRecipeView = new CreateRecipeView(recipeManager);
-            //createRecipeView.Show();
-            //this.Close();
-            CreateRecipePage createRecipePage = new CreateRecipePage(recipeManager);
-            MainFrame.Content = createRecipePage;
+            if (ExecuteMenuButton())
+            {
+                CreateRecipePage createRecipePage = new CreateRecipePage(recipeManager);
+
+                MainFrame.Content = createRecipePage;
+            }
         }
 
         private void btnEditScale_Click(object sender, RoutedEventArgs e)
         {
-            //EditScaleView editScaleView = new EditScaleView(recipeManager);
-            //editScaleView.Show();
-            //this.Close();
-            ScaleRecipePage scaleRecipePage = new ScaleRecipePage(recipeManager);
-            MainFrame.Content = scaleRecipePage;
+            if (ExecuteMenuButton())
+            {
+                ScaleRecipePage scaleRecipePage = new ScaleRecipePage(recipeManager);
+
+                MainFrame.Content = scaleRecipePage;
+            }
         }
 
         private void btnDeleteRecipe_Click(object sender, RoutedEventArgs e)
         {
-            //DeleteRecipeView deleteRecipeView = new DeleteRecipeView(recipeManager);
-            //deleteRecipeView.Show();
-            //this.Close();
-            DeleteRecipePage deleteRecipePage = new DeleteRecipePage(recipeManager);
-            MainFrame.Content = deleteRecipePage;
+            if (ExecuteMenuButton())
+            {
+                DeleteRecipePage deleteRecipePage = new DeleteRecipePage(recipeManager);
+
+                MainFrame.Content = deleteRecipePage;
+            }
         }
 
         private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)
         {
-            //SearchRecipeView searchRecipeView = new SearchRecipeView(recipeManager);
-            //searchRecipeView.Show();
-            //this.Close();
-            SearchRecipePage searchRecipePage = new SearchRecipePage(recipeManager);
-            MainFrame.Content = searchRecipePage;
+            if (ExecuteMenuButton())
+            {
+                SearchRecipePage searchRecipePage = new SearchRecipePage(recipeManager);
+
+                MainFrame.Content = searchRecipePage;
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-            this.Close();
+            if (ExecuteMenuButton())
+            {
+                Application.Current.Shutdown();
+
+                Close();
+            }
         }
+
+        private bool ExecuteMenuButton()
+        {
+            if (UnsavedData)
+            {
+                OptionPopUpBox optionPopUpBox = new OptionPopUpBox("You have unsaved data. Are you sure you want to leave?");
+
+                var result = optionPopUpBox.ShowDialog();
+
+                if (result.HasValue && result.Value)
+                {
+                    UnsavedData = false;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

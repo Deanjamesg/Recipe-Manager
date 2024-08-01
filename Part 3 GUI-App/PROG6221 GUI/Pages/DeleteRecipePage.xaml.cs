@@ -23,11 +23,15 @@ namespace PROG6221_GUI.Pages
     public partial class DeleteRecipePage : Page
     {
         public RecipeManager recipeManager;
+
+        private MainWindow mainWindow;
         public DeleteRecipePage(RecipeManager _recipeManager)
         {
             InitializeComponent();
 
             recipeManager = _recipeManager;
+
+            mainWindow = (MainWindow)Application.Current.MainWindow;
 
             cmbSelectRecipe.ItemsSource = recipeManager.GetRecipeList();
 
@@ -45,8 +49,11 @@ namespace PROG6221_GUI.Pages
             if (selectedRecipe != null)
             {
                 txtRecipeName.Text = selectedRecipe.RecipeName;
+
                 lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(selectedRecipe);
+
                 lstSteps.ItemsSource = selectedRecipe.Steps;
+
                 lblTotalCalories.Content = "Total Calories: " + recipeManager.CalculateTotalCalories(selectedRecipe).ToString();
             }
         }
@@ -55,24 +62,29 @@ namespace PROG6221_GUI.Pages
         {
             int index = cmbSelectRecipe.SelectedIndex;
 
-            OptionPopUpBox optionPopUpBox = new OptionPopUpBox("delete this recipe?");
+            OptionPopUpBox optionPopUpBox = new OptionPopUpBox("Are you sure you want to delete this recipe?");
 
             var result = optionPopUpBox.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
                 recipeManager.DeleteRecipe(index);
+
                 PopUpBox popUpBox = new PopUpBox("Recipe was successfully deleted!");
+
                 popUpBox.ShowDialog();
+
+                DeleteRecipePage deleteRecipePage = new DeleteRecipePage(recipeManager);
+
+                mainWindow.MainFrame.Content = deleteRecipePage;
             }
             else
             {
                 PopUpBox popUpBox = new PopUpBox("Deleting of recipe was cancelled!");
+
                 popUpBox.ShowDialog();
             }
-
-            this.NavigationService.Navigate(new DeleteRecipePage(recipeManager));
-
         }
+
     }
 }

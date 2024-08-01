@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6221_GUI"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Recipe Manager"
+        Icon="Images/FoodIcon.png"
         Height="700" 
         Width="1300"
         Background="Transparent"
@@ -13,8 +14,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         FontFamily="/Font/#Poppins"
-        AllowsTransparency="True"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        AllowsTransparency="True">
+    
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0"
                           BlurRadius="50"
@@ -24,8 +25,8 @@
     <Border Background="#496989"
             CornerRadius="30"
             Padding="10"
-                    Height="500" 
-        Width="1000">
+            Height="500" 
+            Width="1000">
 
         <Grid>
 
@@ -39,19 +40,54 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
+            <Border Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Background="#344C64"
+                    VerticalAlignment="Top"
+                    Height="60"
+                    Margin="-10"
+                    MouseLeftButtonDown="Window_MouseLeftButtonDown"
+                    CornerRadius="30,30,0,0">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                      Opacity="0.75" 
+                                      BlurRadius="20"
+                                      Color="Black"
+                                      Direction="270"/>
+                </Border.Effect>
+
+            </Border>
+
             <TextBlock Text="Recipe Application"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="22"
-                       Margin="0,0,0,0"/>
+                       Margin="0,5,0,0"
+                       MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+
+            <TextBlock Text="ST10378305"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Foreground="White"
+                       FontSize="20"
+                       Margin="0,0,20,30"
+                       Opacity="0.65"
+                       Grid.Column="1"
+                       MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
             <StackPanel Grid.Row="1">
                 <StackPanel.Effect>
-                    <DropShadowEffect
-                            ShadowDepth="1"
-                            BlurRadius="15"/>
+                    <DropShadowEffect ShadowDepth="1"
+                                      BlurRadius="15"/>
                 </StackPanel.Effect>
+
+                <Button x:Name="btnHome"
+                        Height="40" 
+                        Margin="0,10,0,0" 
+                        Style="{StaticResource MenuButtonStyle}"
+                        Click="btnHome_Click" 
+                        Content="Home"/>
 
                 <Button x:Name="btnViewRecipe"
                         Height="40" 
@@ -86,24 +122,16 @@
                         Margin="0,10,0,0" 
                         Style="{StaticResource MenuButtonStyle}"
                         Click="btnDeleteRecipe_Click" 
-                        Content="Delete a Recipe"/>
+                        Content="Delete"/>
 
                 <Button x:Name="btnExit"
                         Height="40" 
-                        Margin="0,105,0,0" 
+                        Margin="0,55,0,0" 
                         Style="{StaticResource MenuButtonStyle}"
                         Click="btnExit_Click" 
                         Content="Exit"/>
 
             </StackPanel>
-
-            <TextBlock Text="ST10378305"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="28"
-                       Margin="20,0,0,0"
-                       Grid.Column="1"/>
 
             <Frame x:Name="MainFrame" 
                    NavigationUIVisibility="Hidden" 
@@ -112,14 +140,14 @@
                    Width="750"
                    Height="385">
                 <Frame.Effect>
-                    <DropShadowEffect 
-                            ShadowDepth="1"
-                            BlurRadius="20"
-                            Color="Black"/>
+                    <DropShadowEffect ShadowDepth="1"
+                                      BlurRadius="20"
+                                      Color="Black"/>
                 </Frame.Effect>
             </Frame>
 
-
         </Grid>
+        
     </Border>
+    
 </Window>

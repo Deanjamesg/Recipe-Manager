@@ -24,11 +24,15 @@ namespace PROG6221_GUI.Pages
     {
         public RecipeManager recipeManager;
 
+        private MainWindow mainWindow;
+
         public SearchRecipePage(RecipeManager _recipeManager)
         {
             InitializeComponent();
 
             recipeManager = _recipeManager;
+
+            mainWindow = (MainWindow)Application.Current.MainWindow;
 
             string[] calorieOptions = { "", "100", "200", "300", "400", "500", "750", "1000", "1250", "1500", "1750", "2000" };
             
@@ -42,7 +46,9 @@ namespace PROG6221_GUI.Pages
         private void btnSubmitSearch_Click(object sender, RoutedEventArgs e)
         {
             string foodGroup = cmbSelectFoodGroup.SelectedValue.ToString();
+
             string ingredient = txtSearchIngredient.Text;
+
             double maxCalories = -1;
 
             if (!cmbSelectCalories.SelectedValue.Equals(""))
@@ -55,6 +61,7 @@ namespace PROG6221_GUI.Pages
             if (filteredRecipes == null || filteredRecipes.Count() == 0)
             {
                 PopUpBox popUpBox = new PopUpBox("No recipes could be found!");
+
                 popUpBox.ShowDialog();
             }
             else
@@ -74,10 +81,13 @@ namespace PROG6221_GUI.Pages
                 if (recipe != null)
                 {
                     ViewRecipePage viewRecipePage = new ViewRecipePage(recipeManager);
+
                     viewRecipePage.cmbSelectRecipe.SelectedItem = recipe;
-                    NavigationService.Navigate(viewRecipePage);
+
+                    mainWindow.MainFrame.Content = viewRecipePage;
                 }
             }
         }
+
     }
 }
