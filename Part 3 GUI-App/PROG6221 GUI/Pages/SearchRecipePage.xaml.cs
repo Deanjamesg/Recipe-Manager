@@ -43,6 +43,8 @@ namespace PROG6221_GUI.Pages
             cmbSelectCalories.SelectedIndex = 0;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnSubmitSearch_Click(object sender, RoutedEventArgs e)
         {
             string foodGroup = cmbSelectFoodGroup.SelectedValue.ToString();
@@ -70,6 +72,8 @@ namespace PROG6221_GUI.Pages
             }
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnShowRecipe_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -90,4 +94,6 @@ namespace PROG6221_GUI.Pages
         }
 
     }
+    //END OF CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

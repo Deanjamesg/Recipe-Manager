@@ -24,11 +24,16 @@ namespace PROG6221_GUI.View
             InitializeComponent();
             OptionDialog.Text = message;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             this.Close();
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnNo_Click(object sender, RoutedEventArgs e)
         {

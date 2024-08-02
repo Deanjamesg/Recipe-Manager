@@ -39,8 +39,10 @@ namespace PROG6221_GUI.Pages
             {
                 btnDeleteSelectedRecipe.IsHitTestVisible = false;
             }
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void cmbRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -57,6 +59,9 @@ namespace PROG6221_GUI.Pages
                 lblTotalCalories.Content = "Total Calories: " + recipeManager.CalculateTotalCalories(selectedRecipe).ToString();
             }
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnDeleteSelectedRecipe_Click(object sender, RoutedEventArgs e)
         {
@@ -87,4 +92,6 @@ namespace PROG6221_GUI.Pages
         }
 
     }
+    //END OF CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

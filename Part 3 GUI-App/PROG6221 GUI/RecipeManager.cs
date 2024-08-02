@@ -18,6 +18,8 @@ namespace PROG6221_GUI
             RecipeList = new List<Recipe>();
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         public void StartRecipeProgram()
         {
             CreateSampleRecipes();
@@ -38,7 +40,6 @@ namespace PROG6221_GUI
                     filteredRecipes.Add(recipe);
                 }
             }
-
             return filteredRecipes;
         }
 
@@ -49,10 +50,14 @@ namespace PROG6221_GUI
             return (_maxCalories == -1 || recipe.TotalCalories <= _maxCalories);
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private bool checkFoodGroupFilter(Recipe recipe, string _foodGroup)
         {
             return (_foodGroup == "Any" || recipe.Ingredients.Any(ingredient => ingredient.FoodGroup.ToString() == _foodGroup));
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private bool checkIngredientFilter(Recipe recipe, string _ingredientName)
         {
@@ -70,7 +75,7 @@ namespace PROG6221_GUI
                 RecipeName = "Pancakes",
                 Ingredients = new List<Ingredient>
                 {
-                    new Ingredient { Name = "Flour", Quantity = 1, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Grain, Calories = 455 },
+                    new Ingredient { Name = "Flour", Quantity = 1.0/3.0, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Grain, Calories = 455 },
                     new Ingredient { Name = "Egg", Quantity = 1, UnitOfMeasurement = UnitOM.Whole, FoodGroup = FoodGroup.Poultry, Calories = 68 },
                     new Ingredient { Name = "Milk", Quantity = 0.5, UnitOfMeasurement = UnitOM.Cup, FoodGroup = FoodGroup.Dairy, Calories = 56 }
                 },
@@ -467,13 +472,58 @@ namespace PROG6221_GUI
 
             foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                ingredientList.Add((ingredient.Quantity % 1 != 0 ? ingredient.Quantity.ToString("0.00") : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + ", " + ingredient.Name + " (" + ingredient.Calories.ToString("0") + " kcal)");
+                ingredientList.Add((ingredient.Quantity % 1 != 0 ? ConvertToFraction(ingredient.Quantity) : ingredient.Quantity.ToString("0")) + " " + ingredient.UnitOfMeasurement + ", " + ingredient.Name + " (" + ingredient.Calories.ToString("0") + " kcal)");
             }
 
             return ingredientList;
         }
 
-        //END OF RECIPE MANAGER CLASS
         //-------------------------------------------------------------------------------------------------------------------------------------
+
+        private string ConvertToFraction(double number)
+        {
+            string fraction = "";
+
+            double eighth = 0.125;
+
+            double third = 1.0 / 3.0;
+
+            int wholeNumber = (int)Math.Truncate(number);
+
+            double remainder = number - wholeNumber;
+
+            if (remainder % eighth == 0)
+            {
+                double numerator = (remainder / eighth);
+
+                double denominator = 8;
+
+                while (numerator % 2 == 0 && numerator > 1)
+                {
+                    numerator /= 2;
+                    denominator /= 2;
+                }
+
+                fraction = (wholeNumber == 0 ? "" : wholeNumber.ToString() + "  ") + numerator.ToString() + "/" + denominator.ToString();
+            }
+            else if (remainder % third == 0)
+            {
+                fraction = (wholeNumber == 0 ? "" : wholeNumber.ToString()) + (remainder / third).ToString() + "/3";
+            }
+            else if (number < 0.125)
+            {
+                fraction = number.ToString();
+            }
+            else
+            {
+                fraction = (Math.Round(number * 4, MidpointRounding.AwayFromZero) / 4).ToString();
+
+                fraction = ConvertToFraction(double.Parse(fraction));
+            }
+            return fraction;
+        }
+
     }
+    //END OF RECIPE MANAGER CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

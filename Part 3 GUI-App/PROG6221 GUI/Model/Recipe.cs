@@ -1,4 +1,4 @@
-﻿   using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ namespace PROG6221_GUI.Model
             Ingredients = new List<Ingredient>();
         }
 
-        //END OF RECIPE CLASS
-        //-------------------------------------------------------------------------------------------------------------------------------------
     }
+    //END OF RECIPE CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

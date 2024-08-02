@@ -28,12 +28,13 @@
                            Foreground="White"
                            Margin="0,20,0,0"/>
 
-            <Label Content="Select a Food Group" 
+            <Label Content="Food Group" 
                            HorizontalAlignment="Center" 
                            Foreground="White" 
                            FontSize="16"
-                           Margin="0,5,0,0"/>
-            <Label Content="that must be in the recipe" 
+                           Margin="0,-5,0,0"/>
+            
+            <Label Content="that the recipe must contain" 
                            HorizontalAlignment="Center" 
                            Foreground="White" 
                            FontSize="12"

@@ -28,13 +28,13 @@
                            HorizontalAlignment="Center" 
                            FontSize="22" 
                            Foreground="White"
-                           Margin="0,10,0,0"/>
+                           Margin="0,20,0,0"/>
 
             <Label Content="the recipe name"
                            HorizontalAlignment="Center" 
                            FontSize="16" 
                            Foreground="White"
-                           Margin="0,-10,0,0"/>
+                           Margin="0,-10,0,20"/>
 
             <TextBox x:Name="txtRecipeNameField" 
                              HorizontalAlignment="Center"  
@@ -46,55 +46,19 @@
                              Margin="0,0,0,10"
                              Foreground="Black"/>
 
-
-            <Label Content="Select the number of" 
-                           HorizontalAlignment="Center" 
-                           Foreground="White" 
-                           FontSize="20"
-                           Margin="0,5,0,10"/>
-
-            <Label Content="Ingredients"
-                           HorizontalAlignment="Center" 
-                           FontSize="16" 
-                           Foreground="White"
-                           Margin="0,-15,0,0"/>
-
-            <ComboBox x:Name="cmbNumberOfIngredients" 
-                              HorizontalAlignment="Center"  
-                              VerticalAlignment="Top" 
-                              SelectedIndex="0"
-                              Width="210"
-                              FontSize="13"
-                              Foreground="Black"/>
-
-            <Label Content="Steps"
-                           HorizontalAlignment="Center" 
-                           FontSize="16" 
-                           Foreground="White"
-                           Margin="0,10,0,0"/>
-
-            <ComboBox x:Name="cmbNumberOfSteps" 
-                              HorizontalAlignment="Center"  
-                              VerticalAlignment="Top" 
-                              SelectedIndex="0"
-                              Width="210"
-                              FontSize="13" 
-                              Foreground="Black"/>
-
-
             <Button Content="Next" 
-                            HorizontalAlignment="Center"  
-                            Width="100" 
-                            Margin="120,20,0,0"
-                            Style="{StaticResource SubmitButtonStyle}"
-                            Click="btnGoIngredientsPrompt_Click"/>
+                    HorizontalAlignment="Center"  
+                    Width="100" 
+                    Margin="120,180,0,0"
+                    Style="{StaticResource SubmitButtonStyle}"
+                    Click="btnGoIngredientsPrompt_Click"/>
 
             <Button Content="Cancel" 
-                            HorizontalAlignment="Center"  
-                            Width="100" 
-                            Margin="-120,-45,0,0"
-                            Style="{StaticResource SubmitButtonStyle}"
-                            Click="btnCancel_Click"/>
+                    HorizontalAlignment="Center"  
+                    Width="100" 
+                    Margin="-120,-45,0,0"
+                    Style="{StaticResource SubmitButtonStyle}"
+                    Click="btnCancel_Click"/>
 
         </StackPanel>
 
@@ -203,7 +167,6 @@
                              FontSize="14"
                              Margin="0,0,5,0"
                              Foreground="Black"/>
-
 
             <TextBlock Text="Food Group"
                                TextWrapping="Wrap"
@@ -371,32 +334,34 @@
                 </ScrollViewer.Resources>
 
                 <StackPanel HorizontalAlignment="Left"
-                                    Width="470" >
+                            Width="470" >
 
                     <TextBlock x:Name="txtRecipeName" 
-                                       Foreground="Black"
-                                       Text="Recipe Name"
-                                       FontSize="24" 
-                                       Margin="10,10,10,10"
-                                       TextWrapping="Wrap"
-                                       Visibility="Hidden"/>
+                               Foreground="Black"
+                               Text="Recipe Name"
+                               FontSize="24" 
+                               Margin="10,10,10,10"
+                               TextWrapping="Wrap"
+                               Visibility="Visible"/>
 
                     <TextBlock Text="Ingredients" 
-                                       x:Name="txtIngredients"
-                                       FontSize="18"
-                                       Margin="10,10,10,10"
-                                       Foreground="Black"
-                                       Visibility="Hidden"/>
+                               x:Name="txtIngredients"
+                               FontSize="18"
+                               Margin="10,10,10,10"
+                               Foreground="Black"
+                               Visibility="Visible"
+                               TextWrapping="Wrap"/>
 
                     <ItemsControl x:Name="lstIngredients"
-                                          Background="Transparent" 
-                                          BorderBrush="Transparent"
-                                          Width="350"
-                                          HorizontalAlignment="Left"
-                                          Margin="10,0,0,0"
-                                          Padding="5"
-                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                          d:ItemsSource="{d:SampleData ItemCount=3}">
+                                  Background="Transparent" 
+                                  BorderBrush="Transparent"
+                                  Width="350"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,0,0,0"
+                                  Padding="5"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  d:ItemsSource="{d:SampleData ItemCount=3}"
+                                  Visibility="Hidden">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Foreground="Black"
@@ -429,7 +394,8 @@
                                           Margin="10,0,0,0"
                                           Padding="5"
                                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                          d:ItemsSource="{d:SampleData ItemCount=5}">
+                                          d:ItemsSource="{d:SampleData ItemCount=5}"
+                                  Visibility="Hidden">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Foreground="Black"

@@ -46,10 +46,15 @@ namespace PROG6221_GUI
             MainFrame.Content = homePage;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
@@ -61,6 +66,8 @@ namespace PROG6221_GUI
             }
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnViewRecipe_Click(object sender, RoutedEventArgs e)
         {
             if (ExecuteMenuButton())
@@ -70,6 +77,8 @@ namespace PROG6221_GUI
                 MainFrame.Content = viewRecipePage;
             }
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnCreateRecipe_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +90,8 @@ namespace PROG6221_GUI
             }
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnEditScale_Click(object sender, RoutedEventArgs e)
         {
             if (ExecuteMenuButton())
@@ -90,6 +101,8 @@ namespace PROG6221_GUI
                 MainFrame.Content = scaleRecipePage;
             }
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnDeleteRecipe_Click(object sender, RoutedEventArgs e)
         {
@@ -101,6 +114,8 @@ namespace PROG6221_GUI
             }
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)
         {
             if (ExecuteMenuButton())
@@ -111,6 +126,8 @@ namespace PROG6221_GUI
             }
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             if (ExecuteMenuButton())
@@ -120,6 +137,8 @@ namespace PROG6221_GUI
                 Close();
             }
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private bool ExecuteMenuButton()
         {
@@ -144,4 +163,6 @@ namespace PROG6221_GUI
         }
 
     }
+    //END OF CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

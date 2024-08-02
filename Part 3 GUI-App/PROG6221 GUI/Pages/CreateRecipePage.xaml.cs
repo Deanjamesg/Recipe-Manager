@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,8 @@ namespace PROG6221_GUI.Pages
 
         private MainWindow mainWindow;
 
+        private string instructions;
+
         public CreateRecipePage(RecipeManager _recipeManager)
         {
             InitializeComponent();
@@ -38,14 +41,6 @@ namespace PROG6221_GUI.Pages
 
             newRecipe = new Recipe();
 
-            string[] ingredientOptions = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
-
-            string[] stepOptions = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
-
-            cmbNumberOfIngredients.ItemsSource = ingredientOptions;
-
-            cmbNumberOfSteps.ItemsSource = stepOptions;
-
             cmbFoodGroup.ItemsSource = Enum.GetValues(typeof(FoodGroup)).Cast<FoodGroup>().Skip(1).ToArray();
 
             cmbFoodGroup.SelectedIndex = 0;
@@ -53,7 +48,23 @@ namespace PROG6221_GUI.Pages
             cmbUnitOM.ItemsSource = Enum.GetValues(typeof(UnitOM));
 
             cmbUnitOM.SelectedIndex = 0;
+
+            instructions =
+                "1) Enter a name for the recipe. " +
+                "\n2) Click 'Next' to add ingredients. " +
+                "\n3) Enter the ingredient details and click 'Add Ingredient'. " +
+                "\n4) When you are done adding ingredients, click 'Next' to add steps. " +
+                "\n5) Enter the step details and click 'Add Step'. " +
+                "\n6) When you are happy with everything click 'Done' to save the recipe! " +
+                "\n7) To cancel the recipe click 'Cancel' at anytime.";
+
+            txtRecipeName.Text = "Instructions";
+
+            txtIngredients.Text = instructions;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnGoIngredientsPrompt_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +74,8 @@ namespace PROG6221_GUI.Pages
 
             txtRecipeName.Text = newRecipe.RecipeName;
 
+            txtIngredients.Text = "Ingredients";
+
             panelRecipeDetails.Visibility = Visibility.Hidden;
 
             panelIngredientDetails.Visibility = Visibility.Visible;
@@ -71,9 +84,14 @@ namespace PROG6221_GUI.Pages
 
             txtIngredients.Visibility = Visibility.Visible;
 
+            lstIngredients.Visibility = Visibility.Visible;
+
             mainWindow.UnsavedData = true;
 
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnAddIngredient_Click(object sender, RoutedEventArgs e)
         {
@@ -95,7 +113,7 @@ namespace PROG6221_GUI.Pages
 
             newIngredient.Name = txtIngredientName.Text;
 
-            newIngredient.Quantity = double.Parse(txtQuantity.Text);
+            newIngredient.Quantity = NormalizeQuantityField(txtQuantity.Text);
 
             newIngredient.UnitOfMeasurement = (UnitOM)cmbUnitOM.SelectedValue;
 
@@ -106,8 +124,10 @@ namespace PROG6221_GUI.Pages
             lstIngredients.ItemsSource = recipeManager.IngredientCheckBoxFormat(newRecipe);
 
             ClearUIFields();
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -134,8 +154,10 @@ namespace PROG6221_GUI.Pages
 
                 popUpBox.ShowDialog();
             }
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnGoStepsPrompt_Click(object sender, RoutedEventArgs e)
         {
@@ -144,10 +166,23 @@ namespace PROG6221_GUI.Pages
             panelIngredientDetails.Visibility = Visibility.Hidden;
 
             panelStepDetails.Visibility = Visibility.Visible;
+
+            lstSteps.Visibility = Visibility.Visible;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnAddStep_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtStepDescription.Text))
+            {
+                PopUpBox popUpBox = new PopUpBox("Please fill in all fields!");
+
+                popUpBox.ShowDialog();
+
+                return;
+            }
+
             Step newStep = new Step();
 
             newStep.Description = txtStepDescription.Text;
@@ -159,8 +194,10 @@ namespace PROG6221_GUI.Pages
             lstSteps.ItemsSource = newRecipe.Steps;
 
             txtStepDescription.Clear();
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
 
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
@@ -180,6 +217,9 @@ namespace PROG6221_GUI.Pages
 
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+
         private void ClearUIFields()
         {
             txtIngredientName.Clear();
@@ -194,9 +234,12 @@ namespace PROG6221_GUI.Pages
 
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+
         private bool CheckEmptyFields()
         {
-            if (txtIngredientName.Text == "" || txtQuantity.Text == "" || txtCalories.Text == "")
+            if (string.IsNullOrWhiteSpace(txtIngredientName.Text) || string.IsNullOrWhiteSpace(txtQuantity.Text) || string.IsNullOrWhiteSpace(txtCalories.Text))
             {
                 PopUpBox popUpBox = new PopUpBox("Please fill in all fields!");
 
@@ -207,35 +250,57 @@ namespace PROG6221_GUI.Pages
             return true;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+
         private bool CheckQuantityField()
         {
-            if (!double.TryParse(txtQuantity.Text, out double quantity))
+            string target = txtQuantity.Text;
+
+            int count = 0;
+ 
+            foreach (char c in target)
             {
-                PopUpBox popUpBox = new PopUpBox("Please enter a number in the quantity field!");
+                if (c == ',' || c == '.' || c == '/')
+                {
+                    count++;
+                }
+                if (!char.IsDigit(c) && c != ',' && c != '.' && c != '/' || count == 2)
+                {
+                    PopUpBox popUpBox = new PopUpBox("Please enter a valid Quantity! \nEg: 0.5 or 0,5 or 1/2");
 
-                popUpBox.ShowDialog();
-
-                return false;
+                    popUpBox.ShowDialog();
+                    return false;
+                }
             }
             return true;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private bool CheckCalorieField()
         {
-            if (!double.TryParse(txtCalories.Text, out double calories))
+            string target = txtCalories.Text;
+
+            foreach (char c in target)
             {
-                PopUpBox popUpBox = new PopUpBox("Please enter a number in the calories field!");
+                if (!char.IsDigit(c) )
+                {
+                    PopUpBox popUpBox = new PopUpBox("Please enter a whole number for Calories!");
 
-                popUpBox.ShowDialog();
-
-                return false;
+                    popUpBox.ShowDialog();
+                    return false;
+                }
             }
             return true;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+
         private bool CheckRecipeNameField()
         {
-            if (txtRecipeNameField.Text.Equals(""))
+            if (string.IsNullOrWhiteSpace(txtRecipeNameField.Text))
             {
                 PopUpBox popUpBox = new PopUpBox("Please enter a recipe name!");
 
@@ -246,6 +311,8 @@ namespace PROG6221_GUI.Pages
             return true;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnBackToIngredientsPrompt_Click(object sender, RoutedEventArgs e)
         {
             panelStepDetails.Visibility = Visibility.Hidden;
@@ -253,5 +320,37 @@ namespace PROG6221_GUI.Pages
             panelIngredientDetails.Visibility = Visibility.Visible;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
+        private double NormalizeQuantityField(string number)
+        {
+            char[] charArr = { '/', '.' };
+
+            string[] splitArr;
+
+            double result = 0;
+
+            if (number.Contains("."))
+            {
+                number = number.Replace(".", ",");
+
+                result = double.Parse(number);
+            }
+
+            else if (number.Contains("/"))
+            {
+                splitArr = number.Split(charArr);
+
+                result = double.Parse(splitArr[0]) / double.Parse(splitArr[1]);
+            }
+            else
+            {
+                result = double.Parse(number);
+            }
+            return result;
+        }
+
     }
+    //END OF CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

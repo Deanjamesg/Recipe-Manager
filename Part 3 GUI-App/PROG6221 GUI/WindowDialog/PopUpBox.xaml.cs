@@ -25,6 +25,8 @@ namespace PROG6221_GUI.View
             AlertString.Text = message;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

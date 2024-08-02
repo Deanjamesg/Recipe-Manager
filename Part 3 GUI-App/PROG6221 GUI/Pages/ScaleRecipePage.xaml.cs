@@ -44,6 +44,8 @@ namespace PROG6221_GUI.Pages
             cmbSelectRecipe.ItemsSource = recipeManager.GetRecipeList();
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void cmbRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Recipe selectedRecipe = (Recipe)cmbSelectRecipe.SelectedItem;
@@ -59,6 +61,8 @@ namespace PROG6221_GUI.Pages
                 lblTotalCalories.Content = "Total Calories: " + recipeManager.CalculateTotalCalories(selectedRecipe).ToString();
             }
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnSubmitScale_Click(object sender, RoutedEventArgs e)
         {
@@ -88,8 +92,9 @@ namespace PROG6221_GUI.Pages
 
                 popUpBox.ShowDialog();
             }
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnResetRecipe_Click(object sender, RoutedEventArgs e)
         {
@@ -108,4 +113,6 @@ namespace PROG6221_GUI.Pages
             mainWindow.MainFrame.Content = scaleRecipePage;
         }
     }
+    //END OF CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }

@@ -39,8 +39,9 @@ namespace PROG6221_GUI.Pages
             mainWindow = (MainWindow)Application.Current.MainWindow;
 
             cmbSelectRecipe.ItemsSource = recipeManager.GetRecipeList();
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void cmbRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -60,8 +61,9 @@ namespace PROG6221_GUI.Pages
             NumberOfCheckedItems = 0;
 
             NumberOfCheckBoxes = selectedRecipe.Steps.Count + selectedRecipe.Ingredients.Count;
-
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void btnSearchRecipe_Click(object sender, RoutedEventArgs e)
         {
@@ -70,6 +72,8 @@ namespace PROG6221_GUI.Pages
             mainWindow.MainFrame.Content = searchRecipePage;
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             NumberOfCheckedItems++;
@@ -77,10 +81,14 @@ namespace PROG6221_GUI.Pages
 
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------
+
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             NumberOfCheckedItems--;
         }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         private void CheckCheckCheckBoxes()
         {
@@ -91,5 +99,8 @@ namespace PROG6221_GUI.Pages
                 popUpBox.ShowDialog();
             }
         }
+
     }
+    //END OF CLASS
+    //-------------------------------------------------------------------------------------------------------------------------------------
 }
