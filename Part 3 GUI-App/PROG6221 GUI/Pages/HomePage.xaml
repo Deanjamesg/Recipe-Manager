@@ -21,7 +21,7 @@
                                   BlurRadius="15"/>
             </StackPanel.Effect>
 
-            <Label Content="Home Page" 
+            <Label Content="Home" 
                    HorizontalAlignment="Center" 
                    FontSize="24" 
                    Foreground="White"
