@@ -66,7 +66,7 @@
                        Margin="0,5,0,0"
                        MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
-            <TextBlock Text="ST10378305"
+            <TextBlock Text="Dean James Greeff"
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Right"
                        Foreground="White"
@@ -94,7 +94,7 @@
                         Margin="0,10,0,0" 
                         Style="{StaticResource MenuButtonStyle}"
                         Click="btnViewRecipe_Click" 
-                        Content="View"/>
+                        Content="Recipes"/>
 
                 <Button x:Name="btnSearchRecipe"
                         Height="40" 
