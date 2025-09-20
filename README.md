@@ -9,6 +9,25 @@ Dean James Greeff
 
 This is a Recipe Manager Application written in C#. This application allows users to create, display, scale, reset the scale of, and delete recipes. Each recipe consists of a name, a list of ingredients, and a list of steps. Each ingredient has a name, quantity, unit of measurement, food group, and calorie count.
 
+<div align="end">
+<img width="982" height="479" alt="1" src="https://github.com/user-attachments/assets/0b8e46c3-1b0d-4aff-9e47-d68f5d76e395" />
+</div>
+
+</br>
+
+<table>
+  <tr>
+    <td>
+      <img width="100%" height="420" alt="2" src="https://github.com/user-attachments/assets/d9c19884-cd0f-4884-940d-995624af087e" />
+    </td>
+    <td>
+      <img width="100%" alt="3" src="https://github.com/user-attachments/assets/9baa6402-636d-416e-8a5b-ddf3fd725e02" />
+    </td>
+  </tr>
+</table>
+
+
+
 ## Project's Classes & Custom Types
 
 **Program**
